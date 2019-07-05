@@ -59,6 +59,7 @@
     <!-- Right Panel -->
 
     @include('partials.js')
+    @include('sweetalert::alert')
     @yield('additional-js')
 </body>
 
