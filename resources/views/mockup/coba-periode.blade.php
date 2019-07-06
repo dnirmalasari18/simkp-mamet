@@ -26,18 +26,21 @@ Periode
                                         <th>Tahun Ajar</th>
                                         <th>Banyak KP</th>
                                         <th>Banyak Magang</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>2016/2017 Gasal</td>
-                                        <td>20</td>
-                                        <td>5</td>
+                                        <td><center>20</center></td>
+                                        <td><center>5</center></td>
+                                        <td><center><span class="badge badge-success">active</span></center></td>
                                     </tr>
                                     <tr>
                                         <td>2016/2017 Genap</td>
-                                        <td>20</td>
-                                        <td>5</td>
+                                        <td><center>20</center></td>
+                                        <td><center>5</center></td>
+                                        <td><center><span class="badge badge-secondary">inactive</span></center></td>
                                     </tr>
                                     <tr>
                                         <td>2017/2018 Gasal</td>
@@ -214,10 +217,9 @@ Periode
                         <div class="card">
                             <div class="card-header"><strong> Periode</strong></div>
                             <div class="card-body card-block">
-                                <label for="company" class=" form-control-label">Tahun Ajaran</label>
-                                <div class="row form-group">
-                                    <div class="col col-md-6"><input type="text" placeholder="Tahun Mulai" class="form-control"></div>
-                                    <div class="col col-md-6"><input type="text" placeholder="Tahun Selesai" class="form-control"></div>
+                                <div class="form-group">
+                                    <label for="postal-code" class=" form-control-label"><strong>Tahun Ajaran</strong></label>
+                                    <input type="text" id="postal-code" placeholder="Tahun Ajaran" class="form-control">
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-12">
@@ -230,6 +232,18 @@ Periode
                                             </label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal-code" class=" form-control-label"><strong>Tanggal Mulai Semester</strong></label>
+                                    <input type="date" id="postal-code" placeholder="Tanggal Mulai Semester" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal-code" class=" form-control-label"><strong>Tanggal Akhir Semester</strong></label>
+                                    <input type="date" id="postal-code" placeholder="Tanggal Akhir Semester" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal-code" class=" form-control-label"><strong>Batas Akhir Pengajuan</strong></label>
+                                    <input type="date" id="postal-code" placeholder="Batas Akhir Pengajuan" class="form-control">
                                 </div>
                                 <div class="form-actions form-group" style="float:right;">
                                     <button type="submit" class="btn btn-primary btn-sm" style="width:150px;">Simpan</button>
