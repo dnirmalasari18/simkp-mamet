@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return redirect('login');
 });
-Route::get('/berita', function () {
-    return view('mockup.coba-berita');
-});
+Route::get('/berita', 'UserController@index');//function () {
+    //return view('mockup.coba-berita');
+// });
 Route::get('/periode', function () {
     return view('mockup.coba-periode');
 });

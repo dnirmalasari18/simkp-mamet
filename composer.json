@@ -12,7 +12,11 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+<<<<<<< HEAD
         "nesbot/carbon": "^2.20"
+=======
+        "realrashid/sweet-alert": "^2.0"
+>>>>>>> f4f9355fc3281b1178ea42b655aded280a89daad
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

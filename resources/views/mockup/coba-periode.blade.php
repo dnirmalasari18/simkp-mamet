@@ -24,8 +24,8 @@ Periode
                                 <thead>
                                     <tr>
                                         <th>Tahun Ajar</th>
-                                        <th>Banyak KP</th>
-                                        <th>Banyak Magang</th>
+                                        <th><center>Banyak KP</center></th>
+                                        <th><center>Banyak Magang</center></th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
