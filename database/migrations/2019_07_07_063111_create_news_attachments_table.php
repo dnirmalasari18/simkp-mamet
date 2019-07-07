@@ -15,6 +15,8 @@ class CreateNewsAttachmentsTable extends Migration
     {
         Schema::create('news_attachments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('news_id');
+            $table->string('filename',100);
             $table->text('path');
             $table->timestamps();
         });

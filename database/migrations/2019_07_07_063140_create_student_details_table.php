@@ -17,11 +17,12 @@ class CreateStudentDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('student_id');
             $table->bigInteger('group_id');
-            $table->integer('valuation_1');
-            $table->integer('valuation_2');
-            $table->integer('valuation_3');
-            $table->integer('valuation_4');
-            $table->integer('valuation');
+            $table->integer('valuation_1')->nullable();
+            $table->integer('valuation_2')->nullable();
+            $table->integer('valuation_3')->nullable();
+            $table->integer('valuation_4')->nullable();
+            $table->integer('valuation')->nullable();
+            $table->boolean('accepted');
             $table->timestamps();
         });
     }

@@ -3,13 +3,106 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
     //
     public function index(){
-        Alert::success('Success Title', 'Success Message');
-        return view('mockup.coba-berita');
+        $dosen = User::where('role','!=','mahasiswa')->orderBy('fullname')->get();
+        $mahasiswa = User::where('role','mahasiswa')->orderBy('username')->get();
+        return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa);
+    }
+
+    public function create(){
+        return view('user.create');    
+    }
+
+    public function store(Request $request){
+        $this->validate($request, [
+            'username' => 'required',
+            'fullname' => 'required',
+            'phone_number' => 'required',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'required',
+        ]);
+
+        User::create([
+            'username' => request('username'),
+            'fullname' => request('fullname'),
+            'phone_number' => request('phone_number'),
+            'password' => bcrypt(request('password')),
+            'role' => request('role'),
+        ]);
+
+        Alert::success('Success', 'Data telah tersimpan');
+        return redirect()->route('user.index');
+    }
+
+    public function edit($id){
+        $user = User::find($id);
+        return view('user.edit')->with('user',$user);    
+    }
+
+    public function update(Request $request){
+        $this->validate($request, [
+            'id' => 'required',
+            'username' => 'required',
+            'fullname' => 'required',
+            'phone_number' => 'required',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'required',
+        ]);
+        
+        $user = User::find(request('id'));
+        $user->username = request('username');
+        $user->fullname = request('fullname');
+        $user->phone_number = request('phone_number');        
+        $user->password = bcrypt(request('password'));
+        $user->role = request('role');
+        $user->save();
+        
+        Alert::success('Success', 'Data telah tersimpan');
+        return redirect()->route('user.index');
+    }
+
+    public function destroy(Request $request){
+        $user = User::find($request->id);
+        $user->delete();
+        Alert::success('Success', 'Akun telah berhasil dihapus');
+        return redirect()->route('user.index');
+    }
+
+    public function login(Request $request){
+        $this->validate($request, [
+            'username' => 'required',            
+            'password' => 'required',
+        ]);
+
+        if(Auth::attempt(['username' => request('username'), 'password' => request('password')])){            
+            echo "berhasil";
+        }
+    }
+
+    public function register(Request $request){
+        // dd($request);
+        $this->validate($request, [
+            'username' => 'required',
+            'fullname' => 'required',
+            'phone_number' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        User::create([
+            'username' => request('username'),
+            'fullname' => request('fullname'),
+            'phone_number' => request('phone_number'),
+            'password' => bcrypt(request('password')),
+            'role' => 'mahasiswa',
+        ]);
+        Alert::success('Success', 'Selamat datang di SimKP');
+        return redirect()->route('login');
     }
 }
