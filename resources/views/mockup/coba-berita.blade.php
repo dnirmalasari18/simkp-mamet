@@ -40,7 +40,7 @@ Berita
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Attachment: </strong></label>
                         <input type="file" id="fileAdd" multiple />
-                        <div id="selectedFiles"></div>
+                        <div id="selectedFiles" style="color:#428bca"></div>
                     </div>
                     </form>
 
@@ -53,7 +53,7 @@ Berita
         </div>
 </div>
 
-<div class="content mt-3">
+<div class="content ">
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-lg-12">
@@ -105,25 +105,6 @@ Berita
         }
             
     }
-    document.addEventListener("DOMContentLoaded", init2, false);
-    function init2() {
-        document.querySelector('#fileEdit').addEventListener('change', handleFileSelect, false);
-        selDiv2 = document.querySelector("#selectedFilesEdit");
-    }
-    function handleFileSelect(e) {
-        
-    if(!e.target.files) return;
-            
-        selDiv2.innerHTML = "";
-            
-        var files = e.target.files;
-        for(var i=0; i<files.length; i++) {
-        var f = files[i];
-                
-            selDiv2.innerHTML += f.name + "<br/>";
     
-        }
-            
-    }
 </script>
 @endsection
