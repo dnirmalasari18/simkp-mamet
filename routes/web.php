@@ -20,24 +20,33 @@ Route::get('/berita', 'UserController@index');//function () {
 Route::get('/periode', function () {
     return view('mockup.coba-periode');
 });
-Route::get('/kelompok', function () {
-    return view('mockup.coba-kelompok');
-});
 Route::get('/pengajuan', function () {
     return view('mockup.coba-pengajuan');
 });
+Route::get('/kp', function () {
+    return view('mockup.coba-kp');
+});
+Route::get('/magang', function () {
+    return view('mockup.coba-magang');
+});
+Route::get('/akundosbing', function () {
+    return view('mockup.coba-akundosbing');
+});
+Route::get('/akunmahasiswa', function () {
+    return view('mockup.coba-akunmahasiswa');
+});
+
+Route::get('/statistik', function () {
+    return view('mockup.coba-statistik');
+});
+Route::get('/tes', function () {
+    return view('mockup.test');
+});
+
+//not in sidebar
 Route::get('/daftar', function () {
     return view('mockup.coba-daftar');
 });
-Route::get('/akun', function () {
-    return view('mockup.coba-akun');
-});
 Route::get('/login', function () {
     return view('mockup.coba-login');
-});
-Route::get('/kelompok', function () {
-    return view('mockup.coba-kelompok');
-});
-Route::get('/statistik', function () {
-    return view('mockup.coba-statistik');
 });
