@@ -12,22 +12,29 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{url('berita')}}"> <i class="menu-icon fa fa-dashboard"></i>Berita</a>
+                    <a href="{{url('berita')}}"> <i class="menu-icon fa fa-paperclip"></i>Berita</a>
                 </li>
                 <li>
-                    <a href="{{url('periode')}}"> <i class="menu-icon fa fa-dashboard"></i>Periode</a>
+                    <a href="{{url('periode')}}"> <i class="menu-icon fa fa-calendar-o"></i>Periode</a>
                 </li>
                 <li>
-                    <a href="{{url('pengajuan')}}"> <i class="menu-icon fa fa-dashboard"></i>Pengajuan</a>
+                    <a href="{{url('pengajuan')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
                 </li>
                 <li>
-                    <a href="{{url('akun')}}"> <i class="menu-icon fa fa-dashboard"></i>Akun</a>
+                    <a href="{{url('kp')}}"> <i class="menu-icon fa fa-briefcase"></i>Kerja Praktik</a>
                 </li>
                 <li>
-                    <a href="{{url('kelompok')}}"> <i class="menu-icon fa fa-dashboard"></i>Kelompok</a>
+                    <a href="{{url('magang')}}"> <i class="menu-icon fa fa-puzzle-piece"></i>Magang</a>
+                </li>
+                <li class="menu-item-has-children active dropdown show">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="menu-icon fa fa-tasks"></i>Akun</a>
+                    <ul class="sub-menu children dropdown-menu show">
+                        <li><i class="menu-icon fa fa-user"></i><a href="{{url('dosbing')}}">Dosen Pembimbing</a></li>
+                        <li><i class="menu-icon fa fa-user"></i><a href="{{url('mahasiswa')}}">Mahasiswa</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-dashboard"></i>Statistik</a>
+                    <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

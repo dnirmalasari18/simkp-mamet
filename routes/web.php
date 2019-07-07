@@ -109,28 +109,39 @@ Route::get('/berita', 'UserController@index');//function () {
 Route::get('/periode', function () {
     return view('mockup.coba-periode');
 });
-Route::get('/kelompok', function () {
-    return view('mockup.coba-kelompok');
-});
 Route::get('/pengajuan', function () {
     return view('mockup.coba-pengajuan');
 });
-Route::get('/daftar', function () {
-    return view('mockup.coba-daftar');
+Route::get('/kp', function () {
+    return view('mockup.coba-kp');
 });
-Route::get('/akun', function () {
-    return view('mockup.coba-akun');
+Route::get('/magang', function () {
+    return view('mockup.coba-magang');
 });
 // Route::get('/login', function () {
 //     return view('mockup.coba-login');
 // });
 Route::get('/kelompok', function () {
     return view('mockup.coba-kelompok');
+Route::get('/akundosbing', function () {
+    return view('mockup.coba-akundosbing');
+});
+Route::get('/akunmahasiswa', function () {
+    return view('mockup.coba-akunmahasiswa');
 });
 Route::get('/statistik', function () {
     return view('mockup.coba-statistik');
 });
 
 // Auth::routes();
+Route::get('/tes', function () {
+    return view('mockup.test');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+//not in sidebar
+Route::get('/daftar', function () {
+    return view('mockup.coba-daftar');
+});
+Route::get('/login', function () {
+    return view('mockup.coba-login');
+});

@@ -24,188 +24,29 @@ Periode
                                 <thead>
                                     <tr>
                                         <th>Tahun Ajar</th>
-                                        <th><center>Banyak KP</center></th>
-                                        <th><center>Banyak Magang</center></th>
+                                        <th><center>Tanggal Mulai Semester</center></th>
+                                        <th><center>Tanggal Akhir Semester</center></th>
+                                        <th><center>Batas Akhir Pengajuan</center></th>
                                         <th>Status</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>2016/2017 Gasal</td>
-                                        <td><center>20</center></td>
-                                        <td><center>5</center></td>
+                                        <td>2019/2020 Gasal</td>
+                                        <td><center>07/01/2019</center></td>
+                                        <td><center>31/01/2019</center></td>
+                                        <td><center>09/01/2019</center></td>
                                         <td><center><span class="badge badge-success">active</span></center></td>
+                                        <td><i class="fa fa-trash-o" style="color:red"></i></td>
                                     </tr>
                                     <tr>
-                                        <td>2016/2017 Genap</td>
-                                        <td><center>20</center></td>
-                                        <td><center>5</center></td>
+                                        <td>2019/2020 Gasal</td>
+                                        <td><center>07/01/2019</center></td>
+                                        <td><center>31/01/2019</center></td>
+                                        <td><center>09/01/2019</center></td>
                                         <td><center><span class="badge badge-secondary">inactive</span></center></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017/2018 Gasal</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017/2018 Genap</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018/2019 Gasal</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018/2019 Genap</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2019/2020 Genap</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colleen Hurst</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sonya Frost</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jena Gaines</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quinn Flynn</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Charde Marshall</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Haley Kennedy</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tatyana Fitzpatrick</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Silva</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Paul Byrd</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gloria Little</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dai Rios</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jenette Caldwell</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yuri Berry</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Doris Wilder</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica Ramos</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Joyce</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Chang</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fiona Green</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shou Itou</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michelle House</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Suki Burks</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prescott Bartlett</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Cortez</td>
-                                        <td>20</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Martena Mccray</td>
-                                        <td>20</td>
-                                        <td>5</td>
+                                        <td><i class="fa fa-trash-o" style="color:red"></i></td>
                                     </tr>
                                 </tbody>
                             </table>
