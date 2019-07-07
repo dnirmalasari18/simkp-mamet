@@ -118,22 +118,16 @@ Route::get('/kp', function () {
 Route::get('/magang', function () {
     return view('mockup.coba-magang');
 });
-// Route::get('/login', function () {
-//     return view('mockup.coba-login');
-// });
-Route::get('/kelompok', function () {
-    return view('mockup.coba-kelompok');
 Route::get('/akundosbing', function () {
     return view('mockup.coba-akundosbing');
 });
 Route::get('/akunmahasiswa', function () {
     return view('mockup.coba-akunmahasiswa');
 });
+
 Route::get('/statistik', function () {
     return view('mockup.coba-statistik');
 });
-
-// Auth::routes();
 Route::get('/tes', function () {
     return view('mockup.test');
 });
