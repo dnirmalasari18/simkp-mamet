@@ -32,7 +32,7 @@ Route::get('/magang', function () {
 Route::get('/akundosbing', function () {
     return view('mockup.coba-akundosbing');
 });
-Route::get('/akunmahasiswa', function () {
+Route::get('/mahasiswa', function () {
     return view('mockup.coba-akunmahasiswa');
 });
 
