@@ -14,7 +14,17 @@ class GroupController extends Controller
 {
     //
     public function index(){        
-        $groups = Group::all();
+        if(Auth::check()){
+            if(Auth::user()->role == 'mahasiswa'){
+                $groups = Auth::user()->groups;
+            } else if (Auth::user()->role == 'dosen'){
+                $groups = Auth::user()->lectured;
+            } else if (Auth::user()->role == 'koordinator'){
+                $groups = Group::orderBy('created_at','desc')->get();
+            }
+        } else {
+            $groups = Group::all();
+        }                
         return view('group.index')->with('groups',$groups);
     }
 

@@ -11,13 +11,17 @@
             <div class="user-area dropdown"style="float:right; margin-top:5px;" >
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#272c33;">
                     <i class="fa fa-user-circle-o" style="margin-right:3px;"></i>
-                    Nama Orang
+                    @if (Auth::check())
+                        {{Auth::user()->fullname}}
+                    @else
+                        Nama Orang
+                    @endif                        
                     <i class="fa fa-caret-down" style="margin-left:3px;"></i>
                 </a>
 
                 <div class="user-menu dropdown-menu">
                     <a class="nav-link" href="{{route('reset')}}"><i class="fa fa-key"></i> Ganti Password</a>
-                    <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                    <a class="nav-link" href="{{route('logout')}}"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
 
