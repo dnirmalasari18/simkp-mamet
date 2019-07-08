@@ -7,6 +7,9 @@ Statistik
 
 <link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
 <link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="{!!asset('template/vendors/chosen/chosen.min.css')!!}">
+<link rel="stylesheet" href="{!!asset('template/vendors/bootstrap-datepicker.css')!!}">
+<link href="{!! asset('template/vendors/morrisjs/morris.css') !!}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="content mt-3">
@@ -24,7 +27,28 @@ Statistik
                                 </nav>
                                 <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-grafik" role="tabpanel" aria-labelledby="nav-grafik-tab">
-                                        Statiskia
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <select data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
+                                                    <option value="">Semua Periode</option>
+                                                    <option value="1">1 Tahun Terakhir</option>
+                                                    <option value="2">3 Tahun Terakhir</option>
+                                                    <option value="3">5 Tahun Terakhir</option>
+                                                    <option value="4">2015/2016 Gasal</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:3rem;">
+                                            <div class="col-lg-12">
+                                                <div  style="text-align:center;font-size:15pt;">
+                                                    <b>Grafik Perusahaan</b>
+                                                </div>
+                                                <div id="grafik-perusahaan"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-rekamjejak" role="tabpanel" aria-labelledby="nav-rekamjejak-tab">
                                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
@@ -48,7 +72,7 @@ Statistik
                                                         <td style="vertical-align:middle;width:12%">
                                                             <center>
                                                                 <span style="display:block;">
-                                                                    <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDetailLihat"style="border-radius:3px; width:100px;">Lihat Detail</button>
+                                                                    <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDetailLihat"style="border-radius:3px;">Lihat Detail</button>
                                                                 </span>
                                                             </center>
                                                         </td>
@@ -188,5 +212,33 @@ Statistik
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
-
+<script src="{!!asset('template/vendors/bootstrap-datepicker.js')!!}"></script>
+<script src="{!!asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
+<script src="{!! asset('template/vendors/raphael/raphael.min.js') !!}"></script>
+<script src="{!! asset('template/vendors/morrisjs/morris.min.js') !!}"></script>
+<script src="{!! asset('template/vendors/morrisjs/morris-data.js') !!}"></script>
+<script>
+    jQuery(document).ready(function() {
+        jQuery(".standardSelect").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, Periode tidak ditemukan",
+            width: "100%"
+        });
+    });
+</script>
+<script>
+    new Morris.Donut({
+        element: 'grafik-perusahaan',
+        data: [
+            { label: 'Pertamina', value: 10 },
+            { label: 'Pertamax', value: 5 },
+            { label: 'Jastip', value: 3 },
+            { label: 'Starbux', value: 3 },
+            { label: 'Aksamedia', value: 4 },
+            { label: '9gag', value: 13 },
+            { label: 'Dosilasol ', value: 3 },
+        ]
+    
+    });
+</script>
 @endsection
