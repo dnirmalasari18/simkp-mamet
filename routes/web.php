@@ -38,7 +38,7 @@ Route::prefix('users/')->group(function(){
     Route::post('delete','UserController@delete')->name('user.delete');
     Route::get('{id}','UserController@show')->name('user.show');    
     Route::get('{id}/edit','UserController@edit')->name('user.edit');
-    Route::post('{id}/edit','UserController@update')->name('user.edit');
+    Route::post('edit','UserController@update')->name('user.edit');
 });
 
 Route::prefix('news/')->group(function(){
@@ -79,28 +79,24 @@ Route::prefix('groups/')->group(function(){
     Route::post('{id}/edit','GroupController@update')->name('group.edit');
 
     Route::get('{id}/proof','ProofController@show')->name('proof.show');
-    Route::post('{id}/proof/create','ProofController@create')->name('proof.create');
-    Route::post('{id}/proof/delete','ProofController@delete')->name('proof.delete');
+    Route::post('proof/create','ProofController@store')->name('proof.create');
+    Route::post('proof/delete','ProofController@delete')->name('proof.delete');
 
     Route::post('{id}/accept','GroupController@accept')->name('group.accept');
     Route::post('{id}/decline','GroupController@decline')->name('group.decline');
+    
+    Route::get('reports/create','ReportController@create')->name('report.create');
+    Route::post('reports/create','ReportController@store')->name('report.create');
+    Route::post('reports/delete','ReportController@delete')->name('report.delete');
 
-    Route::get('{id}/reports','ReportController@show')->name('report.show');
-    Route::get('{id}/reports/create','ReportController@create')->name('report.create');
-    Route::post('{id}/reports/create','ReportController@store')->name('report.create');
-    Route::post('{id}/reports/delete','ReportController@delete')->name('report.delete');
-
-    Route::post('{id}/status/request','StatusController@request')->name('status.request');
-    Route::post('{id}/status/accept','StatusController@accept')->name('status.accept');
-    Route::post('{id}/status/decline','StatusController@decline')->name('status.decline');
-    Route::post('{id}/status/finish','StatusController@finish')->name('status.finish');
+    Route::post('status/update','GroupController@statusUpdate')->name('status.update');
 });
 
 Route::get('statistics/periods/{id}','StatisticController@period')->name('statistic.period');
 Route::get('statistics/corps/{id}','StatisticController@corp')->name('statistic.corp');
 
-Route::get('valuation/periods/{id}','ValuationController@edit')->name('statistic.edit');
-Route::post('valuation/periods/{id}','ValuationController@store')->name('statistic.edit');
+Route::get('valuation/periods/{id}','ValuationController@editCommunal')->name('valuation.edit');
+Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');
 
 Route::get('/', function () {
     return redirect('login');
@@ -137,3 +133,19 @@ Route::get('/daftar', function () {
     return view('mockup.coba-daftar');
 });
 
+Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
+{
+    $path = storage_path('app/'.$foldername.'/'.$filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});

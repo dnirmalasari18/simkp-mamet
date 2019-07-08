@@ -16,7 +16,7 @@ class GroupsTableSeeder extends Seeder
             'period_id' => 1,            
             'start_date' => '2019-06-17',
             'end_date' => '2019-07-12',
-            'status' => 'created',
+            'status' => 'menunggu persetujuan koordinator kp',
             'type' => 'kerja praktik',
         ]);
 
@@ -31,7 +31,7 @@ class GroupsTableSeeder extends Seeder
             'period_id' => 1,            
             'start_date' => '2019-06-24',
             'end_date' => '2019-07-26',
-            'status' => 'created',     
+            'status' => 'menunggu persetujuan koordinator kp',     
             'type' => 'kerja praktik',       
         ]);
 

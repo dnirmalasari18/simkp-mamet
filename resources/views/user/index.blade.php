@@ -13,7 +13,7 @@ Daftar Akun
     <div class="animated fadeIn">
         <div class="row" style="margin-bottom:15px;">
             <div class="col-lg-12" >
-                <button type="button" class="btn btn-primary" style="float:right; width:25%;">Tambah Akun</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalAkunTambah"style="float:right; width:25%;">Tambah Akun</button>
             </div>            
         </div>
         <div class="row">
@@ -32,26 +32,35 @@ Daftar Akun
                                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
                                             <thead>
                                                 <tr>
-                                                    <th>Nama Lengkap</th>
-                                                    <th>Kode</th>
-                                                    <th>Banyak Membimbing</th>
-                                                    <th>Banyak Membimbing Periode Aktif</th>
-                                                    <th></th>
+                                                    <th style="vertical-align:middle">Nama</th>                                                    
+                                                    <th style="vertical-align:middle">No HP</th>
+                                                    <th style="vertical-align:middle">Banyak Membimbing</th>
+                                                    <th style="vertical-align:middle">Banyak Membimbing Periode Aktif</th>
+                                                    <th style="vertical-align:middle"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($dosen as $user)
                                                     <tr>
-                                                        <td>{{$user->fullname}}</td>
-                                                        <td>RA</td>
-                                                        <td>15</td>
-                                                        <td>5</td>
-                                                        <td>
-                                                            <i class="fa fa-pencil-square-o" style="color:blue;"></i>
-                                                            <i class="fa fa-trash" style="color:red"></i>
+                                                        <td style="vertical-align:middle">{{$user->fullname}}</td>                                                        
+                                                        <td style="vertical-align:middle">{{$user->phone_number}}</td>
+                                                        <td style="vertical-align:middle">15</td>
+                                                        <td style="vertical-align:middle">5</td>
+                                                        <td style="vertical-align:middle">
+                                                            <center>
+                                                                <span style="display:block;">
+                                                                    <button id="{{$user->id}}" type="submit" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalAkunEdit"style="border-radius:3px; width:70px;">Edit</button>
+                                                                </span>
+                                                                <span style="display:block; padding-block:5px; ">
+                                                                    <form action="{{route('user.delete')}}" method="post">
+                                                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
+                                                                    </form>
+                                                                </span>
+                                                            </center>
                                                         </td>
-                                                    </tr>    
-                                                @endforeach                                                
+                                                    </tr>                                             
+                                                @endforeach                                                     
                                             </tbody>
                                         </table>
                                     </div>
@@ -59,24 +68,33 @@ Daftar Akun
                                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
                                             <thead>
                                                 <tr>
-                                                    <th>NRP</th>
-                                                    <th>Nama Lengkap</th>
+                                                    <th style="vertical-align:middle">NRP</th>
+                                                    <th style="vertical-align:middle;">Nama Lengkap</th>
+                                                    <th style="vertical-align:middle;">No HP</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($mahasiswa as $user)
                                                     <tr>
-                                                        <td>{{$user->username}}</td>
-                                                        <td>{{$user->fullname}}</td>
-                                                        <td>
+                                                        <td style="vertical-align:middle">{{$user->username}}</td>
+                                                        <td style="vertical-align:middle">{{$user->fullname}}</td>
+                                                        <td style="vertical-align:middle">{{$user->phone_number}}</td>
+                                                        <td style="vertical-align:middle; width:10%;">
                                                             <center>
-                                                                <i class="fa fa-pencil-square-o" style="color:blue;"></i>
-                                                                <i class="fa fa-trash" style="color:red"></i>
+                                                                <span style="display:block;">
+                                                                    <button id="{{$user->id}}" type="submit" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalAkunEdit"style="border-radius:3px; width:70px;">Edit</button>
+                                                                </span>
+                                                                <span style="display:block; padding-block:5px; ">
+                                                                    <form action="{{route('user.delete')}}" method="post">
+                                                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
+                                                                    </form>
+                                                                </span>
                                                             </center>
                                                         </td>
-                                                    </tr>                        
-                                                @endforeach                                                
+                                                    </tr>                                          
+                                                @endforeach                                                        
                                             </tbody>
                                         </table>
                                     </div>
@@ -87,6 +105,105 @@ Daftar Akun
                     </div>
                 </div>
             </div>
+    </div>
+</div>
+<div class="modal fade" id="scrollmodalAkunTambah" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form action="{{route('user.create')}}" method="post">
+            @csrf
+                <div class="modal-header">
+                <h5 class="modal-title" id="scrollmodalLabel">Tambah Akun</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Milik</strong></label>
+                    <select name="role" id="select" class="form-control">
+                        <option value=""></option>
+                        <option value="dosen">Dosen</option>
+                        <option value="mahasiswa">Mahasiswa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>NIP/NRP</strong></label>
+                    <input name="username" type="text" id="postal-code" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Nama</strong></label>
+                    <input name="fullname" type="text" id="postal-code" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>No HP</strong></label>
+                    <input name="phone_number" type="test" id="postal-code" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Password</strong></label>
+                    <input name="password" type="password" id="postal-code" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Konfirmasi Password</strong></label>
+                    <input name="password_confirmation" type="password" id="postal-code" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="scrollmodalAkunEdit" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form action="{{route('user.edit')}}" method="post">
+            @csrf
+                <input type="hidden" class="edit-id" name="id" value="">
+                <div class="modal-header">
+                <h5 class="modal-title edit-user" id="scrollmodalLabel">Akun ((SAPA GITU)))</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Milik</strong></label>
+                    <select name="role" id="select" class="form-control edit-role" disabled>
+                        <option value=""></option>
+                        <option value="dosen">Dosen</option>
+                        <option value="mahasiswa">Mahasiswa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Kode Dosen/NRP</strong></label>
+                    <input name="username" type="text" id="postal-code" class="form-control edit-username">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Nama</strong></label>
+                    <input name="fullname" type="text" id="postal-code" class="form-control edit-fullname">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>No HP</strong></label>
+                    <input name="phone_number" type="test" id="postal-code" class="form-control edit-phone_number">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Password</strong></label>
+                    <input name="password" type="password" id="postal-code" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code" class=" form-control-label"><strong>Konfirmasi Password</strong></label>
+                    <input name="password_confirmation" type="password" id="postal-code" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
@@ -102,8 +219,26 @@ Daftar Akun
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
 <script>
     jQuery(document).ready(function() {
-        console.log("Masuk")
+        var user = {!!$users!!}
+                
         jQuery('table.display').DataTable();
+
+        jQuery('.btn-edit').click(function(){            
+            console.log(jQuery(this).attr('id'))            
+            var p;            
+            for (var i = 0; i < user.length; i++) {
+                if (user[i].id == jQuery(this).attr('id')) {
+                    p = user[i];
+                    break;
+                }
+            };
+            jQuery('.edit-id').val(p.id)
+            jQuery('.edit-user').text('Akun' + p.fullname)
+            jQuery('.edit-role').val(p.role)
+            jQuery('.edit-username').val(p.username)
+            jQuery('.edit-fullname').val(p.fullname)
+            jQuery('.edit-phone_number').val(p.phone_number)
+        })        
     } );
 </script>
 @endsection

@@ -11,9 +11,10 @@ class UserController extends Controller
 {
     //
     public function index(){
+        $users = User::all();
         $dosen = User::where('role','!=','mahasiswa')->orderBy('fullname')->get();
         $mahasiswa = User::where('role','mahasiswa')->orderBy('username')->get();
-        return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa);
+        return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa)->with('users', $users);
     }
 
     public function create(){
@@ -25,7 +26,7 @@ class UserController extends Controller
             'username' => 'required',
             'fullname' => 'required',
             'phone_number' => 'required',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|confirmed',
             'role' => 'required',
         ]);
 
@@ -47,21 +48,25 @@ class UserController extends Controller
     }
 
     public function update(Request $request){
+        // dd($request);
         $this->validate($request, [
             'id' => 'required',
             'username' => 'required',
             'fullname' => 'required',
-            'phone_number' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'role' => 'required',
+            'phone_number' => 'required',                        
         ]);
         
         $user = User::find(request('id'));
         $user->username = request('username');
         $user->fullname = request('fullname');
-        $user->phone_number = request('phone_number');        
-        $user->password = bcrypt(request('password'));
-        $user->role = request('role');
+        $user->phone_number = request('phone_number');                        
+
+        if($request->password != null){            
+            $this->validate($request, [
+                'password' => 'required|confirmed'
+            ]);
+            $user->password = bcrypt(request('password'));
+        }
         $user->save();
         
         Alert::success('Success', 'Data telah tersimpan');
