@@ -112,11 +112,11 @@ Route::get('/periode', function () {
 Route::get('/pengajuan', function () {
     return view('mockup.coba-pengajuan');
 });
-Route::get('/kp', function () {
-    return view('mockup.coba-kp');
+Route::get('/kelompok', function () {
+    return view('mockup.coba-kelompok');
 });
-Route::get('/magang', function () {
-    return view('mockup.coba-magang');
+Route::get('/kelompokshow', function () {
+    return view('mockup.coba-kelompokshow');
 });
 Route::get('/akundosbing', function () {
     return view('mockup.coba-akundosbing');
