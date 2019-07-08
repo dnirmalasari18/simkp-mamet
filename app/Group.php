@@ -18,4 +18,12 @@ class Group extends Model
     public function students(){
         return $this->belongsToMany('App\User','student_details','group_id','student_id');
     }
+
+    public function studentsdetails(){
+        return $this->hasMany('App\StudentDetail');
+    }
+
+    public function reports(){
+        return $this->hasMany('App\Report');
+    }
 }

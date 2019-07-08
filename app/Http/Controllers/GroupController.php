@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Group;
 use App\Corp;
+use Alert;
 
 class GroupController extends Controller
 {
@@ -15,7 +16,7 @@ class GroupController extends Controller
     }
 
     public function show($id){
-        $group = Group::find($id);
+        $group = Group::find($id);        
         return view('group.show')->with('group',$group);
     }
 
@@ -40,5 +41,19 @@ class GroupController extends Controller
         $greq = $request['group'];
         dd($creq);
         return redirect()->route('group.index');
+    }
+
+    public function statusUpdate(Request $request){
+        $this->validate($request, [
+            'id' => 'required',
+            'status' => 'required',
+        ]);
+        
+        $group = Group::find($request->id);
+        $group->status = $request->status;
+        $group->save();
+
+        Alert::success('Success', 'Status berhasil diubah');
+        return redirect()->route('group.show',$request->id);
     }
 }
