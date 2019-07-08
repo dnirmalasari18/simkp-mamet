@@ -3,6 +3,13 @@
 @section('page-title')
 Detail Kelompok
 @endsection
+@section('additional-css')
+
+<link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="{!!asset('template/vendors/chosen/chosen.min.css')!!}">
+<link rel="stylesheet" href="{!!asset('template/vendors/bootstrap-datepicker.css')!!}">
+@endsection
 
 @section('content')
 <div class="content mt-3">
@@ -231,18 +238,28 @@ Detail Kelompok
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
-                    <div class="col-12 col-md-9">
-                        <select name="select" id="select" class="form-control">
-                            <option value=""></option>
-                            <option value="1">Progress</option>
-                            <option value="2">Rejected</option>
-                            <option value="3">Denied</option>
-                            <option value="3">Finished</option>
-                        </select>
-                    </div>
-                </div>
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
+                    <thead>
+                        <tr>
+                            <th style="vertical-align:middle"></th>
+                            <th style="vertical-align:middle">Nama</th>
+                            <th style="vertical-align:middle">NIP</th>
+                            <th style="vertical-align:middle">No HP</th>
+                            <th style="vertical-align:middle">Banyak Membimbing</th>
+                            <th style="vertical-align:middle">Banyak Membimbing Periode Aktif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align:middle"><input type="radio" name="news2" value="1"></td>
+                            <td style="vertical-align:middle">Radityo Anggoro</td>
+                            <td style="vertical-align:middle">1232131231231231231</td>
+                            <td style="vertical-align:middle">081703313257</td>
+                            <td style="vertical-align:middle">15</td>
+                            <td style="vertical-align:middle">5</td>
+                        </tr>                                             
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -416,5 +433,14 @@ Detail Kelompok
 
 
 @section('additional-js')
+<script src="{!!asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
+<script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+<script src="{!!asset('template/vendors/bootstrap-datepicker.js')!!}"></script>
 
 @endsection

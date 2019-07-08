@@ -49,7 +49,7 @@
                                 <span class="pull-right text-muted small">2019-05-27</span><br>
                                 from: Frandita Adhitama<br>
                                 Jurusan Teknik Informatika Fakultas Teknologi Informasi Institut Teknologi Sepuluh Nopember - Surabaya
-                                <span class="pull-right text-muted small"  >Accepted</span>
+                                <span class="pull-right text-muted small" >Accepted</span>
                             </div>
                         </a>
                         <a class="dropdown-item media" href="#">
