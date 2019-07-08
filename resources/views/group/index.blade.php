@@ -25,9 +25,11 @@ Kelompok
                                 <tbody>
                                     @foreach ($groups as $group)
                                         <tr>
-                                            <td>{{$group->status}}</td>
-                                            <td>                                                
-                                                Frandita - Mala
+                                            <td>{{strtoupper($group->status)}}</td>
+                                            <td>                                                                                                
+                                                @foreach ($group->students as $student)                                                    
+                                                    - {{$student->fullname}} <br>
+                                                @endforeach                                                
                                             </td>
                                             <td>{{$group->corp->name}}</td>
                                         </tr>    

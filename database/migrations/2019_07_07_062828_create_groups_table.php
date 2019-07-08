@@ -23,6 +23,7 @@ class CreateGroupsTable extends Migration
             $table->text('title')->nullable();
             $table->text('abstract')->nullable();
             $table->string('status',10);
+            $table->string('type',15);
             $table->timestamps();
         });
     }
