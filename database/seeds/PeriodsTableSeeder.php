@@ -17,6 +17,7 @@ class PeriodsTableSeeder extends Seeder
             'name' => 'Periode 2018/2019 Genap',
             'start_date' => '2019-01-01',
             'end_date' => '2019-08-08',
+            'final_date' => '2019-08-09',
             'active' => 1,
         ]);
 
@@ -24,6 +25,7 @@ class PeriodsTableSeeder extends Seeder
             'name' => 'Periode 2018/2019 Gasal',
             'start_date' => '2018-08-29',
             'end_date' => '2019-12-24',
+            'final_date' => '2019-12-25',
             'active' => 0,
         ]);
     }

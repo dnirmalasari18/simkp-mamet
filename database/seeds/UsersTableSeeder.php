@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'username' => 'fran',
+            'username' => '05111640000129',
             'fullname' => 'Fran',
             'phone_number' => '0812938483',
             'role' => 'mahasiswa',
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
         ]);        
 
         DB::table('users')->insert([
-            'username' => 'mala',
+            'username' => '05111640000115',
             'fullname' => 'Mala',
             'phone_number' => '0812938483',
             'role' => 'mahasiswa',
@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'username' => 'jason',
+            'username' => '05111640000096',
             'fullname' => 'Jason',
             'phone_number' => '0812938483',
             'role' => 'mahasiswa',

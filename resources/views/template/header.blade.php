@@ -16,8 +16,7 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="#"><i class="fa fa-key"></i> Ganti Password</a>
-
+                    <a class="nav-link" href="{{route('reset')}}"><i class="fa fa-key"></i> Ganti Password</a>
                     <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>

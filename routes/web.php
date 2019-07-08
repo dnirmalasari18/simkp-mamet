@@ -21,6 +21,9 @@ Route::get('register', function(){
 });
 Route::post('register', 'UserController@register')->name('register');
 
+Route::get('reset','UserController@reset')->name('reset');
+Route::post('reset','UserController@doReset')->name('password.update');
+
 Route::prefix('corps/')->group(function(){
     Route::get('{id}','CorpController@show')->name('corp.show');
     Route::get('{id}/note/create','CorpController@create')->name('corp.create');
@@ -52,12 +55,11 @@ Route::prefix('periods/')->group(function(){
     Route::get('','PeriodController@index')->name('period.index');    
     Route::get('create','PeriodController@create')->name('period.create');
     Route::post('create','PeriodController@store')->name('period.create');    
-    Route::post('delete','PeriodController@delete')->name('period.delete');
+    Route::post('delete','PeriodController@destroy')->name('period.delete');
     Route::post('activate','PeriodController@activate')->name('period.activate');
     Route::post('deactivate','PeriodController@deactivate')->name('period.deactivate');
-    Route::get('{id}','PeriodController@show')->name('period.show');
-    Route::get('{id}/edit','PeriodController@edit')->name('period.edit');
-    Route::post('{id}/edit','PeriodController@update')->name('period.edit');
+    Route::get('{id}','PeriodController@show')->name('period.show');    
+    Route::post('edit','PeriodController@update')->name('period.edit');
 });
 
 Route::prefix('lecturers/')->group(function(){
@@ -103,9 +105,10 @@ Route::post('valuation/periods/{id}','ValuationController@store')->name('statist
 Route::get('/', function () {
     return redirect('login');
 });
-Route::get('/berita', 'UserController@index');//function () {
-    //return view('mockup.coba-berita');
-// });
+Route::get('/berita', //'UserController@index');
+function () {
+    return view('mockup.coba-berita');
+});
 Route::get('/periode', function () {
     return view('mockup.coba-periode');
 });
@@ -136,6 +139,4 @@ Route::get('/tes', function () {
 Route::get('/daftar', function () {
     return view('mockup.coba-daftar');
 });
-Route::get('/login', function () {
-    return view('mockup.coba-login');
-});
+

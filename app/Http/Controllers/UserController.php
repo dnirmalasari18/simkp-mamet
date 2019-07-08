@@ -80,7 +80,7 @@ class UserController extends Controller
             'username' => 'required',            
             'password' => 'required',
         ]);
-
+        
         if(Auth::attempt(['username' => request('username'), 'password' => request('password')])){            
             echo "berhasil";
         }
@@ -104,5 +104,28 @@ class UserController extends Controller
         ]);
         Alert::success('Success', 'Selamat datang di SimKP');
         return redirect()->route('login');
+    }
+
+    public function reset(){
+        return view('auth.passwords.reset');
+    }
+
+    public function doReset(Request $request){
+        $this->validate($request, [
+            'password_old' => 'required',
+            'password' => 'required|confirmed',            
+        ]);
+        $user = Auth::user();
+
+        if ($user->password == bcrypt(request('password_old'))){
+            $user->password = bcrypt(request('password'));
+            $user->save();
+
+            Alert::success('Success', 'Password berhasil diganti');
+        } else {
+            Alert::error('Error', 'Password lama salah');
+        }
+        
+        return redirect()->route('reset');
     }
 }

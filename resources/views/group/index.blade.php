@@ -20,6 +20,8 @@ Kelompok
                                         <th>Status</th>
                                         <th>Peserta</th>
                                         <th>Perusahaan</th>
+                                        <th>Jenis Kelompok</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -28,10 +30,14 @@ Kelompok
                                             <td>{{strtoupper($group->status)}}</td>
                                             <td>                                                                                                
                                                 @foreach ($group->students as $student)                                                    
-                                                    - {{$student->fullname}} <br>
+                                                    {{$student->username}} - {{$student->fullname}} <br>
                                                 @endforeach                                                
                                             </td>
                                             <td>{{$group->corp->name}}</td>
+                                            <td>{{ucwords($group->type)}}</td>
+                                            <td>
+                                                <a href="{{route('group.show', ['id' => $group->id])}}"><i class="fa fa-pencil-square-o" style="color:blue;"></i></a>
+                                            </td>
                                         </tr>    
                                     @endforeach                                    
                                 </tbody>

@@ -29,7 +29,7 @@ Daftar Akun
                                 </nav>
                                 <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-dosen" role="tabpanel" aria-labelledby="nav-dosen-tab">
-                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
                                             <thead>
                                                 <tr>
                                                     <th>Nama Lengkap</th>
@@ -56,7 +56,7 @@ Daftar Akun
                                         </table>
                                     </div>
                                     <div class="tab-pane fade" id="nav-mahasiswa" role="tabpanel" aria-labelledby="nav-mahasiswa-tab">
-                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
                                             <thead>
                                                 <tr>
                                                     <th>NRP</th>
@@ -100,4 +100,10 @@ Daftar Akun
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+<script>
+    jQuery(document).ready(function() {
+        console.log("Masuk")
+        jQuery('table.display').DataTable();
+    } );
+</script>
 @endsection
