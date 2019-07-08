@@ -21,10 +21,7 @@
                     <a href="{{url('pengajuan')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
                 </li>
                 <li>
-                    <a href="{{url('kp')}}"> <i class="menu-icon fa fa-briefcase"></i>Kerja Praktik</a>
-                </li>
-                <li>
-                    <a href="{{url('magang')}}"> <i class="menu-icon fa fa-puzzle-piece"></i>Magang</a>
+                    <a href="{{url('kelompok')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
                 </li>
                 <li class="menu-item-has-children active dropdown show">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="menu-icon fa fa-tasks"></i>Akun</a>
