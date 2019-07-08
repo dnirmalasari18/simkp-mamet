@@ -117,11 +117,8 @@ Route::get('/kelompok', function () {
 Route::get('/kelompokshow', function () {
     return view('mockup.coba-kelompokshow');
 });
-Route::get('/akundosbing', function () {
-    return view('mockup.coba-akundosbing');
-});
-Route::get('/mahasiswa', function () {
-    return view('mockup.coba-akunmahasiswa');
+Route::get('/akun', function () {
+    return view('mockup.coba-akun');
 });
 
 Route::get('/statistik', function () {
