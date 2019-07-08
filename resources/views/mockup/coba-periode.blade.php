@@ -95,7 +95,7 @@ Periode
             <div class="modal-body">
                 <div class="form-group">
                     <label for="postal-code" class=" form-control-label"><strong>Tahun Ajaran</strong></label>
-                    <input type="text" id="postal-code" placeholder="Tahun Ajaran" class="form-control">
+                    <input type="text" id="postal-code"  class="form-control">
                 </div>
                 <div class="row form-group">
                     <div class="col col-md-12">

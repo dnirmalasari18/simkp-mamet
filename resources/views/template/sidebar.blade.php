@@ -23,12 +23,8 @@
                 <li>
                     <a href="{{url('kelompok')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
                 </li>
-                <li class="menu-item-has-children active dropdown show">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="menu-icon fa fa-tasks"></i>Akun</a>
-                    <ul class="sub-menu children dropdown-menu show">
-                        <li><i class="menu-icon fa fa-user"></i><a href="{{url('dosbing')}}">Dosen Pembimbing</a></li>
-                        <li><i class="menu-icon fa fa-user"></i><a href="{{url('mahasiswa')}}">Mahasiswa</a></li>
-                    </ul>
+                <li>
+                    <a href="{{url('akun')}}"> <i class="menu-icon fa fa-user"></i>Akun</a>
                 </li>
                 <li>
                     <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
