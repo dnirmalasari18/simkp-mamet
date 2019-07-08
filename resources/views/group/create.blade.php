@@ -16,23 +16,33 @@ Pengajuan
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body card-block">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{route('group.create')}}" method="post">
+                            @csrf
                         <div class="col-md-12">
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Jenis Pengajuan</strong></label></div>
                                 <div class="col col-md-8">
                                     <div class="form-check-inline form-check">
                                         <label for="inline-radio1" class="form-check-label "style="padding-right:50px;">
-                                            <input type="radio" id="inline-radio1" name="inline-radios" value="option1" class="form-check-input" >Kerja Praktik
+                                            <input type="radio" id="inline-radio1" name="group[type]" value="kerja praktik" class="form-check-input" >Kerja Praktik
                                         </label>
                                         <label for="inline-radio2" class="form-check-label ">
-                                            <input type="radio" id="inline-radio2" name="inline-radios" value="option2" class="form-check-input">Magang
+                                            <input type="radio" id="inline-radio2" name="group[type]" value="magang" class="form-check-input">Magang
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>                        
-                            <form action="{{route('group.create')}}" method="post">
-                                @csrf
+                            
                                 <div class="col-md-4">
                                     <div class="form-group">                                
                                         <label style="margin-bottom:20px;"><strong>Perusahaan</strong></label>

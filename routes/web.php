@@ -38,7 +38,7 @@ Route::prefix('users/')->group(function(){
     Route::post('delete','UserController@delete')->name('user.delete');
     Route::get('{id}','UserController@show')->name('user.show');    
     Route::get('{id}/edit','UserController@edit')->name('user.edit');
-    Route::post('{id}/edit','UserController@update')->name('user.edit');
+    Route::post('edit','UserController@update')->name('user.edit');
 });
 
 Route::prefix('news/')->group(function(){

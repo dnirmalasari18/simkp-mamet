@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function groups(){
+        return $this->belongsToMany('App\Group', 'student_details','group_id','student_id')->withPivot('student_id','group_id','accepted');
+    }
 }
