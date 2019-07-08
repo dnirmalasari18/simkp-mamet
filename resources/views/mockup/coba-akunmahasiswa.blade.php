@@ -1,63 +1,99 @@
 @extends('template.master')
 
 @section('page-title')
-Berita
+Daftar Akun
 @endsection
+@section('additional-css')
 
+<link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')!!}">
+@endsection
 @section('content')
 <div class="content mt-3">
     <div class="animated fadeIn">
         <div class="row" style="margin-bottom:15px;">
             <div class="col-lg-12" >
-                <button type="button" class="btn btn-primary" style="float:right; width:25%;">Tambah Berita</button>
+                <button type="button" class="btn btn-primary" style="float:right; width:25%;">Tambah Akun</button>
             </div>            
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4><strong>Form KP</strong></h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-muted m-b-15">Form untuk kepentingan KP</p>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="default-tab">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-dosen-tab" data-toggle="tab" href="#nav-dosen" role="tab" aria-controls="nav-dosen" aria-selected="true">Dosen</a>
+                                        <a class="nav-item nav-link" id="nav-mahasiswa-tab" data-toggle="tab" href="#nav-mahasiswa" role="tab" aria-controls="nav-mahasiswa" aria-selected="false">Mahasiswa</a>
+                                    </div>
+                                </nav>
+                                <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-dosen" role="tabpanel" aria-labelledby="nav-dosen-tab">
+                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama Lengkap</th>
+                                                    <th>Kode</th>
+                                                    <th>Banyak Membimbing</th>
+                                                    <th>Banyak Membimbing Periode Aktif</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Dr. Radityo Anggoro , S.Kom, M.Sc.</td>
+                                                    <td>RA</td>
+                                                    <td>15</td>
+                                                    <td>5</td>
+                                                    <td>
+                                                        <i class="fa fa-pencil-square-o" style="color:blue;"></i>
+                                                        <i class="fa fa-trash" style="color:red"></i>
+                                                    </td>
+                                                </tr>                    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-mahasiswa" role="tabpanel" aria-labelledby="nav-mahasiswa-tab">
+                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>NRP</th>
+                                                    <th>Nama Lengkap</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>05111640000129</td>
+                                                    <td>Frandita Adhitama</td>
+                                                    <td>
+                                                        <center>
+                                                            <i class="fa fa-pencil-square-o" style="color:blue;"></i>
+                                                            <i class="fa fa-trash" style="color:red"></i>
+                                                        </center>
+                                                    </td>
+                                                </tr>                    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
-                        <ul class="list-unstyled" style="margin-top:-1%">
-                            <li ><a href="#" style="color:#428bca">Form Pengajuan.pdf</a></li>
-                            <li ><a href="#" style="color:#428bca">Form Penilaian Pembimbing Lapangan.pdf</a></li>
-                            <li ><a href="#" style="color:#428bca">Form Penilaian Dosen Pembimbing.pdf</a></li>
-                        </ul>
-
-                        <i><small><span class="fa fa-clock-o"></span> Created at: 2018-02-06</small></i>
-              			&nbsp;
-                        <i><small class=""><span class="fa fa-clock-o"></span> Updated at: 2018-02-06</small></i>
-                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#scrollmodal" style="float:right;">Hapus</button>
-                        <button type="button" class="btn btn-primary btn-sm" style="float:right; margin-right:10px;">Ubah</button>
-                        
-                    </div>
-                </div>
-                <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="scrollmodalLabel">Scrolling Long Content Modal</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                    dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary">Confirm</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!-- .animated -->
-</div><!-- .content -->
+    </div>
+</div>
+@endsection
+
+@section('additional-js')
+<script src="{!!asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
+<script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
 @endsection
