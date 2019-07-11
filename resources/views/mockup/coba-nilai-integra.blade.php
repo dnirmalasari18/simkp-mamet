@@ -34,52 +34,24 @@ Nilai Integra
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th  style="vertical-align:middle">Tahun Ajar</th>
-                                    <th  style="vertical-align:middle"><center>Tanggal Mulai Semester</center></th>
-                                    <th style="vertical-align:middle"><center>Tanggal Akhir Semester</center></th>
-                                    <th style="vertical-align:middle"><center>Batas Akhir Pengajuan</center></th>
-                                    <th style="vertical-align:middle">Status</th>
-                                    <th></th>
+                                    <th  style="vertical-align:middle">NRP</th>
+                                    <th  style="vertical-align:middle"><center>Nama</center></th>
+                                    <th style="vertical-align:middle"><center>N1</center></th>
+                                    <th style="vertical-align:middle"><center>N2</center></th>
+                                    <th style="vertical-align:middle"><center>N3</center></th>
+                                    <th style="vertical-align:middle"><center>N4</center></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="vertical-align:middle">2019/2020 Gasal</td>
-                                    <td style="vertical-align:middle"><center>07/01/2019</center></td>
-                                    <td style="vertical-align:middle"><center>31/01/2019</center></td>
-                                    <td style="vertical-align:middle"><center>09/01/2019</center></td>
-                                    <td style="vertical-align:middle"><center><span class="badge badge-success">active</span></center></td>
-                                    <td style="vertical-align:middle">
-                                        <center>
-                                            <span style="display:block;">
-                                                <button type="submit" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#scrollmodalEdit" style="border-radius:3px; width:62px;">Edit</button>
-                                            </span>
-                                            <span style="display:block; padding-block:5px; ">
-                                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:62px;c">Hapus</button>
-                                            </span>
-                                        </center>
-                                    </td>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle">90</td>
+                                    <td style="vertical-align:middle">90</td>
+                                    <td style="vertical-align:middle">90</td>
+                                    <td style="vertical-align:middle">80</td>
                                 </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">2019/2020 Gasal</td>
-                                    <td style="vertical-align:middle"><center>07/01/2019</center></td>
-                                    <td style="vertical-align:middle"><center>31/01/2019</center></td>
-                                    <td style="vertical-align:middle"><center>09/01/2019</center></td>
-                                    <td style="vertical-align:middle"><center><span class="badge badge-secondary">inactive</span></center></td>
-                                    <td style="vertical-align:middle">
-                                        <center>
-                                            <span style="display:block;margin-bottom:5px;">
-                                                <button type="submit" class="btn btn-success btn-sm" style="border-radius:3px; width:70px; ">Aktifkan</button>
-                                            </span>
-                                            <span style="display:block;">
-                                                <button type="submit" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#scrollmodalEdit"style="border-radius:3px; width:70px;">Edit</button>
-                                            </span>
-                                            <span style="display:block; padding-block:5px; ">
-                                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
-                                            </span>
-                                        </center>
-                                    </td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
