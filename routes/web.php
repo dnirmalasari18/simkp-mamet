@@ -124,6 +124,11 @@ Route::get('/akun', function () {
 Route::get('/statistik', function () {
     return view('mockup.coba-statistik');
 });
+
+Route::get('/nilai', function () {
+    return view('mockup.coba-nilai-integra');
+});
+//coretcoretan front end
 Route::get('/tes', function () {
     return view('mockup.test');
 });

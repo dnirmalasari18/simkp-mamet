@@ -29,6 +29,9 @@
                 <li>
                     <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                 </li>
+                <li>
+                    <a href="{{url('nilai')}}"> <i class="menu-icon fa fa-table"></i>Nilai Integra</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
