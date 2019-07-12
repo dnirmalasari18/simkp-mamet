@@ -8,8 +8,12 @@ use App\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
-{
-    //
+{    
+    /**
+	 * Display user list.
+	 *
+	 * @return Response
+	 */
     public function index(){
         $users = User::all();
         $dosen = User::where('role','!=','mahasiswa')->orderBy('fullname')->get();
@@ -17,10 +21,20 @@ class UserController extends Controller
         return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa)->with('users', $users);
     }
 
+    /**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
     public function create(){
         return view('user.create');    
     }
 
+    /**
+	 * Store a user in storage via coordinator
+	 *
+	 * @return Response
+	 */
     public function store(Request $request){
         $this->validate($request, [
             'username' => 'required',
@@ -40,13 +54,13 @@ class UserController extends Controller
 
         Alert::success('Success', 'Data telah tersimpan');
         return redirect()->route('user.index');
-    }
+    }    
 
-    public function edit($id){
-        $user = User::find($id);
-        return view('user.edit')->with('user',$user);    
-    }
-
+    /**
+	 * Update user information
+	 *
+	 * @return Response
+	 */
     public function update(Request $request){
         // dd($request);
         $this->validate($request, [
@@ -73,13 +87,23 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+    /**
+	 * Delete user.
+	 *
+	 * @return Response
+	 */
     public function destroy(Request $request){
         $user = User::find($request->id);
         $user->delete();
         Alert::success('Success', 'Akun telah berhasil dihapus');
         return redirect()->route('user.index');
     }
-
+    
+    /**
+	 * User login.
+	 *
+	 * @return Response
+	 */
     public function login(Request $request){
         $this->validate($request, [
             'username' => 'required',            
@@ -94,9 +118,13 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
-
-    public function register(Request $request){
-        // dd($request);
+    
+    /**
+	 * Store a student in storage.
+	 *
+	 * @return Response
+	 */
+    public function register(Request $request){        
         $this->validate($request, [
             'username' => 'required',
             'fullname' => 'required',
@@ -115,10 +143,20 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
+    /**
+	 * Display reset password form.
+	 *
+	 * @return Response
+	 */
     public function reset(){
         return view('auth.passwords.reset');
     }
 
+    /**
+	 * Reset password
+	 *
+	 * @return Response
+	 */
     public function doReset(Request $request){
         $this->validate($request, [
             'password_old' => 'required',

@@ -31,4 +31,10 @@ class Period extends Model
 		$now = time();
 		return ($now >= $start) && ($now <= $end);
 	}
+
+	public function toString() {
+		return $this->year . '/'
+			. ($this->year + 1) . ' '
+			. ($this->odd == 1 ? 'Gasal' : 'Genap');
+	}
 }

@@ -29,58 +29,47 @@
                 <div class="dropdown for-notification">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell"></i>
-                        <span class="count bg-danger">5</span>
+                        @if (Auth::user()->notifications->where('is_read',0)->count() > 0)
+                            <span class="count bg-danger">{{Auth::user()->notifications->where('is_read',0)->count()}}</span>
+                        @endif                        
                     </button>
                     <div class="dropdown-menu" aria-labelledby="notification" style="margin-right:0px;">
-                        <p class="red">You have 3 Notification</p>
-                        @foreach ($reqs as $req)
-                        <a class="dropdown-item media" href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i>
-                                <strong>Permintaan bergabung</strong>
-                                <span class="pull-right text-muted small">2019-05-27</span><br>
-                                from: {{$req->user->fullname}}<br>
-                                {{$req->group->corp->name}} - {{$req->group->corp->city}}
-                                <span class="pull-right text-muted small">
-                                    @if ($req->accepted)
-                                        <span class="pull-right text-muted small" >Accepted</span>
-                                    @else
-                                        <button type="submit" class="btn btn-primary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
-                                    @endif
-                                        
-                                        {{-- <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Decline</button> --}}
-                                </span>
-                            </div>
-                        </a>
-                        @endforeach                        
-                        {{-- <a class="dropdown-item media" href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i>
-                                <strong>Permintaan bergabung</strong>
-                                <span class="pull-right text-muted small">2019-05-27</span><br>
-                                from: Frandita Adhitama<br>
-                                Jurusan Teknik Informatika Fakultas Teknologi Informasi Institut Teknologi Sepuluh Nopember - Surabaya
-                                <span class="pull-right text-muted small" >Accepted</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item media" href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i>
-                                <strong>Permintaan bergabung</strong>
-                                <span class="pull-right text-muted small">2019-05-27</span><br>
-                                from: Frandita Adhitama<br>
-                                Jurusan Teknik Informatika Fakultas Teknologi Informasi Institut Teknologi Sepuluh Nopember - Surabaya
-                                <span class="pull-right text-muted small">Declined</span>
-                            </div>
-                        </a> --}}
+                        @if (Auth::user()->notifications->count() > 0)
+                            <p class="red">You have {{Auth::user()->notifications->where('is_read',0)->count()}} new notification(s)</p>
+                        @else
+                            <p class="red">You do not have any notification</p>
+                        @endif                        
+                        @foreach (Auth::user()->notifications->sortBy('is_read') as $notification)
+                            <a class="dropdown-item media" href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i>
+                                    <strong>Permintaan bergabung</strong>
+                                    <span class="pull-right text-muted small">2019-05-27</span><br>
+                                    from: {{$notification->notifiable->group->students[0]->fullname}}<br>
+                                    {{$notification->notifiable->group->corp->name}} - {{$notification->notifiable->group->corp->city}}
+                                    <span class="pull-right text-muted small">
+                                        @if ($notification->notifiable->status['status'])
+                                            <span class="pull-right text-muted small" >{{ucwords($notification->notifiable->status['name'])}}</span>
+                                        @else
+                                        <form action="{{route('group.accept')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="req_id" value="{{$notification->notifiable->id}}">
+                                            <input type="hidden" name="notif_id" value="{{$notification->id}}">
+                                            <button type="submit" class="btn btn-primary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Accept</button>
+                                        </form>
+                                        <form action="{{route('group.decline')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$notification->notifiable->id}}">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Decline</button>
+                                        </form>
+                                        @endif
+                                    </span>
+                                </div>
+                            </a>
+                        @endforeach                                                
                     </div>
                 </div>
-
             </div>
-
-            
-
         </div>
     </div>
-
 </header>

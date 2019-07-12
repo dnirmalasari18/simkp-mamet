@@ -15,7 +15,7 @@ class CreateCorpsTable extends Migration
     {
         Schema::create('corps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name',100);
+            $table->string('name',50);
             $table->text('address');
             $table->string('city',20);
             $table->string('post',20);

@@ -39,7 +39,7 @@ Route::prefix('users/')->group(function(){
     Route::get('','UserController@index')->name('user.index');
     Route::get('create','UserController@create')->name('user.create');
     Route::post('create','UserController@store')->name('user.create');    
-    Route::post('delete','UserController@delete')->name('user.delete');
+    Route::post('delete','UserController@destroy')->name('user.delete');
     Route::get('{id}','UserController@show')->name('user.show');    
     Route::get('{id}/edit','UserController@edit')->name('user.edit');
     Route::post('edit','UserController@update')->name('user.edit');
@@ -49,7 +49,7 @@ Route::prefix('news/')->group(function(){
     Route::get('','NewsController@index')->name('news.index');    
     Route::get('create','NewsController@create')->name('news.create');
     Route::post('create','NewsController@store')->name('news.create');    
-    Route::post('delete','NewsController@delete')->name('news.delete');
+    Route::post('delete','NewsController@destroy')->name('news.delete');
     Route::get('{id}','NewsController@show')->name('news.show');
     Route::get('{id}/edit','NewsController@edit')->name('news.edit');
     Route::post('{id}/edit','NewsController@update')->name('news.edit');
@@ -86,8 +86,8 @@ Route::prefix('groups/')->group(function(){
     Route::post('proof/create','ProofController@store')->name('proof.create');
     Route::post('proof/delete','ProofController@delete')->name('proof.delete');
 
-    Route::post('{id}/accept','GroupController@accept')->name('group.accept');
-    Route::post('{id}/decline','GroupController@decline')->name('group.decline');
+    Route::post('accept','GroupController@accept')->name('group.accept');
+    Route::post('decline','GroupController@decline')->name('group.decline');
     
     Route::get('reports/create','ReportController@create')->name('report.create');
     Route::post('reports/create','ReportController@store')->name('report.create');

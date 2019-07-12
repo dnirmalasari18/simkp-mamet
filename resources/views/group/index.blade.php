@@ -31,7 +31,7 @@ Kelompok
                             <tbody>
                                 @foreach ($groups as $group)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{strtoupper($group->status)}}</td>
+                                        <td>{{strtoupper($group->status['name'])}}</td>                                        
                                         <td style="vertical-align: middle;">                                                                                                
                                             @foreach ($group->students as $student)                                                    
                                                 {{$student->username}} - {{$student->fullname}} <br>

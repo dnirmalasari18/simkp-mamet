@@ -33,10 +33,10 @@ Pengajuan
                                     <div class="col col-md-8">
                                         <div class="form-check-inline form-check">
                                             <label for="inline-radio1" class="form-check-label "style="padding-right:50px;">
-                                                <input type="radio" id="inline-radio1" name="group[type]" value="kerja praktik" class="form-check-input" >Kerja Praktik
+                                                <input type="radio" id="inline-radio1" name="group[type]" value="0" class="form-check-input" >Kerja Praktik
                                             </label>
                                             <label for="inline-radio2" class="form-check-label ">
-                                                <input type="radio" id="inline-radio2" name="group[type]" value="magang" class="form-check-input">Magang
+                                                <input type="radio" id="inline-radio2" name="group[type]" value="1" class="form-check-input">Magang
                                             </label>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@ Pengajuan
                                     <label style="margin-bottom:20px;"><strong>Perusahaan</strong></label>
                                     <select id="corporation" data-placeholder="Pilih Perusahaan" class="standardSelect form-control" tabindex="1">
                                         <option value=""></option>
-                                        <option value="0">Perusahaan Belum Terdaftar</option>
+                                        <option value="0">Perusahaan Belum Terdaftar</option>                                                                            
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -21,7 +21,7 @@ Detail Kelompok
                         <div class="col-md-6">
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Jenis Pengajuan</strong></label></div>
-                                <p style="color:#212529">{{ucwords($group->type)}}</p>
+                                <p style="color:#212529">{{ucwords($group->type['desc'])}}</p>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Peserta</strong></label></div>
@@ -42,9 +42,11 @@ Detail Kelompok
                         <div class="col-md-6">
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Status</strong></label></div>
-                                <p style="color:#212529">{{ucwords($group->status)}}<br>
+                                <p style="color:#212529">{{ucwords($group->status['desc'])}}<br>
                                     <span style="display:block;">
-                                        <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalStatus"style="line-height:1;border-radius:3px;">Update</button>
+                                        @if (Auth::user()->role == 'koordinator')
+                                            <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalStatus"style="line-height:1;border-radius:3px;">Update</button>
+                                        @endif                                        
                                     </span>
                                 </p>
                             </div>
@@ -52,16 +54,20 @@ Detail Kelompok
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Dosen Pembimbing</strong></label></div>
                                 <p style="color:#212529">Radityo Anggoro<br><strong>NIP</strong> 132131231231231231231
                                     <span style="display:block;">
-                                        <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDosbing"style="line-height:1;border-radius:3px;">Update</button>
+                                        @if (Auth::user()->role == 'koordinator')
+                                            <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDosbing"style="line-height:1;border-radius:3px;">Update</button>
+                                        @endif
                                     </span>
                                 </p>
                             </div>
-                            <div class="row form-group">
-                                <div class="col col-md-4"><label class=" form-control-label"><strong>Nilai</strong></label></div>
-                                <p style="color:#212529">
-                                    <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#scrollmodalNilaiLihat" style="line-height:1;border-radius:3px;">Lihat</button>
-                                </p>
-                            </div>
+                            @if (Auth::user()->role == 'koordinator')
+                                <div class="row form-group">
+                                    <div class="col col-md-4"><label class=" form-control-label"><strong>Nilai</strong></label></div>
+                                    <p style="color:#212529">
+                                        <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#scrollmodalNilaiLihat" style="line-height:1;border-radius:3px;">Lihat</button>
+                                    </p>
+                                </div>
+                            @endif                            
                         </div>
                         <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem; margin-bottom:1.5rem"></div>
                         <div class="col-md-4" >
@@ -167,13 +173,15 @@ Detail Kelompok
                 </div>
             </div>
         </div>
+        @if (Auth::user()->role == 'koordinator')
         <div class="row" style="margin-bottom:15px;">
-                <div class="col-lg-12" >
-                    <button type="button" class="btn btn-danger"  style="float:right;" >
-                        Hapus Pengajuan
-                    </button>
-                </div>
+            <div class="col-lg-12" >
+                <button type="button" class="btn btn-danger"  style="float:right;" >
+                    Hapus Pengajuan
+                </button>
             </div>
+        </div>
+        @endif        
     </div><!-- .animated -->
 </div><!-- .content -->
 <div class="modal fade" id="scrollmodalUploadBukti" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
@@ -213,7 +221,7 @@ Detail Kelompok
             </div>
             <div class="modal-body">
                 <center>                    
-                    <img src="{{Storage::url($group->path)}}" alt="">
+                    <img src="{{Storage::url($group->proof_path)}}" alt="">
                 </center>
             </div>
             <div class="modal-footer">

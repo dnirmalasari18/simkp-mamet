@@ -35,13 +35,19 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ];
-
+    ];    
+    
     public function groups(){
-        return $this->belongsToMany('App\Group', 'student_details','group_id','student_id')->withPivot('student_id','group_id','accepted');
-    }
+        return $this->belongsToMany('App\Group', 'student_details','student_id','group_id');
+    }    
 
     public function details(){
-        return $this->hasMany('App\StudentDetail','student_id');
+        if ($this->role == 'mahasiswa'){
+            return $this->belongsToMany('App\StudentDetail','student_id');
+        }
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Notification');
     }
 }

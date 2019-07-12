@@ -5,6 +5,8 @@ Berita
 @endsection
 
 @section('content')
+
+@if (Auth::user()->role == 'koordinator')
 <div class="content mt-3">
     <div class="animated fadeIn">
         <div class="row" style="margin-bottom:15px;">
@@ -15,8 +17,8 @@ Berita
             </div>
         </div>
     </div>
-</div>
-
+</div>    
+@endif
 
 <div class="modal fade" id="scrollmodalTambah" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -73,7 +75,11 @@ Berita
     
                             <i><small><span class="fa fa-clock-o"></span> Created at: {{$news->created_at}}</small></i>
                               &nbsp;                            
-                            <button type="button" class="btn btn-secondary btn-sm" style="float:right;">Hapus</button>                                                        
+                            <form action="{{route('news.delete')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$news->id}}">
+                                <button type="submit" class="btn btn-secondary btn-sm" style="float:right;">Hapus</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach 
