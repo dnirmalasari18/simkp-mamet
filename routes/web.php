@@ -121,8 +121,8 @@ Route::get('/kelompok', function () {
 Route::get('/kelompokshow', function () {
     return view('mockup.coba-kelompokshow');
 });
-Route::get('/akun', function () {
-    return view('mockup.coba-akun');
+Route::get('/dosen', function () {
+    return view('mockup.coba-dosenshow');
 });
 
 Route::get('/statistik', function () {

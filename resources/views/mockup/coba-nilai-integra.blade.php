@@ -27,29 +27,88 @@ Nilai Integra
                                         <option value="4">2015/2016 Gasal</option>
                                     </select>
                                 </div>
-                                <div class="col-md-8">
-                                    <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary" style="float:right;border-radius:3px; width:200px; margin-left:10px;">Simpan</button>
                                 </div>
                             </div>
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <table id="bootstrap-data-table-export" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th  style="vertical-align:middle">NRP</th>
-                                    <th  style="vertical-align:middle"><center>Nama</center></th>
-                                    <th style="vertical-align:middle"><center>N1</center></th>
-                                    <th style="vertical-align:middle"><center>N2</center></th>
-                                    <th style="vertical-align:middle"><center>N3</center></th>
-                                    <th style="vertical-align:middle"><center>N4</center></th>
+                                    <th  style="vertical-align:middle;width:100px;" >NRP</th>
+                                    <th  style="vertical-align:middle">Nama</th>
+                                    <th style="vertical-align:middle;width:100px;"><center>N1</center></th>
+                                    <th style="vertical-align:middle;width:100px;"><center>N2</center></th>
+                                    <th style="vertical-align:middle;width:100px;"><center>N3</center></th>
+                                    <th style="vertical-align:middle;width:100px;"><center>N4</center></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td style="vertical-align:middle">05111640000115</td>
                                     <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle">90</td>
-                                    <td style="vertical-align:middle">90</td>
-                                    <td style="vertical-align:middle">90</td>
-                                    <td style="vertical-align:middle">80</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:middle">05111640000115</td>
+                                    <td style="vertical-align:middle">Dewi Ayu N</td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
                                 </tr>
                                 
                             </tbody>
@@ -72,15 +131,21 @@ Nilai Integra
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
 <script src="{!!asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
 <script>
     jQuery(document).ready(function() {
         jQuery(".standardSelect").chosen({
-            disable_search_threshold: 10,
             no_results_text: "Oops, Periode tidak ditemukan",
             width: "100%"
         });
+        jQuery("#bootstrap-data-table-export").dataTable({
+            "bLengthChange": false,
+            paging:false,
+            "bDestroy":true,
+            dom: 'Bfrtip',
+            buttons: ['csv','print']
+        });
     });
-} );
 </script>
 @endsection

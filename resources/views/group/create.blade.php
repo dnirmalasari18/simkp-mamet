@@ -46,7 +46,7 @@ Pengajuan
                             <div class="col-md-4">
                                 <div class="form-group">                                
                                     <label style="margin-bottom:20px;"><strong>Perusahaan</strong></label>
-                                    <select id="corporation" data-placeholder="Pilih Perusahaan" class="standardSelect" tabindex="1">
+                                    <select id="corporation" data-placeholder="Pilih Perusahaan" class="standardSelect form-control" tabindex="1">
                                         <option value=""></option>
                                         <option value="0">Perusahaan Belum Terdaftar</option>                                                                            
                                     </select>
@@ -100,8 +100,8 @@ Pengajuan
                             <div class="col-md-4" style="margin-top:2rem;">
                                 <div class="form-group">
                                     <label><strong>Kelompok</strong></label>
-                                    <select class="form-control" name="friend">                                            
-                                        <option value="">-</option>
+                                    <select data-placeholder="-" class="form-control standardSelect" tabindex="1">
+                                        <option value=""></option>
                                         @foreach ($users as $user)
                                             <option value="{{$user->id}}">{{$user->fullname}}</option>
                                         @endforeach
@@ -160,10 +160,12 @@ Pengajuan
                 jQuery("#corpdescription").val("");
             }
         });
+        
+        jQuery(".standardSelect").chosen();
 
         jQuery(".standardSelect").chosen({
-            disable_search_threshold: 10,
-            no_results_text: "Oops, Perusahaan belum terdaftar!",
+            disable_search_threshold: 2,
+            no_results_text: "Oops, Pencarian tidak ditemukan!",
             width: "100%"
         });
     });
