@@ -468,6 +468,9 @@ Detail Kelompok
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="alert alert-danger" role="alert" style="font-size:115%">
+                            <strong>Judul</strong> dan <strong>Abstraksi</strong> setelah disimpan tidak akan bisa diubah kembali.
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><strong>Judul</strong></label>
