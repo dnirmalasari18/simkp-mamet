@@ -50,7 +50,7 @@ Detail Kelompok
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Dosen Pembimbing</strong></label></div>
-                                <p style="color:#212529">-<br>
+                                <p style="color:#212529">Radityo Anggoro<br><strong>NIP</strong> 132131231231231231231
                                     <span style="display:block;">
                                         <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDosbing"style="line-height:1;border-radius:3px;">Update</button>
                                     </span>
