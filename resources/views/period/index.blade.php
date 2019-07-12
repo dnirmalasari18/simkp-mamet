@@ -29,10 +29,10 @@ Periode
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th  style="vertical-align:middle">Tahun Ajar</th>
-                                    <th  style="vertical-align:middle"><center>Tanggal Mulai Semester</center></th>
+                                    <th style="vertical-align:middle">Tahun Ajar</th>
+                                    <th style="vertical-align:middle"><center>Tanggal Mulai Semester</center></th>
                                     <th style="vertical-align:middle"><center>Tanggal Akhir Semester</center></th>
-                                    <th style="vertical-align:middle"><center>Batas Akhir Pengajuan</center></th>
+                                    <th style="vertical-align:middle"><center>Batas Pengajuan</center></th>
                                     <th style="vertical-align:middle">Status</th>
                                     <th></th>
                                 </tr>
@@ -40,11 +40,11 @@ Periode
                             <tbody>
                                 @foreach ($periods as $period)
                                     <tr>
-                                        <td>{{ucwords($period->name)}}</td>
-                                        <td><center>{{$period->start_date}}</center></td>
-                                        <td><center>{{$period->end_date}}</center></td>
-                                        <td><center>{{$period->final_date}}</center></td>
-                                        <td>
+                                        <td style="vertical-align:middle">{{ucwords($period->name)}}</td>
+                                        <td style="vertical-align:middle"><center>{{$period->start_date}}</center></td>
+                                        <td style="vertical-align:middle"><center>{{$period->end_date}}</center></td>
+                                        <td style="vertical-align:middle"><center>{{$period->final_date}}</center></td>
+                                        <td style="vertical-align:middle">
                                             @if ($period->active)
                                                 <center><span class="badge badge-success">Active</span></center>
                                             @else
@@ -58,24 +58,24 @@ Periode
                                                         <form action="{{route('period.deactivate')}}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{$period->id}}">
-                                                            <button type="submit" class="btn btn-danger btn-sm" style="border-radius:3px; width:70px; ">Nonaktifkan</button>
+                                                            <button type="submit" class="btn btn-danger btn-sm" style="border-radius:3px; width:100px; ">Nonaktifkan</button>
                                                         </form>
                                                     @else
                                                         <form action="{{route('period.activate')}}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{$period->id}}">
-                                                            <button type="submit" class="btn btn-success btn-sm" style="border-radius:3px; width:70px; ">Aktifkan</button>
+                                                            <button type="submit" class="btn btn-success btn-sm" style="border-radius:3px; width:100px; ">Aktifkan</button>
                                                         </form>
                                                     @endif                                                    
                                                 </span>
                                                 <span style="display:block;">
-                                                    <button id="{{$period->id}}" type="button" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalEdit"style="border-radius:3px; width:70px;">Edit</button>
+                                                    <button id="{{$period->id}}" type="button" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalEdit"style="border-radius:3px; width:100px;">Edit</button>
                                                 </span>
                                                 <form action="{{route('period.delete')}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{$period->id}}">
                                                     <span style="display:block; padding-block:5px; ">
-                                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
+                                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px;">Hapus</button>
                                                     </span>
                                                 </form>
                                             </center>
