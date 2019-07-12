@@ -63,8 +63,8 @@ Detail Kelompok
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-12" style="background-color:#212529; height:1px;"></div>
-                        <div class="col-md-4" style="margin-top:10px;">
+                        <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem; margin-bottom:1.5rem"></div>
+                        <div class="col-md-4" >
                             <div class="form-group">
                                 <label><strong>Perusahaan</strong></label>
                                 <p style="color:#212529">{{$group->corp->name}}</p>
@@ -80,7 +80,7 @@ Detail Kelompok
                                 </div> 
                             </div>
                         </div>
-                        <div class="col-md-4" style="margin-top:10px;">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label><strong>Kota</strong></label>
                                 <p style="color:#212529">{{$group->corp->city}}</p>
@@ -94,7 +94,7 @@ Detail Kelompok
                                 <p style="color:#212529">{{$group->corp->phone_number}}</p>
                             </div>
                         </div>
-                        <div class="col-md-4"  style="margin-top:10px;">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label><strong>Tanggal Mulai</strong></label>
                                 <p style="color:#212529">{{$group->start_date}}</p>
@@ -104,12 +104,14 @@ Detail Kelompok
                                 <p style="color:#212529">{{$group->end_date}}</p>
                             </div>
                         </div>
-                        <div class="col-md-12" style="background-color:#212529; height:1px;"></div>
-                        <div class="col-md-12" style="margin-top:10px;">
-                            <label><strong>Log KP</strong></label>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalLogTambah" style="float:right;margin-bottom:10px;" >
+                        <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem; margin-bottom:1.5rem"></div>
+                        <div class="col-md-12">
+                            <h3><strong>Log KP</strong></h3>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalLogTambah" style="float:right;margin-bottom:20px;" >
                                 Tambah Log
                             </button>
+                        </div>
+                        <div class="col-md-12">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -134,6 +136,32 @@ Detail Kelompok
                                     @endforeach                                    
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem;margin-bottom:1.5rem;"></div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <h3><strong>Maju Sidang</strong></h3>
+                                <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:115%">
+                                    Kelompok terkait belum mensubmit <strong>judul</strong> dan <strong>abstraksi</strong> pada website!
+                                </div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalJuduldanAbstrak" style="float:right;margin-bottom:20px;" >
+                                    Submit Judul dan Abstraksi
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label><strong>Judul</strong></label>
+                                    <div style="height:3em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
+                                        Meong
+                                    </div> 
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Abstraksi</strong></label>
+                                    <div style="height:15em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
+                                        Mememeeeong
+                                    </div> 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -429,6 +457,35 @@ Detail Kelompok
         </div>
     </div>
 </div>
+<div class="modal fade" id="scrollmodalJuduldanAbstrak" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                    <input type="hidden" name="id" value="{{$group->id}}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollmodalLabel">Judul dan Abstraksi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><strong>Judul</strong></label>
+                                <textarea name="textarea-input" id="textarea-input" rows="1" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Abstraksi</strong></label>
+                                <textarea name="textarea-input" id="textarea-input" rows="9" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
