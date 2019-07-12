@@ -8,6 +8,7 @@ use App\Group;
 use App\Corp;
 use App\Period;
 use App\StudentDetail;
+use App\User;
 use Alert;
 
 class GroupController extends Controller
@@ -35,11 +36,12 @@ class GroupController extends Controller
 
     public function create(){
         $corps = Corp::all();
-        return view('group.create')->with('corps',$corps);
+        $users = User::where('role','mahasiswa')->orderBy('fullname','asc')->get();
+        return view('group.create')->with('corps',$corps)->with('users',$users);
     }
 
     public function store(Request $request){        
-        // dd(Auth::user());
+        // dd($request);
         $this->validate($request, [
             'corporation.name' => 'required',
 			'corporation.city' => 'required',
@@ -50,6 +52,7 @@ class GroupController extends Controller
             'group.end_date' => 'required|date',
             'group.type' => 'required',
         ]);
+        $friend = $request->friend;
         $request = $request->all();
         $creq = $request['corporation'];
         $greq = $request['group'];
@@ -70,6 +73,14 @@ class GroupController extends Controller
             'student_id' => Auth::user()->id,
             'accepted' => 1,
         ]);
+
+        if ($friend != null){
+            StudentDetail::create([
+                'group_id' => $group->id,
+                'student_id' =>$friend,
+                'accepted' => 0,
+            ]); 
+        }
 
         Alert::success('Success', 'Data telah tersimpan');
         return redirect()->route('group.index');

@@ -12,23 +12,52 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{url('berita')}}"> <i class="menu-icon fa fa-paperclip"></i>Berita</a>
+                    <a href="{{route('news.index')}}"> <i class="menu-icon fa fa-paperclip"></i>Berita</a>
                 </li>
+                @if (Auth::check())
+                    @if (Auth::user()->role == 'koordinator')
+                        <li>
+                            <a href="{{route('period.index')}}"> <i class="menu-icon fa fa-calendar-o"></i>Periode</a>
+                        </li>
+                    @endif
+                @else
+                    <li>
+                        <a href="{{route('period.index')}}"> <i class="menu-icon fa fa-calendar-o"></i>Periode</a>
+                    </li>
+                @endif    
+                
+                @if (Auth::check())
+                    @if (Auth::user()->role == 'mahasiswa')
+                        <li>
+                            <a href="{{route('group.create')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
+                        </li>
+                    @endif
+                @else
+                    <li>
+                        <a href="{{route('group.create')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
+                    </li>
+                @endif                
                 <li>
-                    <a href="{{url('periode')}}"> <i class="menu-icon fa fa-calendar-o"></i>Periode</a>
-                </li>
-                <li>
-                    <a href="{{url('pengajuan')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
-                </li>
-                <li>
-                    <a href="{{url('kelompok')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
-                </li>
-                <li>
-                    <a href="{{url('akun')}}"> <i class="menu-icon fa fa-user"></i>Akun</a>
-                </li>
-                <li>
-                    <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
-                </li>
+                    <a href="{{route('group.index')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
+                </li>                
+                @if (Auth::check())
+                    @if (Auth::user()->role == 'koordinator')
+                        <li>
+                            <a href="{{route('user.index')}}"> <i class="menu-icon fa fa-user"></i>Akun</a>
+                        </li>
+                        <li>
+                            <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
+                        </li>
+                    @endif
+                @else
+                    <li>
+                        <a href="{{route('user.index')}}"> <i class="menu-icon fa fa-user"></i>Akun</a>
+                    </li>
+                    <li>
+                        <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
+                    </li>
+                @endif
+                
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

@@ -33,20 +33,27 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="notification" style="margin-right:0px;">
                         <p class="red">You have 3 Notification</p>
+                        @foreach ($reqs as $req)
                         <a class="dropdown-item media" href="#">
                             <div>
                                 <i class="fa fa-envelope fa-fw"></i>
                                 <strong>Permintaan bergabung</strong>
                                 <span class="pull-right text-muted small">2019-05-27</span><br>
-                                from: Frandita Adhitama<br>
-                                Jurusan Teknik Informatika Fakultas Teknologi Informasi Institut Teknologi Sepuluh Nopember - Surabaya
+                                from: {{$req->user->fullname}}<br>
+                                {{$req->group->corp->name}} - {{$req->group->corp->city}}
                                 <span class="pull-right text-muted small">
+                                    @if ($req->accepted)
+                                        <span class="pull-right text-muted small" >Accepted</span>
+                                    @else
                                         <button type="submit" class="btn btn-primary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
-                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Decline</button>
+                                    @endif
+                                        
+                                        {{-- <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Decline</button> --}}
                                 </span>
                             </div>
                         </a>
-                        <a class="dropdown-item media" href="#">
+                        @endforeach                        
+                        {{-- <a class="dropdown-item media" href="#">
                             <div>
                                 <i class="fa fa-envelope fa-fw"></i>
                                 <strong>Permintaan bergabung</strong>
@@ -65,7 +72,7 @@
                                 Jurusan Teknik Informatika Fakultas Teknologi Informasi Institut Teknologi Sepuluh Nopember - Surabaya
                                 <span class="pull-right text-muted small">Declined</span>
                             </div>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
 

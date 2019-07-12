@@ -127,8 +127,11 @@ Pengajuan
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label><strong>Kelompok</strong></label>
-                                        <select class="form-control" name="friend">
-                                            <option value="0">-</option>
+                                        <select class="form-control" name="friend">                                            
+                                            <option value="">-</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{$user->id}}">{{$user->fullname}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>                        

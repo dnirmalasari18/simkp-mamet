@@ -442,5 +442,9 @@ Detail Kelompok
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
 <script src="{!!asset('template/vendors/bootstrap-datepicker.js')!!}"></script>
-
+<script>
+    jQuery(document).ready(function(){
+        jQuery('table.display').dataTable();
+    })
+</script>
 @endsection
