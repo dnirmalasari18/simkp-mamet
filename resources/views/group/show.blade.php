@@ -158,13 +158,13 @@ Detail Kelompok
                                 <div class="form-group">
                                     <label><strong>Judul</strong></label>
                                     <div style="height:3em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
-                                        Meong
+                                        {{$group->title}}
                                     </div> 
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Abstraksi</strong></label>
                                     <div style="height:15em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
-                                        Mememeeeong
+                                        {{$group->abstract}}
                                     </div> 
                                 </div>
                             </div>
@@ -468,6 +468,8 @@ Detail Kelompok
 <div class="modal fade" id="scrollmodalJuduldanAbstrak" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
+                <form action="{{route('abstract.update')}}" method="post">    
+                    @csrf
                     <input type="hidden" name="id" value="{{$group->id}}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="scrollmodalLabel">Judul dan Abstraksi</h5>
@@ -483,11 +485,11 @@ Detail Kelompok
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><strong>Judul</strong></label>
-                                <textarea name="textarea-input" id="textarea-input" rows="1" class="form-control"></textarea>
+                                <textarea name="title" id="textarea-input" rows="1" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <label><strong>Abstraksi</strong></label>
-                                <textarea name="textarea-input" id="textarea-input" rows="9" class="form-control"></textarea>
+                                <textarea name="abstract" id="textarea-input" rows="9" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -495,6 +497,7 @@ Detail Kelompok
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>

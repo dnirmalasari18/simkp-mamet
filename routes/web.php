@@ -94,6 +94,8 @@ Route::prefix('groups/')->group(function(){
     Route::post('reports/delete','ReportController@delete')->name('report.delete');
 
     Route::post('status/update','GroupController@statusUpdate')->name('status.update');
+
+    Route::post('abstract/update','GroupController@abstractUpdate')->name('abstract.update');
 });
 
 Route::get('statistics/periods/{id}','StatisticController@period')->name('statistic.period');

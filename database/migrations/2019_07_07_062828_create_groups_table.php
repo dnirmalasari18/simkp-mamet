@@ -24,7 +24,7 @@ class CreateGroupsTable extends Migration
             $table->text('abstract')->nullable();
             $table->integer('status')->default(0);
             $table->integer('type');
-            $table->text('proof_path')->nullable();
+            $table->text('proof_path')->nullable();            
             $table->timestamps();
         });
     }

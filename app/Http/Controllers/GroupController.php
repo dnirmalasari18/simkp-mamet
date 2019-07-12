@@ -175,5 +175,26 @@ class GroupController extends Controller
 			$groupreq->save();
 		}
 		return redirect()->back();
-	}
+    }
+    
+    public function abstractUpdate(Request $request){
+        $this->validate($request, [
+            'id' => 'required',
+            'title' => 'required',
+            'abstract' => 'required',
+        ]);
+
+        $group = Group::find($request->id);
+        if ($group->title != null){
+            Alert::error('Error', 'Judul dan Abstrak tidak dapat diubah');
+            return redirect()->back();
+        }
+
+        $group->title = $request->title;
+        $group->abstract = $request->abstract;
+        $group->save();
+
+        Alert::success('Success', 'Judul dan Abstrak berhasil disimpan');
+        return redirect()->back();
+    }
 }
