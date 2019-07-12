@@ -44,10 +44,16 @@ class User extends Authenticatable
     public function details(){
         if ($this->role == 'mahasiswa'){
             return $this->belongsToMany('App\StudentDetail','student_id');
+        } else if ($this->role == 'dosen'){
+            return $this->belongsToMany('App\LecturerDetail','lecturer_id');
         }
     }
 
     public function notifications(){
         return $this->hasMany('App\Notification');
+    }
+
+    public function lecturing(){
+        return $this->hasMany('App\Group', 'lecturer_id');
     }
 }

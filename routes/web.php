@@ -67,10 +67,10 @@ Route::prefix('periods/')->group(function(){
 });
 
 Route::prefix('lecturers/')->group(function(){
-    Route::get('','LecturerController@index')->name('lecutrer.index');    
-    Route::get('assign','LecturerController@assign')->name('lecutrer.assign');
-    Route::post('unassign','LecturerController@unassign')->name('lecutrer.unassign');    
-    Route::get('{id}','LecturerController@show')->name('lecutrer.show');
+    Route::get('','LecturerController@index')->name('lecturer.index');    
+    Route::get('assign','LecturerController@assign')->name('lecturer.assign');
+    Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');    
+    Route::get('{id}','LecturerController@show')->name('lecturer.show');
 });
 
 Route::prefix('groups/')->group(function(){

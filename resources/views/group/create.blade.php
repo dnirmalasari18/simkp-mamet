@@ -100,8 +100,8 @@ Pengajuan
                             <div class="col-md-4" style="margin-top:2rem;">
                                 <div class="form-group">
                                     <label><strong>Kelompok</strong></label>
-                                    <select data-placeholder="-" class="form-control standardSelect" tabindex="1">
-                                        <option value=""></option>
+                                    <select name="friend" data-placeholder="-" class="form-control standardSelect" tabindex="1">
+                                        <option value="-"></option>
                                         @foreach ($users as $user)
                                             <option value="{{$user->id}}">{{$user->fullname}}</option>
                                         @endforeach

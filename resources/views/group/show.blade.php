@@ -52,7 +52,11 @@ Detail Kelompok
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Dosen Pembimbing</strong></label></div>
-                                <p style="color:#212529">Radityo Anggoro<br><strong>NIP</strong> 132131231231231231231
+                                @if ($group->lecturer != null)
+                                    <p style="color:#212529">Radityo Anggoro<br><strong>NIP</strong> 132131231231231231231
+                                @else
+                                    <p style="color:#212529">-<br>
+                                @endif                                
                                     <span style="display:block;">
                                         @if (Auth::user()->role == 'koordinator')
                                             <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDosbing"style="line-height:1;border-radius:3px;">Update</button>
@@ -113,9 +117,11 @@ Detail Kelompok
                         <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem; margin-bottom:1.5rem"></div>
                         <div class="col-md-12">
                             <h3><strong>Log KP</strong></h3>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalLogTambah" style="float:right;margin-bottom:20px;" >
-                                Tambah Log
-                            </button>
+                            @if (Auth::user()->role == 'mahasiswa')
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalLogTambah" style="float:right;margin-bottom:20px;" >
+                                    Tambah Log
+                                </button>
+                            @endif                            
                         </div>
                         <div class="col-md-12">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -247,11 +253,10 @@ Detail Kelompok
                         <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
                         <div class="col-12 col-md-9">
                             <select name="status" id="select" class="form-control">
-                                <option value=""></option>                            
-                                <option value="menunggu persetujuan perusahaan">Menunggu persetujuan perusahaan</option>
-                                <option value="menunggu pemilihan dosen pembimbing">Menunggu pemilihan dosen pembimbing</option>                                
-                                <option value="ditolak oleh koordinator KP">Ditolak oleh koordinator KP</option>
-                                <option value="ditolak oleh perusahaan">Ditolak oleh perusahaan</option>
+                                <option value=""></option>
+                                @foreach (App\Group::statusAll() as $status)
+                                    <option value="{{$status['status']}}">{{ucwords($status['desc'])}}</option>
+                                @endforeach                                
                             </select>
                         </div>
                     </div>

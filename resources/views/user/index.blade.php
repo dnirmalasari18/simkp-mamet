@@ -45,10 +45,10 @@ Daftar Akun
                                                     <tr>
                                                         <td style="vertical-align:middle">{{$user->fullname}}</td>                                                        
                                                         <td style="vertical-align:middle">{{$user->phone_number}}</td>
-                                                        <td style="vertical-align:middle">15</td>
-                                                        <td style="vertical-align:middle">5</td>
+                                                        <td style="vertical-align:middle">{{$user->lecturing->count()}}</td>
+                                                        <td style="vertical-align:middle">{{$user->lecturing->where('period_id', App\Period::current()->id)->count()}}</td>
                                                         <td style="vertical-align: middle;">
-                                                            <center><a href="#"><button type="button" class="btn btn-info btn-sm" style="border-radius:3px;">Lihat</button></a></center>
+                                                            <center><a href="{{route('lecturer.show', ['id' => $user->id])}}"><button type="button" class="btn btn-info btn-sm" style="border-radius:3px;">Lihat</button></a></center>
                                                         </td>
                                                         <td style="vertical-align:middle">
                                                             <center>

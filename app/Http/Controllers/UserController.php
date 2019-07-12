@@ -19,7 +19,7 @@ class UserController extends Controller
         $dosen = User::where('role','!=','mahasiswa')->orderBy('fullname')->get();
         $mahasiswa = User::where('role','mahasiswa')->orderBy('username')->get();
         return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa)->with('users', $users);
-    }
+    }    
 
     /**
 	 * Show the form for creating a new resource.
@@ -118,7 +118,7 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
-    
+
     /**
 	 * Store a student in storage.
 	 *
