@@ -131,6 +131,7 @@ Nilai Integra
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
 <script src="{!!asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
 <script>
     jQuery(document).ready(function() {
@@ -142,6 +143,8 @@ Nilai Integra
             "bLengthChange": false,
             paging:false,
             "bDestroy":true,
+            dom: 'Bfrtip',
+            buttons: ['csv','print']
         });
     });
 </script>
