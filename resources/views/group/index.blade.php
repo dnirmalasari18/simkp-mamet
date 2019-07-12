@@ -38,7 +38,7 @@ Kelompok
                                             @endforeach                                                
                                         </td>
                                         <td style="vertical-align: middle;">{{$group->corp->name}}</td>
-                                        <td style="vertical-align: middle;">{{ucwords($group->type)}}</td>
+                                        <td style="vertical-align: middle;">{{ucwords($group->type['name'])}}</td>
                                         <td style="vertical-align: middle;">
                                             <center><a href="{{route('group.show', ['id' => $group->id])}}"><button type="button" class="btn btn-primary btn-sm" style="border-radius:3px;">Lihat</button></a></center>
                                         </td>
