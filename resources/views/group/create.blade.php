@@ -160,13 +160,12 @@ Pengajuan
                 jQuery("#corpdescription").val("");
             }
         });
-
         
         jQuery(".standardSelect").chosen();
 
         jQuery(".standardSelect").chosen({
             disable_search_threshold: 2,
-            no_results_text: "Oops, Perusahaan belum terdaftar!",
+            no_results_text: "Oops, Pencarian tidak ditemukan!",
             width: "100%"
         });
     });
