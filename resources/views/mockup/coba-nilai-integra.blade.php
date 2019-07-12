@@ -21,7 +21,7 @@ Nilai Integra
                             <strong class="card-title">Periode xxxx</strong>
                         </div>
                         <div class="card-body">
-                            <div class="row" style="margin-bottom:3rem;">
+                            <div class="row" style="margin-bottom:1rem;">
                                 <div class="col-md-4">
                                     <select data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
                                         <option value="4">2015/2016 Gasal</option>
@@ -31,7 +31,7 @@ Nilai Integra
                                     <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary" style="float:right;border-radius:3px; width:200px; margin-left:10px;">Simpan</button>
+                                    <a href="{{route('nilai.edit')}}"><button type="submit" class="btn btn-primary" style="float:right;border-radius:3px; width:200px; margin-left:10px;">Ubah Nilai</button></a>
                                 </div>
                             </div>
                             <table id="bootstrap-data-table-export" class="table table-bordered">
@@ -49,68 +49,19 @@ Nilai Integra
                                 <tr>
                                     <td style="vertical-align:middle">05111640000115</td>
                                     <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:middle">05111640000115</td>
-                                    <td style="vertical-align:middle">Dewi Ayu N</td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                    <td style="vertical-align:middle"><center><input type="text" class="form-control" style="text-align:center;"></center></td>
-                                </tr>
-                                
+                                    <td style="vertical-align:middle">05111640000015</td>
+                                    <td style="vertical-align:middle">rina</td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                    <td style="vertical-align:middle"><center>90</center></td>
+                                </tr>                               
                             </tbody>
                         </table>
                     </div>
@@ -139,12 +90,24 @@ Nilai Integra
             no_results_text: "Oops, Periode tidak ditemukan",
             width: "100%"
         });
+        
         jQuery("#bootstrap-data-table-export").dataTable({
             "bLengthChange": false,
             paging:false,
             "bDestroy":true,
             dom: 'Bfrtip',
-            buttons: ['csv','print']
+            buttons: [
+                'copy',
+                {
+                    extend: 'csv',
+                    filename: 'NilaiKPIntegra',
+                    header:false,
+                },
+                {
+                    extend: 'print',
+                    title: ''
+                },
+            ]
         });
     });
 </script>

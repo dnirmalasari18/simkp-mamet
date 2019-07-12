@@ -132,6 +132,9 @@ Route::get('/statistik', function () {
 Route::get('/nilai', function () {
     return view('mockup.coba-nilai-integra');
 });
+Route::get('/nilai/edit', function () {
+    return view('mockup.coba-nilai-integra-edit');
+})->name('nilai.edit');
 //coretcoretan front end
 Route::get('/tes', function () {
     return view('mockup.test');
