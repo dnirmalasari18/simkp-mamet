@@ -20,6 +20,10 @@ Route::get('register', function(){
     return view('auth.register');
 });
 Route::post('register', 'UserController@register')->name('register');
+Route::get('logout', function(){
+    Auth::logout();
+    return redirect()->route('login');
+})->name('logout');
 
 Route::get('reset','UserController@reset')->name('reset');
 Route::post('reset','UserController@doReset')->name('password.update');

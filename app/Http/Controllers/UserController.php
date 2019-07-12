@@ -87,7 +87,11 @@ class UserController extends Controller
         ]);
         
         if(Auth::attempt(['username' => request('username'), 'password' => request('password')])){            
-            echo "berhasil";
+            Alert::success('Success', 'Berhasil login');
+            return redirect()->route('group.index');
+        } else {
+            Alert::error('Error', 'Username atau password salah');
+            return redirect()->back();
         }
     }
 

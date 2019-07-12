@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function groups(){
         return $this->belongsToMany('App\Group', 'student_details','group_id','student_id')->withPivot('student_id','group_id','accepted');
     }
+
+    public function details(){
+        return $this->hasMany('App\StudentDetail','student_id');
+    }
 }

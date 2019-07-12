@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use App\StudentDetail;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //        
+        
     }
 
     /**
@@ -24,5 +27,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        if (Auth::check()){
+            $reqs = Auth::user()->details;
+            view()->share('reqs',$reqs);
+        } else {
+            $reqs = StudentDetail::all();
+            view()->share('reqs',$reqs);
+        }
     }
 }

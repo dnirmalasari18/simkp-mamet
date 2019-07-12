@@ -123,16 +123,19 @@ Pengajuan
                                     <label><strong>Tanggal Selesai</strong></label>
                                     <input type="date" class="form-control" name="group[end_date]" value="" required="">
                                 </div>
-                            </div>
+                            </div>                    
                             <div class="col-md-4" style="margin-top:2rem;">
                                 <div class="form-group">
                                     <label><strong>Kelompok</strong></label>
-                                    <select class="form-control" name="friend">
-                                        <option value="0">-</option>
+                                    <select class="form-control" name="friend">                                            
+                                        <option value="">-</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{$user->id}}">{{$user->fullname}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>                        
-                            <div class="col-lg-12" >
+                            <div class="col-lg-12" style="margin-top:1rem;">
                                 <button type="submit" class="btn btn-primary" style="float:right; width:25%;">Ajukan</button>
                             </div>  
                         </form>
