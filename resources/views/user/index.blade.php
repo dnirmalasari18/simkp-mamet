@@ -53,6 +53,7 @@ Daftar Akun
                                                                 </span>
                                                                 <span style="display:block; padding-block:5px; ">
                                                                     <form action="{{route('user.delete')}}" method="post">
+                                                                        @csrf
                                                                         <input type="hidden" name="id" value="{{$user->id}}">
                                                                         <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
                                                                     </form>
@@ -87,6 +88,7 @@ Daftar Akun
                                                                 </span>
                                                                 <span style="display:block; padding-block:5px; ">
                                                                     <form action="{{route('user.delete')}}" method="post">
+                                                                        @csrf
                                                                         <input type="hidden" name="id" value="{{$user->id}}">
                                                                         <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
                                                                     </form>

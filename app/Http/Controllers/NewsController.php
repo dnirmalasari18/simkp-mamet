@@ -55,6 +55,7 @@ class NewsController extends Controller
 
     public function destroy(Request $request){
         $news = News::find($request->id);
+        NewsAttachment::whereIn('id', $news->attachments->pluck('id'));
         $news->delete();
         Alert::success('Success', 'Berita telah dihapus');
         return redirect()->route('news.index');

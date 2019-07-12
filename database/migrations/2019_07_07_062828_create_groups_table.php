@@ -22,9 +22,9 @@ class CreateGroupsTable extends Migration
             $table->date('end_date');
             $table->text('title')->nullable();
             $table->text('abstract')->nullable();
-            $table->string('status',50);
-            $table->string('type',15);
-            $table->text('path')->nullable();
+            $table->integer('status')->default(0);
+            $table->integer('type');
+            $table->text('proof_path')->nullable();
             $table->timestamps();
         });
     }

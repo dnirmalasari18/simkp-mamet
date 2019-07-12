@@ -27,88 +27,88 @@ Pengajuan
                         @endif
                         <form action="{{route('group.create')}}" method="post">
                             @csrf
-                        <div class="col-md-12">
-                            <div class="row form-group">
-                                <div class="col col-md-4"><label class=" form-control-label"><strong>Jenis Pengajuan</strong></label></div>
-                                <div class="col col-md-8">
-                                    <div class="form-check-inline form-check">
-                                        <label for="inline-radio1" class="form-check-label "style="padding-right:50px;">
-                                            <input type="radio" id="inline-radio1" name="group[type]" value="kerja praktik" class="form-check-input" >Kerja Praktik
-                                        </label>
-                                        <label for="inline-radio2" class="form-check-label ">
-                                            <input type="radio" id="inline-radio2" name="group[type]" value="magang" class="form-check-input">Magang
-                                        </label>
+                            <div class="col-md-12">
+                                <div class="row form-group">
+                                    <div class="col col-md-4"><label class=" form-control-label"><strong>Jenis Pengajuan</strong></label></div>
+                                    <div class="col col-md-8">
+                                        <div class="form-check-inline form-check">
+                                            <label for="inline-radio1" class="form-check-label "style="padding-right:50px;">
+                                                <input type="radio" id="inline-radio1" name="group[type]" value="0" class="form-check-input" >Kerja Praktik
+                                            </label>
+                                            <label for="inline-radio2" class="form-check-label ">
+                                                <input type="radio" id="inline-radio2" name="group[type]" value="1" class="form-check-input">Magang
+                                            </label>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>                        
+                            
+                            <div class="col-md-4">
+                                <div class="form-group">                                
+                                    <label style="margin-bottom:20px;"><strong>Perusahaan</strong></label>
+                                    <select id="corporation" data-placeholder="Pilih Perusahaan" class="standardSelect" tabindex="1">
+                                        <option value=""></option>
+                                        <option value="0">Perusahaan Belum Terdaftar</option>                                                                            
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Nama Perusahaan</strong></label>
+                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Alamat</strong></label>
+                                    <input id="corpaddress" type="text" class="form-control" id="corpaddress" name="corporation[address]" value="">
                                 </div>
                             </div>
-                        </div>                        
-                            
-                                <div class="col-md-4">
-                                    <div class="form-group">                                
-                                        <label style="margin-bottom:20px;"><strong>Perusahaan</strong></label>
-                                        <select id="corporation" data-placeholder="Pilih Perusahaan" class="standardSelect" tabindex="1">
-                                            <option value=""></option>
-                                            <option value="0">Perusahaan Belum Terdaftar</option>                                                                                
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label><strong>Nama Perusahaan</strong></label>
-                                        <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label><strong>Alamat</strong></label>
-                                        <input id="corpaddress" type="text" class="form-control" id="corpaddress" name="corporation[address]" value="">
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label><strong>Kota</strong></label>
+                                    <input id="corpcity" type="text" class="form-control" id="corpcity" name="corporation[city]" value="">
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label><strong>Kota</strong></label>
-                                        <input id="corpcity" type="text" class="form-control" id="corpcity" name="corporation[city]" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label><strong>Kode Pos</strong></label>
-                                        <input id="corppost_code" type="text" class="form-control" id="corppost_code" name="corporation[post]" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label><strong>Telp Kantor</strong></label>
-                                        <input id="corptelp" type="text" class="form-control" id="corptelp" name="corporation[phone_number]" value="">
-                                    </div>
+                                <div class="form-group">
+                                    <label><strong>Kode Pos</strong></label>
+                                    <input id="corppost_code" type="text" class="form-control" id="corppost_code" name="corporation[post]" value="">
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label><strong>Jenis Bisnis</strong></label>
-                                        <input id="corpbusiness_type" type="text" class="form-control" id="corpbusiness_type" name="corporation[type]" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label><strong>Profil</strong></label>
-                                        <textarea id="corpdescription" class="form-control" rows="4" id="corpdescription" name="corporation[profile]"></textarea>
-                                    </div>
+                                <div class="form-group">
+                                    <label><strong>Telp Kantor</strong></label>
+                                    <input id="corptelp" type="text" class="form-control" id="corptelp" name="corporation[phone_number]" value="">
                                 </div>
-                                                    
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label><strong>Tanggal Mulai</strong></label>
-                                        <input type="date" class="form-control" name="group[start_date]" value="" required="">
-                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label><strong>Jenis Bisnis</strong></label>
+                                    <input id="corpbusiness_type" type="text" class="form-control" id="corpbusiness_type" name="corporation[type]" value="">
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label><strong>Tanggal Selesai</strong></label>
-                                        <input type="date" class="form-control" name="group[end_date]" value="" required="">
-                                    </div>
+                                <div class="form-group">
+                                    <label><strong>Profil</strong></label>
+                                    <textarea id="corpdescription" class="form-control" rows="4" id="corpdescription" name="corporation[profile]"></textarea>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label><strong>Kelompok</strong></label>
-                                        <select class="form-control" name="friend">                                            
-                                            <option value="">-</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{$user->id}}">{{$user->fullname}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>                        
-                            <div class="col-lg-12" >
+                            </div>
+                            <div class="col-md-12" style="background-color:#212529; height:2px; margin-top:2rem;"></div>    
+                            <div class="col-md-4" style="margin-top:2rem;">
+                                <div class="form-group">
+                                    <label><strong>Tanggal Mulai</strong></label>
+                                    <input type="date" class="form-control" name="group[start_date]" value="" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="margin-top:2rem;">
+                                <div class="form-group">
+                                    <label><strong>Tanggal Selesai</strong></label>
+                                    <input type="date" class="form-control" name="group[end_date]" value="" required="">
+                                </div>
+                            </div>                    
+                            <div class="col-md-4" style="margin-top:2rem;">
+                                <div class="form-group">
+                                    <label><strong>Kelompok</strong></label>
+                                    <select class="form-control" name="friend">                                            
+                                        <option value="">-</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{$user->id}}">{{$user->fullname}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>                        
+                            <div class="col-lg-12" style="margin-top:1rem;">
                                 <button type="submit" class="btn btn-primary" style="float:right; width:25%;">Ajukan</button>
                             </div>  
                         </form>

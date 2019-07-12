@@ -21,8 +21,7 @@ class CreateStudentDetailsTable extends Migration
             $table->integer('valuation_2')->nullable();
             $table->integer('valuation_3')->nullable();
             $table->integer('valuation_4')->nullable();
-            $table->integer('valuation')->nullable();
-            $table->boolean('accepted');
+            $table->integer('valuation')->nullable();            
             $table->timestamps();
         });
     }

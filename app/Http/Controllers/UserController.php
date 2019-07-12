@@ -118,7 +118,7 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
-
+    
     /**
 	 * Store a student in storage.
 	 *

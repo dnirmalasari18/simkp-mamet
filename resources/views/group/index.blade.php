@@ -27,14 +27,14 @@ Kelompok
                             <tbody>
                                 @foreach ($groups as $group)
                                     <tr>
-                                        <td>{{strtoupper($group->status)}}</td>
+                                        <td>{{strtoupper($group->status['name'])}}</td>
                                         <td>                                                                                                
                                             @foreach ($group->students as $student)                                                    
                                                 {{$student->username}} - {{$student->fullname}} <br>
                                             @endforeach                                                
                                         </td>
                                         <td>{{$group->corp->name}}</td>
-                                        <td>{{ucwords($group->type)}}</td>
+                                        <td>{{ucwords($group->type['name'])}}</td>
                                         <td>
                                             <a href="{{route('group.show', ['id' => $group->id])}}"><i class="fa fa-pencil-square-o" style="color:blue;"></i></a>
                                         </td>

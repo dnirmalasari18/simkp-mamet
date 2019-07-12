@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsAttachmentsTable extends Migration
+class CreateGroupRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateNewsAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_attachments', function (Blueprint $table) {
+        Schema::create('group_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('news_id');
-            $table->string('filename',100);
-            $table->text('path');
-            $table->timestamps();            
-        });        
+            $table->integer('group_id');
+			$table->integer('status')->default(0);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +28,6 @@ class CreateNewsAttachmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_attachments');
+        Schema::dropIfExists('group_requests');
     }
 }

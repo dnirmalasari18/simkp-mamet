@@ -16,6 +16,7 @@ class CreateLecturerDetailsTable extends Migration
         Schema::create('lecturer_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('lecturer_id');
+            $table->string('initial', 10);
             $table->timestamps();
         });
     }

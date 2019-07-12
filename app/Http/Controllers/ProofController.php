@@ -23,14 +23,14 @@ class ProofController extends Controller
             $extension = $file->getClientOriginalExtension();
             $check=in_array($extension,$allowedfileExtension);                
             if($check){                    
-                $path = $file->store('bukti');
+                $path = $file->store('proof');
                 $group = Group::find($request->id);
 
-                if($group->path != null){
-                    Storage::delete($group->path);
+                if($group->proof_path != null){
+                    Storage::delete($group->proof_path);
                 }
 
-                $group->path = $path;
+                $group->proof_path = $path;
                 $group->save();
 
                 Alert::success('Succees', 'File berhasil diupload');
