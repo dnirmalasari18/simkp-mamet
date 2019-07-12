@@ -37,11 +37,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function personable() {
+		return $this->morphTo('personable');
+	}
+    
     public function groups(){
         return $this->belongsToMany('App\Group', 'student_details','group_id','student_id')->withPivot('student_id','group_id','accepted');
-    }
+    }    
 
-    public function details(){
-        return $this->hasMany('App\StudentDetail','student_id');
-    }
+    public function getRoleAttribute() {
+		if ($this->personable_type == 'App\Student') {
+			return 'STUDENT';
+		} else if ($this->personable_type == 'App\Lecturer') {
+			if ($this->personable->nip == '0') {
+				return 'ADMIN';
+			} else if ($this->personable->nip == '1') {
+				return 'TU';
+			} else {
+				return 'LECTURER';
+			}
+		} else {
+			return 'UNKNOWN';
+		}
+    }		
+    
+    public function getPersonableTypeAttribute($type) {
+		$type = strtolower($type);
+		return 'App\\'. str_replace(' ', '', ucwords($type));
+	}
 }

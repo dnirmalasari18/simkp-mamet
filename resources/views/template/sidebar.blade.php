@@ -59,8 +59,7 @@
                     <li>
                         <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                     </li>
-                @endif                                
-                
+                @endif                                                
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
