@@ -140,7 +140,7 @@ Detail Kelompok
                         <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem;margin-bottom:1.5rem;"></div>
                         <div class="col-md-12">
                             <div class="col-md-12">
-                                <h3><strong>Maju Sidang</strong></h3>
+                                <h3><strong>Maju Seminar</strong></h3>
                                 <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:115%">
                                     Kelompok terkait belum mensubmit <strong>judul</strong> dan <strong>abstraksi</strong> pada website!
                                 </div>
@@ -279,7 +279,7 @@ Detail Kelompok
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="vertical-align:middle"><input type="radio" name="news2" value="1"></td>
+                            <td style="vertical-align:middle"><center><input type="checkbox" id="checkbox1" name="checkbox1" value="option1" ></center></td>
                             <td style="vertical-align:middle">Radityo Anggoro</td>
                             <td style="vertical-align:middle">1232131231231231231</td>
                             <td style="vertical-align:middle">081703313257</td>
@@ -469,7 +469,8 @@ Detail Kelompok
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-danger" role="alert" style="font-size:115%">
-                            <strong>Judul</strong> dan <strong>Abstraksi</strong> setelah disimpan tidak akan bisa diubah kembali.
+                            <strong>Judul</strong> dan <strong>Abstraksi</strong> setelah disimpan tidak akan bisa diubah kembali.<br>
+                                Harap menghubungi <strong>Ka Sie KP</strong> jika ada kesulitan.
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">

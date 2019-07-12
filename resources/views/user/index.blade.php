@@ -36,7 +36,8 @@ Daftar Akun
                                                     <th style="vertical-align:middle">No HP</th>
                                                     <th style="vertical-align:middle">Banyak Membimbing</th>
                                                     <th style="vertical-align:middle">Banyak Membimbing Periode Aktif</th>
-                                                    <th style="vertical-align:middle"></th>
+                                                    <th></th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -46,6 +47,9 @@ Daftar Akun
                                                         <td style="vertical-align:middle">{{$user->phone_number}}</td>
                                                         <td style="vertical-align:middle">15</td>
                                                         <td style="vertical-align:middle">5</td>
+                                                        <td style="vertical-align: middle;">
+                                                            <center><a href="#"><button type="button" class="btn btn-info btn-sm" style="border-radius:3px;">Lihat</button></a></center>
+                                                        </td>
                                                         <td style="vertical-align:middle">
                                                             <center>
                                                                 <span style="display:block;">
