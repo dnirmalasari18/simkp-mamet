@@ -195,7 +195,11 @@ Periode
             jQuery(".edit-period-start").val(p.start_date);
             jQuery(".edit-period-end").val(p.end_date);
             jQuery(".edit-period-final").val(p.final_date);            
-        })
+        });
+        jQuery("#bootstrap-data-table-export").dataTable({
+            aaSorting: [[4, 'asc'],[0,'desc']],
+            "bDestroy":true,
+        });
     })
 </script>
 @endsection
