@@ -17,27 +17,20 @@ Surat
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Kelompok</th>
-                                    <th>Jenis Pengajuan</th>
-                                    <th>Perusahaan</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Selesai</th>
-                                    <th></th>
+                                    <th style="vertical-align:middle">Kelompok</th>
+                                    <th style="vertical-align:middle">Jenis Pengajuan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                     <tr>
-                                        <td>
-                                            05111640000115 - Dewi Ayu N
+                                        <td style="vertical-align:middle">
+                                            05111640000115 - Dewi Ayu N <br>
                                             05111640000129 - Frandita Adhitama
                                         </td>
-                                        <td>                                                
+                                        <td style="vertical-align:middle">                                                
                                             Kerja Praktik
                                         </td>
-                                        <td><button type="submit" class="btn btn-secondary btn-sm"data-toggle="modal" data-target="#scrollmodalPerusahaanLihat" style="line-height:1;border-radius:3px;">Lihat</button></td>
-                                        <td>27 - 27 - 2727</td>
-                                        <td>27 - 27 - 2727</td>
-                                        <td><button type="submit" class="btn btn-secondary btn-sm" style="line-height:1;border-radius:3px;"></td>
+                                        <td style="vertical-align:middle"><center><button type="submit" class="btn btn-secondary btn-sm"data-toggle="modal" data-target="#scrollmodalPerusahaanLihat" style="border-radius:3px;">Lihat Detail</button></center></td>
                                     </tr>                                  
                             </tbody>
                         </table>
