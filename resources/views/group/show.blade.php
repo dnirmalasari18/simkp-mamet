@@ -34,7 +34,9 @@ Detail Kelompok
                             <div class="row form-group">
                                 <div class="col col-md-4"><label class=" form-control-label"><strong>Bukti Penerimaan</strong></label></div>
                                 <p style="color:#212529">
-                                    <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodalUploadBukti"style="line-height:1;border-radius:3px;">Upload</button>
+                                    @if (Auth::user()->role != 'dosen')
+                                        <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodalUploadBukti"style="line-height:1;border-radius:3px;">Upload</button>
+                                    @endif
                                     <button type="submit" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#scrollmodalLihatBukti"style="line-height:1;border-radius:3px;">Lihat</button>
                                 </p>
                             </div>
@@ -51,11 +53,23 @@ Detail Kelompok
                                 </p>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-4"><label class=" form-control-label"><strong>Dosen Pembimbing</strong></label></div>
+                                <div class="col col-md-4">
+                                    <label class=" form-control-label">
+                                        <strong>Dosen Pembimbing</strong><br>
+                                        @if ($group->lecturer != null)
+                                            <strong>NIP</strong><br>
+                                            <strong>Nomor HP</strong>
+                                        @endif
+                                    </label>
+                                </div>
                                 @if ($group->lecturer != null)
-                                    <p style="color:#212529">{{$group->lecturer->fullname}}<br><strong>NIP</strong> {{$group->lecturer->username}}
+                                    <p style="color:#212529">
+                                        {{$group->lecturer->fullname}}<br>
+                                        {{$group->lecturer->username}}<br>
+                                        {{$group->lecturer->phone_number}}
+                                    </p>
                                 @else
-                                    <p style="color:#212529">-<br>
+                                    <p style="color:#212529">-<br></p>
                                 @endif
                                     <span style="display:block;">
                                         @if (Auth::user()->role == 'koordinator')
@@ -190,32 +204,34 @@ Detail Kelompok
         @endif
     </div><!-- .animated -->
 </div><!-- .content -->
-<div class="modal fade" id="scrollmodalUploadBukti" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <form action="{{route('proof.create')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="id" value="{{$group->id}}">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="scrollmodalLabel">Update Bukti Penerimaan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="col col-md-5"><label for="postal-code" class=" form-control-label"><strong>Bukti Penerimaan </strong></label></div>
-                        <input name="file" type="file" id="fileAdd"/>
+@if (Auth::user()->roler != 'dosen')
+    <div class="modal fade" id="scrollmodalUploadBukti" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form action="{{route('proof.create')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$group->id}}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollmodalLabel">Update Bukti Penerimaan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="col col-md-5"><label for="postal-code" class=" form-control-label"><strong>Bukti Penerimaan </strong></label></div>
+                            <input name="file" type="file" id="fileAdd"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+@endif
 <div class="modal fade" id="scrollmodalLihatBukti" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -272,40 +288,44 @@ Detail Kelompok
 <div class="modal fade" id="scrollmodalDosbing" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosbing</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
-                    <thead>
-                        <tr>
-                            <th style="vertical-align:middle"></th>
-                            <th style="vertical-align:middle">Nama</th>
-                            <th style="vertical-align:middle">NIP</th>
-                            <th style="vertical-align:middle">No HP</th>
-                            <th style="vertical-align:middle">Banyak Membimbing</th>
-                            <th style="vertical-align:middle">Banyak Membimbing Periode Aktif</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:middle"><center><input type="checkbox" id="checkbox1" name="checkbox1" value="option1" ></center></td>
-                            <td style="vertical-align:middle">Radityo Anggoro</td>
-                            <td style="vertical-align:middle">1232131231231231231</td>
-                            <td style="vertical-align:middle">081703313257</td>
-                            <td style="vertical-align:middle">15</td>
-                            <td style="vertical-align:middle">5</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
+            <form action="{{route('lecturer.group.assign')}}" method="post">
+                @csrf
+                <input type="hidden" name="group_id" value="{{$group->id}}">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosbing</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
+                        <thead>
+                            <tr>
+                                <th style="vertical-align:middle"></th>
+                                <th style="vertical-align:middle">Nama</th>
+                                <th style="vertical-align:middle">NIP</th>
+                                <th style="vertical-align:middle">Banyak Membimbing</th>
+                                <th style="vertical-align:middle">Banyak Membimbing Periode Aktif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($lecturers as $lecturer)
+                                <tr>
+                                    <td style="vertical-align:middle"><center><input type="radio" id="radio1" name="lecturer_id" value="{{$lecturer->id}}" @if ($group->lecturer_id == $lecturer->id) checked @endif></center></td>
+                                    <td style="vertical-align:middle">{{$lecturer->fullname}}</td>
+                                    <td style="vertical-align:middle">{{$lecturer->username}}</td>
+                                    <td style="vertical-align:middle">{{$lecturer->lecturing->count()}}</td>
+                                    <td style="vertical-align:middle">{{$lecturer->lecturing->where('period_id', App\Period::current()->id)->count()}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

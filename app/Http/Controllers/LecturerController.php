@@ -15,6 +15,22 @@ class LecturerController extends Controller
         return view('lecturer.show')->with('lecturer', $lecturer);
     }
 
+    public function assignGroup(Request $request){
+        // dd($request);
+
+        $this->validate($request, [
+            'group_id' => 'required',
+            'lecturer_id' => 'required'
+        ]);
+
+        $group = Group::find($request->group_id);
+        $group->lecturer_id = $request->lecturer_id;
+        $group->save();
+
+        Alert::success('Success', 'Data telah tersimpan');
+        return redirect()->back();
+    }
+
     public function assign(Request $request){
         foreach($request->groups as $groupid){
             $group = Group::find($groupid);

@@ -34,7 +34,7 @@ Periode
                                     <th style="vertical-align:middle"><center>Tanggal Akhir Semester</center></th>
                                     <th style="vertical-align:middle"><center>Batas Pengajuan</center></th>
                                     <th style="vertical-align:middle">Status</th>
-                                    <th></th>
+                                    {{-- <th></th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,7 +51,7 @@ Periode
                                                 <center><span class="badge badge-secondary">Inactive</span></center>
                                             @endif
                                         </td>
-                                        <td style="vertical-align:middle">
+                                        {{-- <td style="vertical-align:middle">
                                             <center>
                                                 <span style="display:block;margin-bottom:5px;">
                                                     @if ($period->active)
@@ -66,7 +66,7 @@ Periode
                                                             <input type="hidden" name="id" value="{{$period->id}}">
                                                             <button type="submit" class="btn btn-success btn-sm" style="border-radius:3px; width:100px; ">Aktifkan</button>
                                                         </form>
-                                                    @endif                                                    
+                                                    @endif
                                                 </span>
                                                 <span style="display:block;">
                                                     <button id="{{$period->id}}" type="button" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalEdit"style="border-radius:3px; width:100px;">Edit</button>
@@ -79,14 +79,14 @@ Periode
                                                     </span>
                                                 </form>
                                             </center>
-                                        </td>
+                                        </td> --}}
                                     </tr>
-                                @endforeach                                
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>                
+            </div>
         </div>
     </div><!-- .animated -->
 </div>
@@ -105,7 +105,7 @@ Periode
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tahun Ajaran</strong></label>
                         <input name="name" type="text" id="postal-code" placeholder="Tahun Ajaran" class="form-control">
-                    </div>                    
+                    </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tanggal Mulai Semester</strong></label>
                         <input name="start_date" type="date" id="postal-code" placeholder="Tanggal Mulai Semester" class="form-control">
@@ -143,7 +143,7 @@ Periode
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tahun Ajaran</strong></label>
                         <input name="name" type="text" id="postal-code" placeholder="Tahun Ajaran" class="form-control edit-period-name">
-                    </div>                
+                    </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tanggal Mulai Semester</strong></label>
                         <input name="start_date" type="date" id="postal-code" placeholder="Tanggal Mulai Semester" class="form-control edit-period-start">
@@ -179,10 +179,10 @@ Periode
 
 <script>
     var periods = {!!$periods!!}
-    jQuery(document).ready(function(){        
-        jQuery('.btn-edit').click(function(){            
-            console.log(jQuery(this).attr('id'))            
-            var p;            
+    jQuery(document).ready(function(){
+        jQuery('.btn-edit').click(function(){
+            console.log(jQuery(this).attr('id'))
+            var p;
             for (var i = 0; i < periods.length; i++) {
                 if (periods[i].id == jQuery(this).attr('id')) {
                     p = periods[i];
@@ -194,7 +194,7 @@ Periode
             jQuery(".edit-period-name").val(p.name);
             jQuery(".edit-period-start").val(p.start_date);
             jQuery(".edit-period-end").val(p.end_date);
-            jQuery(".edit-period-final").val(p.final_date);            
+            jQuery(".edit-period-final").val(p.final_date);
         });
         jQuery("#bootstrap-data-table-export").dataTable({
             aaSorting: [[4, 'asc'],[0,'desc']],
