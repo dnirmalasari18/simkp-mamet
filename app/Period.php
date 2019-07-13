@@ -18,7 +18,7 @@ class Period extends Model
 				->orderBy('start_date')
 				->get();
 		return $semester->first();
-	}
+    }
 
 	public static function allowedToRegister() {
 		$current = static::current();

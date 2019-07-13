@@ -16,7 +16,7 @@ class CreateCorpNotesTable extends Migration
         Schema::create('corp_notes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('corp_id');
-            $table->text('note');
+            $table->text('detail');
             $table->timestamps();
         });
     }

@@ -34,7 +34,7 @@ class Group extends Model
 				->where('status', (int)$status)
 				->first();
     }
-    
+
     public static function typeAll() {
 		return collect(static::$status_collection);
 	}
@@ -63,5 +63,9 @@ class Group extends Model
 
     public function reports(){
         return $this->hasMany('App\Report');
+    }
+
+    public function lecturer(){
+        return $this->belongsTo('App\User', 'lecturer_id');
     }
 }

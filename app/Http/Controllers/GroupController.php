@@ -16,23 +16,23 @@ use Alert;
 class GroupController extends Controller
 {
     //
-    public function index(){        
+    public function index(){
         if(Auth::check()){
-            if(Auth::user()->role == 'mahasiswa'){                
-                $groups = Auth::user()->groups;                
+            if(Auth::user()->role == 'mahasiswa'){
+                $groups = Auth::user()->groups;
             } else if (Auth::user()->role == 'dosen'){
                 $groups = Auth::user()->lectured;
             } else if (Auth::user()->role == 'koordinator'){
                 $groups = Group::orderBy('created_at','desc')->get();
-            }            
+            }
         } else {
             $groups = Group::all();
-        }                        
+        }
         return view('group.index')->with('groups',$groups);
     }
 
     public function show($id){
-        $group = Group::find($id);        
+        $group = Group::find($id);
         return view('group.show')->with('group',$group);
     }
 
@@ -42,7 +42,7 @@ class GroupController extends Controller
         return view('group.create')->with('corps',$corps)->with('users',$users);
     }
 
-    public function store(Request $request){                
+    public function store(Request $request){
         $this->validate($request, [
             'corporation.name' => 'required',
 			'corporation.city' => 'required',
@@ -59,7 +59,7 @@ class GroupController extends Controller
         $greq = $request['group'];
 
         # check if student 1 has created group in the same semester
-		$now = Period::current();		
+		$now = Period::current();
 		$student_groups = Auth::user()->groups->where('period_id', $now->id);
 		foreach ($student_groups as $group) {
 			if ($group->status['status'] >= 0) {
@@ -67,10 +67,10 @@ class GroupController extends Controller
                 return redirect()->back();
 			}
 		}
-        
+
         # Check if student 2 has created group in the same semester
         $friend_id = $request['friend'];
-        $student2 = User::find($friend_id);        
+        $student2 = User::find($friend_id);
 		if ($student2 != null) {
 			$groups = $student2->groups->where('period_id', $now->id);
 			foreach ($groups as $group) {
@@ -83,17 +83,17 @@ class GroupController extends Controller
 
         # fill corporation
         $corp = Corp::firstOrNew(array_only($creq, ['name', 'city']));
-        $corp->fill($creq);        
+        $corp->fill($creq);
         $corp->save();
-        
+
         # make group
         $group = new Group($greq);
 		$group->corp()->associate($corp);
-        $group->period()->associate(Period::current());        
+        $group->period()->associate(Period::current());
         $group->save();
-                
+
         # connect group to student
-        Auth::user()->groups()->save($group);        
+        Auth::user()->groups()->save($group);
 
         if ($student2 != null) {
 			# Create request for student 2
@@ -120,7 +120,7 @@ class GroupController extends Controller
             'id' => 'required',
             'status' => 'required',
         ]);
-        
+
         $group = Group::find($request->id);
         $group->status = $request->status;
         $group->save();
@@ -134,20 +134,20 @@ class GroupController extends Controller
         $this->validate($request, [
             'req_id' => 'required',
             'notif_id' => 'required',
-        ]);        
-        
+        ]);
+
         $groupreq = GroupRequest::find($request->req_id);
         $notif = Notification::find($request->notif_id);
 		if ($groupreq != null) {
 			$student = Auth::user();
-            $groupreq->status = 1;            
-			$notif->is_read = 1;			
+            $groupreq->status = 1;
+			$notif->is_read = 1;
 
 			# check if alredy join group
 			$now = Period::current();
 			$student_groups = $student->groups->where('period_id', $now->id);
 			foreach ($student_groups as $group) {
-				if ($group->status['status'] >= 0) {	                    				
+				if ($group->status['status'] >= 0) {
                     Alert::error('Error', 'Gagal bergabung karena sudah tergabung dengan kelompok lain');
 					return redirect()->back();
 				}
@@ -159,7 +159,7 @@ class GroupController extends Controller
         Alert::success('Success', 'Berhasil bergabung');
 		return redirect()->back();
     }
-    
+
     public function decline(Request $request)
 	{
         $this->validate($request, [
@@ -176,7 +176,7 @@ class GroupController extends Controller
 		}
 		return redirect()->back();
     }
-    
+
     public function abstractUpdate(Request $request){
         $this->validate($request, [
             'id' => 'required',
@@ -195,6 +195,19 @@ class GroupController extends Controller
         $group->save();
 
         Alert::success('Success', 'Judul dan Abstrak berhasil disimpan');
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request){
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+
+        $group = Group::find($request->id);
+        $group->students->delete();
+        $group->reports->delete();
+        $group->delete();
+        Alert::success('Success', 'Group berhasil dihapus');
         return redirect()->back();
     }
 }

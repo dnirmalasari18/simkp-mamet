@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('page-title')
-Detail Dosen
+Detail Perusahaan
 @endsection
 @section('additional-css')
 <link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
@@ -14,31 +14,81 @@ Detail Dosen
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body card-block">
-                        <div class="col-md-6">
-                            <div class="row form-group">
-                                <div class="col col-md-4"><label class=" form-control-label"><strong>Nama</strong></label></div>
-                                <p style="color:#212529">{{$lecturer->fullname}}</p>
+                            <div class="col-md-6" >
+                                <div class="form-group">
+                                    <label><strong>Perusahaan</strong></label>
+                                    <p style="color:#212529">{{$corp->name}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Jenis Bisnis</strong></label>
+                                    <p style="color:#212529">{{$corp->type}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Telp Kantor</strong></label>
+                                    <p style="color:#212529">{{$corp->phone_number}}</p>
+                                </div>
                             </div>
-                            <div class="row form-group">
-                                <div class="col col-md-4"><label class=" form-control-label"><strong>NIP</strong></label></div>
-                                <p style="color:#212529">{{$lecturer->username}}</p>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><strong>Kota</strong></label>
+                                    <p style="color:#212529">{{$corp->city}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Kode Pos</strong></label>
+                                    <p style="color:#212529">{{$corp->post}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Profil</strong></label>
+                                    <div style="height:8em;width:20em;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
+                                        {{$corp->profile}}
+                                    </div>
+                                </div>
                             </div>
+                        <div class="col-md-12" style="background-color:#212529; height:1px;margin-bottom:1.5rem;"></div>
+                        <div class="col-md-12">
+                            <h3><strong>Catatan Tambahan</strong></h3>
+                            @if (Auth::user()->role == 'koordinator')
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalCatatanTambah" style="float:right;margin-bottom:20px;" >
+                                    Tambah Catatan
+                                </button>
+                            @endif
                         </div>
-                        <div class="col-md-6">
-                            <div class="row form-group">
-                                <div class="col col-md-4"><label class=" form-control-label"><strong>No HP</strong></label></div>
-                                <p style="color:#212529">{{$lecturer->phone_number}}</p>
-                            </div>
+                        <div class="col-md-12">
+                                <table id="bootstrap-data-table-export display" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th  style="vertical-align:middle">Tanggal Catatan</th>
+                                            <th  style="vertical-align:middle">Catatan</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($corp->notes as $note)
+                                            <tr>
+                                                <td style="vertical-align:middle">{{$note->created_at}}</td>
+                                                <td style="vertical-align:middle">{{$note->detail}}</td>
+                                                <td style="vertical-align:middle;width:10%;">
+                                                    <center>
+                                                        <span style="display:block; padding-block:5px; ">
+                                                            <form action="{{route('corp.note.delete')}}" method="post">
+                                                                @csrf
+                                                                <input id="noteid" type="hidden" name="id" value="{{$note->id}}">
+                                                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
+                                                            </form>
+                                                        </span>
+                                                    </center>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                         </div>
                         <div class="col-md-12" style="background-color:#212529; height:1px;margin-bottom:1.5rem;"></div>
                         <div class="col-md-12">
                             <h3><strong>List Kelompok Periode Aktif</strong></h3>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalKelompokTambah" style="float:right;margin-bottom:20px;" >
-                                Tambah Kelompok
-                            </button>
                         </div>
                         <div class="col-md-12">
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
                                 <thead>
                                     <tr>
                                         <th  style="vertical-align:middle;">Kelompok</th>
@@ -48,7 +98,7 @@ Detail Dosen
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($lecturer->lecturing->where('period_id', App\Period::current()->id) as $group)
+                                    @foreach ($corp->groups->where('period_id', App\Period::current()->id) as $group)
                                         <tr>
                                             <td style="vertical-align:middle;">
                                                 @foreach ($group->students as $student)
@@ -86,7 +136,7 @@ Detail Dosen
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @foreach ($lecturer->lecturing as $group)
+                                        @foreach ($corp->groups->sortBy('created_at') as $group)
                                         <tr>
                                             <td style="vertical-align:middle;">
                                                 @foreach ($group->students as $student)
@@ -117,44 +167,23 @@ Detail Dosen
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
-<div class="modal fade" id="scrollmodalKelompokTambah" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+<div class="modal fade" id="scrollmodalCatatanTambah" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form action="{{route('lecturer.assign')}}" method="post">
+            <form action="{{route('corp.note.create')}}" method="post">
                 @csrf
-                <input type="hidden" name="id" value="{{$lecturer->id}}">
+                <input id="corpid" type="hidden" name="corp_id" value="{{$corp->id}}">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosbing</h5>
+                    <h5 class="modal-title" id="scrollmodalLabel">Tambah Catatan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
-                        <thead>
-                            <tr>
-                                <th style="vertical-align:middle"></th>
-                                <th  style="vertical-align:middle;">Kelompok</th>
-                                <th  style="vertical-align:middle;">Perusahaan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1?>
-                            @foreach (App\Group::where('period_id', App\Period::current()->id)->where('lecturer_id', null)->get() as $group)
-                                <tr>
-                                    <td style="vertical-align:middle"><center><input type="checkbox" id="checkbox1" name="groups[{{$i++}}]" value="{{$group->id}}"></center></td>
-                                    <td style="vertical-align:middle;">
-                                        @foreach ($group->students as $student)
-                                            {{$student->username}} - {{$student->fullname}} <br>
-                                        @endforeach
-                                    </td>
-                                    <td style="vertical-align:middle; width:300px;">
-                                        {{$group->corp->name}} - {{$group->corp->city}}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="form-group">
+                        <label for="postal-code" class=" form-control-label"><strong>Catatan</strong></label>
+                        <textarea name="detail" id="textarea-input" rows="3"  class="form-control"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
