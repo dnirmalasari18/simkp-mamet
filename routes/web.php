@@ -38,17 +38,17 @@ Route::prefix('corps/')->group(function(){
 Route::prefix('users/')->group(function(){
     Route::get('','UserController@index')->name('user.index');
     Route::get('create','UserController@create')->name('user.create');
-    Route::post('create','UserController@store')->name('user.create');    
+    Route::post('create','UserController@store')->name('user.create');
     Route::post('delete','UserController@destroy')->name('user.delete');
-    Route::get('{id}','UserController@show')->name('user.show');    
+    Route::get('{id}','UserController@show')->name('user.show');
     Route::get('{id}/edit','UserController@edit')->name('user.edit');
     Route::post('edit','UserController@update')->name('user.edit');
 });
 
 Route::prefix('news/')->group(function(){
-    Route::get('','NewsController@index')->name('news.index');    
+    Route::get('','NewsController@index')->name('news.index');
     Route::get('create','NewsController@create')->name('news.create');
-    Route::post('create','NewsController@store')->name('news.create');    
+    Route::post('create','NewsController@store')->name('news.create');
     Route::post('delete','NewsController@destroy')->name('news.delete');
     Route::get('{id}','NewsController@show')->name('news.show');
     Route::get('{id}/edit','NewsController@edit')->name('news.edit');
@@ -56,28 +56,28 @@ Route::prefix('news/')->group(function(){
 });
 
 Route::prefix('periods/')->group(function(){
-    Route::get('','PeriodController@index')->name('period.index');    
+    Route::get('','PeriodController@index')->name('period.index');
     Route::get('create','PeriodController@create')->name('period.create');
-    Route::post('create','PeriodController@store')->name('period.create');    
+    Route::post('create','PeriodController@store')->name('period.create');
     Route::post('delete','PeriodController@destroy')->name('period.delete');
     Route::post('activate','PeriodController@activate')->name('period.activate');
     Route::post('deactivate','PeriodController@deactivate')->name('period.deactivate');
-    Route::get('{id}','PeriodController@show')->name('period.show');    
+    Route::get('{id}','PeriodController@show')->name('period.show');
     Route::post('edit','PeriodController@update')->name('period.edit');
 });
 
 Route::prefix('lecturers/')->group(function(){
-    Route::get('','LecturerController@index')->name('lecturer.index');    
-    Route::get('assign','LecturerController@assign')->name('lecturer.assign');
-    Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');    
+    Route::get('','LecturerController@index')->name('lecturer.index');
+    Route::post('assign','LecturerController@assign')->name('lecturer.assign');
+    Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');
     Route::get('{id}','LecturerController@show')->name('lecturer.show');
 });
 
 Route::prefix('groups/')->group(function(){
-    Route::get('','GroupController@index')->name('group.index');    
+    Route::get('','GroupController@index')->name('group.index');
     Route::get('create','GroupController@create')->name('group.create');
-    Route::post('create','GroupController@store')->name('group.create');    
-    Route::post('delete','GroupController@delete')->name('group.delete');
+    Route::post('create','GroupController@store')->name('group.create');
+    Route::post('delete','GroupController@destroy')->name('group.delete');
     Route::get('{id}','GroupController@show')->name('group.show');
     Route::get('{id}/edit','GroupController@edit')->name('group.edit');
     Route::post('{id}/edit','GroupController@update')->name('group.edit');
@@ -88,7 +88,7 @@ Route::prefix('groups/')->group(function(){
 
     Route::post('accept','GroupController@accept')->name('group.accept');
     Route::post('decline','GroupController@decline')->name('group.decline');
-    
+
     Route::get('reports/create','ReportController@create')->name('report.create');
     Route::post('reports/create','ReportController@store')->name('report.create');
     Route::post('reports/delete','ReportController@delete')->name('report.delete');

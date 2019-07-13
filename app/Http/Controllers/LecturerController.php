@@ -12,4 +12,11 @@ class LecturerController extends Controller
         $lecturer = User::find($id);
         return view('lecturer.show')->with('lecturer', $lecturer);
     }
+
+    public function assign(Request $request){
+        dd($request);
+        $lecturer = User::find($request->id);
+
+
+    }
 }

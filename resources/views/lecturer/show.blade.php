@@ -53,7 +53,7 @@ Detail Dosen
                                             <td style="vertical-align:middle;">
                                                 @foreach ($group->students as $student)
                                                     {{$student->username}} - {{$student->fullname}} <br>
-                                                @endforeach                                                
+                                                @endforeach
                                             </td>
                                             <td style="vertical-align:middle; width:300px;">
                                                 {{$group->corp->name}} - {{$group->corp->city}}
@@ -68,8 +68,8 @@ Detail Dosen
                                                     </a>
                                                 </center>
                                             </td>
-                                        </tr>                        
-                                    @endforeach                                        
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -91,7 +91,7 @@ Detail Dosen
                                             <td style="vertical-align:middle;">
                                                 @foreach ($group->students as $student)
                                                     {{$student->username}} - {{$student->fullname}} <br>
-                                                @endforeach                                                
+                                                @endforeach
                                             </td>
                                             <td style="vertical-align:middle; width:300px;">
                                                 {{$group->corp->name}} - {{$group->corp->city}}
@@ -106,8 +106,8 @@ Detail Dosen
                                                     </a>
                                                 </center>
                                             </td>
-                                        </tr>                        
-                                    @endforeach                      
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -120,15 +120,16 @@ Detail Dosen
 <div class="modal fade" id="scrollmodalKelompokTambah" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosbing</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    @csrf
+            <form action="{{route('lecturer.assign')}}" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{$lecturer->id}}">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosbing</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
                         <thead>
                             <tr>
@@ -141,25 +142,25 @@ Detail Dosen
                             <?php $i = 1?>
                             @foreach (App\Group::where('period_id', App\Period::current()->id)->where('lecturer_id', null)->get() as $group)
                                 <tr>
-                                    <td style="vertical-align:middle"><center><input type="checkbox" id="checkbox1" name="group[{{$i++}}]" value="{{$group->id}}"></center></td>
+                                    <td style="vertical-align:middle"><center><input type="checkbox" id="checkbox1" name="groups[{{$i++}}]" value="{{$group->id}}"></center></td>
                                     <td style="vertical-align:middle;">
                                         @foreach ($group->students as $student)
                                             {{$student->username}} - {{$student->fullname}} <br>
-                                        @endforeach                                    
+                                        @endforeach
                                     </td>
                                     <td style="vertical-align:middle; width:300px;">
-                                        Pertamina - Jakarta
+                                        {{$group->corp->name}} - {{$group->corp->city}}
                                     </td>
                                 </tr>
-                            @endforeach                                                                                             
+                            @endforeach
                         </tbody>
                     </table>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
