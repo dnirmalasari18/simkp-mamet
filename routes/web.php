@@ -30,9 +30,8 @@ Route::post('reset','UserController@doReset')->name('password.update');
 
 Route::prefix('corps/')->group(function(){
     Route::get('{id}','CorpController@show')->name('corp.show');
-    Route::get('{id}/note/create','CorpController@create')->name('corp.create');
-    Route::post('{id}/note/create','CorpController@store')->name('corp.store');
-    Route::post('{id}/note/delete','CorpController@delete')->name('corp.delete');
+    Route::post('note/create','CorpController@noteStore')->name('corp.note.create');
+    Route::post('note/delete','CorpController@noteDelete')->name('corp.note.delete');
 });
 
 Route::prefix('users/')->group(function(){
@@ -98,8 +97,7 @@ Route::prefix('groups/')->group(function(){
     Route::post('abstract/update','GroupController@abstractUpdate')->name('abstract.update');
 });
 
-Route::get('statistics/periods/{id}','StatisticController@period')->name('statistic.period');
-Route::get('statistics/corps/{id}','StatisticController@corp')->name('statistic.corp');
+Route::get('statistics','StatisticController@show')->name('statistic.show');
 
 Route::get('valuation/periods/{id}','ValuationController@editCommunal')->name('valuation.edit');
 Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');

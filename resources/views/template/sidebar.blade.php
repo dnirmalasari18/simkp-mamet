@@ -24,8 +24,8 @@
                     <li>
                         <a href="{{route('period.index')}}"> <i class="menu-icon fa fa-calendar-o"></i>Periode</a>
                     </li>
-                @endif    
-                
+                @endif
+
                 @if (Auth::check())
                     @if (Auth::user()->role == 'mahasiswa')
                         <li>
@@ -36,17 +36,17 @@
                     <li>
                         <a href="{{route('group.create')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
                     </li>
-                @endif                
+                @endif
                 <li>
                     <a href="{{route('group.index')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
-                </li>                
+                </li>
                 @if (Auth::check())
                     @if (Auth::user()->role == 'koordinator')
                         <li>
                             <a href="{{route('user.index')}}"> <i class="menu-icon fa fa-user"></i>Akun</a>
                         </li>
                         <li>
-                            <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
+                            <a href="{{route('statistic.show')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                         </li>
                         <li>
                             <a href="{{url('nilai')}}"> <i class="menu-icon fa fa-table"></i>Nilai Integra</a>
@@ -59,7 +59,7 @@
                     <li>
                         <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                     </li>
-                @endif                                                
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
