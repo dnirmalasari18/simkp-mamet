@@ -106,49 +106,14 @@ Route::post('valuation/group/store', 'ValuationController@store')->name('valuati
 Route::get('/', function () {
     return redirect('login');
 });
-Route::get('/berita', //'UserController@index');
-function () {
-    return view('mockup.coba-berita');
-});
-Route::get('/periode', function () {
-    return view('mockup.coba-periode');
-});
-Route::get('/pengajuan', function () {
-    return view('mockup.coba-pengajuan');
-});
-Route::get('/kelompok', function () {
-    return view('mockup.coba-kelompok');
-});
-Route::get('/kelompokshow', function () {
-    return view('mockup.coba-kelompokshow');
-});
-Route::get('/dosen', function () {
-    return view('mockup.coba-dosenshow');
-});
 
-Route::get('/statistik', function () {
-    return view('mockup.coba-statistik');
-});
 
-Route::get('/nilai', function () {
-    return view('mockup.coba-nilai-integra');
-});
-Route::get('/surat', function () {
-    return view('mockup.coba-surat');
-});
-Route::get('/nilai/edit', function () {
-    return view('mockup.coba-nilai-integra-edit');
-})->name('nilai.edit');
-//coretcoretan front end
-Route::get('/tes', function () {
-    return view('mockup.template-surat');
+Route::prefix('cover_letter/')->group(function(){
+    Route::get('','CoverLetterController@index')->name('cover_letter.index');
+    Route::get('{$id}','CoverLetterController@downloadPDF')->name('cover_letter.download');
 });
 
 
-//not in sidebar
-Route::get('/daftar', function () {
-    return view('mockup.coba-daftar');
-});
 
 Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
 {
