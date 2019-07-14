@@ -110,7 +110,7 @@ Route::get('/', function () {
 
 Route::prefix('cover_letter/')->group(function(){
     Route::get('','CoverLetterController@index')->name('cover_letter.index');
-    Route::get('{$id}','CoverLetterController@downloadPDF')->name('cover_letter.download');
+    Route::get('{$id}','CoverLetterController@download')->name('cover_letter.download');
 });
 
 

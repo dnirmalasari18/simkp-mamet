@@ -11,8 +11,9 @@ class CoverLetterController extends Controller
     $groups=Group::all();
     return view('mockup.coba-surat')->with('groups',$groups);
   }
-  public function downloadPDF($id){
+  public function download($id){
     $group = Group::find($id);
-    return view('surat');
+        $lecturers = User::where('role', 'dosen')->orderBy('username')->get();
+        return view('group.show')->with('group',$group)->with('lecturers', $lecturers);
   }
 }
