@@ -34,6 +34,11 @@ Route::prefix('corps/')->group(function(){
     Route::post('note/delete','CorpController@noteDelete')->name('corp.note.delete');
 });
 
+Route::prefix('cover_letter/')->group(function(){
+    Route::get('','CoverLetterController@index')->name('cover_letter.index');
+    Route::get('{id}','CoverLetterController@downloadPDF')->name('cover_letter.download');
+});
+
 Route::prefix('users/')->group(function(){
     Route::get('','UserController@index')->name('user.index');
     Route::get('create','UserController@create')->name('user.create');
@@ -106,13 +111,6 @@ Route::post('valuation/group/store', 'ValuationController@store')->name('valuati
 Route::get('/', function () {
     return redirect('login');
 });
-
-
-Route::prefix('cover_letter/')->group(function(){
-    Route::get('','CoverLetterController@index')->name('cover_letter.index');
-    Route::get('{$id}','CoverLetterController@downloadPDF')->name('cover_letter.download');
-});
-
 
 
 Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
