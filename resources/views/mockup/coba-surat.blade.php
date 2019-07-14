@@ -30,7 +30,7 @@ Surat
                                         <td style="vertical-align:middle">                                                
                                             Kerja Praktik
                                         </td>
-                                        <td style="vertical-align:middle"><center><button type="submit" class="btn btn-secondary btn-sm"data-toggle="modal" data-target="#scrollmodalPerusahaanLihat" style="border-radius:3px;">Lihat Detail</button></center></td>
+                                        <td style="vertical-align:middle"><center><button type="submit" class="btn btn-secondary btn-sm"data-toggle="modal" data-target="#scrollmodalSuratDetail" style="border-radius:3px;">Lihat Detail</button></center></td>
                                     </tr>                                  
                             </tbody>
                         </table>

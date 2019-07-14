@@ -140,8 +140,9 @@ Route::get('/nilai/edit', function () {
 })->name('nilai.edit');
 //coretcoretan front end
 Route::get('/tes', function () {
-    return view('mockup.test');
+    return view('mockup.template-surat');
 });
+
 
 //not in sidebar
 Route::get('/daftar', function () {
