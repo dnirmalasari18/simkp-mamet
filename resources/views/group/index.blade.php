@@ -22,6 +22,7 @@ Kelompok
                             <thead>
                                 <tr>
                                     <th style="vertical-align: middle; width:200px;">Status</th>
+                                    <th style="vertical-align: middle;">Periode</th>
                                     <th style="vertical-align: middle;">Peserta</th>
                                     <th style="vertical-align: middle;">Perusahaan</th>
                                     <th style="vertical-align: middle;">Jenis Kelompok</th>
@@ -31,19 +32,20 @@ Kelompok
                             <tbody>
                                 @foreach ($groups as $group)
                                     <tr>
-                                        <td>{{strtoupper($group->status['name'])}}</td>                                        
-                                        <td style="vertical-align: middle;">                                                                                                
-                                            @foreach ($group->students as $student)                                                    
+                                        <td>{{strtoupper($group->status['name'])}}</td>
+                                        <td style="vertical-align: middle;">{{$group->period->name}}</td>
+                                        <td style="vertical-align: middle;">
+                                            @foreach ($group->students as $student)
                                                 {{$student->username}} - {{$student->fullname}} <br>
-                                            @endforeach                                                
+                                            @endforeach
                                         </td>
                                         <td style="vertical-align: middle;">{{$group->corp->name}}</td>
                                         <td style="vertical-align: middle;">{{ucwords($group->type['name'])}}</td>
                                         <td style="vertical-align: middle;">
                                             <center><a href="{{route('group.show', ['id' => $group->id])}}"><button type="button" class="btn btn-primary btn-sm" style="border-radius:3px;">Lihat</button></a></center>
                                         </td>
-                                    </tr>    
-                                @endforeach                                    
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -70,6 +70,7 @@ Route::prefix('lecturers/')->group(function(){
     Route::post('assign','LecturerController@assign')->name('lecturer.assign');
     Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');
     Route::get('{id}','LecturerController@show')->name('lecturer.show');
+    Route::post('group/assign','LecturerController@assignGroup')->name('lecturer.group.assign');
 });
 
 Route::prefix('groups/')->group(function(){

@@ -21,7 +21,7 @@ class GroupController extends Controller
             if(Auth::user()->role == 'mahasiswa'){
                 $groups = Auth::user()->groups;
             } else if (Auth::user()->role == 'dosen'){
-                $groups = Auth::user()->lectured;
+                $groups = Auth::user()->lecturing->where('period_id', Period::current()->id);
             } else if (Auth::user()->role == 'koordinator'){
                 $groups = Group::orderBy('created_at','desc')->get();
             }
@@ -33,7 +33,8 @@ class GroupController extends Controller
 
     public function show($id){
         $group = Group::find($id);
-        return view('group.show')->with('group',$group);
+        $lecturers = User::where('role', 'dosen')->orderBy('username')->get();
+        return view('group.show')->with('group',$group)->with('lecturers', $lecturers);
     }
 
     public function create(){
