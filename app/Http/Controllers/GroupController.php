@@ -8,6 +8,7 @@ use App\Group;
 use App\Corp;
 use App\Period;
 use App\StudentDetail;
+use APp\Report;
 use App\User;
 use App\GroupRequest;
 use App\Notification;

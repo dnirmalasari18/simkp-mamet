@@ -15,7 +15,7 @@ Kelompok
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">List Kelompok</strong>
+                        <strong class="card-title">List Kelompok Periode Ini</strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -50,6 +50,45 @@ Kelompok
                         </table>
                     </div>
                 </div>
+                @if (Auth::user()->role == 'dosen')
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">List Kelompok Semua Periode</strong>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="vertical-align: middle; width:200px;">Status</th>
+                                    <th style="vertical-align: middle;">Periode</th>
+                                    <th style="vertical-align: middle;">Peserta</th>
+                                    <th style="vertical-align: middle;">Perusahaan</th>
+                                    <th style="vertical-align: middle;">Jenis Kelompok</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Auth::user()->lecturing->sortBy('created_at') as $group)
+                                    <tr>
+                                        <td>{{strtoupper($group->status['name'])}}</td>
+                                        <td style="vertical-align: middle;">{{$group->period->name}}</td>
+                                        <td style="vertical-align: middle;">
+                                            @foreach ($group->students as $student)
+                                                {{$student->username}} - {{$student->fullname}} <br>
+                                            @endforeach
+                                        </td>
+                                        <td style="vertical-align: middle;">{{$group->corp->name}}</td>
+                                        <td style="vertical-align: middle;">{{ucwords($group->type['name'])}}</td>
+                                        <td style="vertical-align: middle;">
+                                            <center><a href="{{route('group.show', ['id' => $group->id])}}"><button type="button" class="btn btn-primary btn-sm" style="border-radius:3px;">Lihat</button></a></center>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @endif
             </div>
         </div><!-- .animated -->
     </div>

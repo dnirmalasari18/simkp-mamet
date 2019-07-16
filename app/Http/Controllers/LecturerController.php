@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Group;
+use App\Report;
 use Alert;
 
 class LecturerController extends Controller
@@ -52,6 +53,7 @@ class LecturerController extends Controller
     }
 
     public function acceptLog(Request $request){
+        // dd($request);
         foreach($request->reports as $reportid){
             $report = Report::find($reportid);
             $report->status = 1;
