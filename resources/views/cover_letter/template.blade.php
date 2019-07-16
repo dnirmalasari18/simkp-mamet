@@ -27,7 +27,7 @@
             <div class="row form-group">
                 <div style="width:100px;">Nomor</div>
                 <div>:</div>
-                <div style="padding-left:5px;"></div>
+                <div style="padding-left:5px;">{{$number}}</div>
             </div>
             <div class="row form-group">
                 <div style="width:100px;">Perihal</div>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-md-3" >
-            12 Juni 2019
+            {{$date}}
         </div>
     </div>
     <div class="row" style="margin-top:1.5cm; margin-left:2.5cm; margin-right:2.5cm;">
@@ -44,7 +44,7 @@
         <div div style="width:100px;">Kepada Yth</div>
         <div>:</div>
         <div style="padding-left:5px;">
-            <b>nama perusahaan dalam uppercase</b><br>
+            <b>{{$to}}</b><br>
             {{$group->corp->address}}<br>
             {{$group->corp->city}}
         </div>

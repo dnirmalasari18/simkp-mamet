@@ -18,6 +18,7 @@ class CreateReportsTable extends Migration
             $table->bigInteger('group_id');
             $table->string('title',100);
             $table->text('path');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

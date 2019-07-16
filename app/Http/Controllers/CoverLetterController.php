@@ -13,13 +13,17 @@ class CoverLetterController extends Controller
     return view('cover_letter.index')->with('groups',$groups);
   }
 
-  public function download($id){
-    $group = Group::find($id);
-    $pdf = PDF::loadView('cover_letter.template', compact('group'));
-    return $pdf->download('invoice.pdf');
+  public function download(Request $request){    
+    $this->validate($request, [
+      'date' => 'required',
+      'number' => 'required',
+      'to' => 'required',
+    ]);
     
-    //return view('cover_letter.template')->with('group',$group)->with('number',$number)->with('date',$date)->with('to',$to);
-    //return "Hi $to";
+    $group = Group::find($request->group_id);
+    // $pdf = PDF::loadView('cover_letter.template', compact('group'));
+    // return $pdf->download('invoice.pdf');
     
+    return view('cover_letter.template')->with('group',$group)->with('number',$request->number)->with('date',$request->date)->with('to',$request->to);    
   }
 }

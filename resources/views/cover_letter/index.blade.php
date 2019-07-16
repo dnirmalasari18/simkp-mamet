@@ -106,24 +106,24 @@ Surat
 <div class="modal fade" id="scrollmodalSuratBuat" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form action="{{route('cover_letter.download', ['id' => $group->id])}}" method="get">
+            <form action="{{route('cover_letter.download')}}" method="post">
                 @csrf
-                <input class="edit-period-id" type="hidden" name="id">
+                <input type="hidden" name="group_id" value="{{$group->id}}">
                 <div class="modal-header">
                     Buat Surat
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tanggal Surat</strong></label>
-                        <input name="name" type="text" name="date" class="form-control">
+                        <input name="date" type="text" name="date" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Nomor Surat</strong></label>
-                        <input name="name" type="text" name="number" class="form-control">
+                        <input name="number" type="text" name="number" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Kepada Surat</strong></label>
-                        <input name="name" type="text" name="to" id="to"class="form-control">
+                        <input name="to" type="text" name="to" id="to"class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">

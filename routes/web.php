@@ -36,7 +36,7 @@ Route::prefix('corps/')->group(function(){
 
 Route::prefix('cover_letter/')->group(function(){
     Route::get('','CoverLetterController@index')->name('cover_letter.index');
-    Route::get('{id}','CoverLetterController@download')->name('cover_letter.download');
+    Route::post('','CoverLetterController@download')->name('cover_letter.download');
 });
 
 Route::prefix('users/')->group(function(){
@@ -76,6 +76,7 @@ Route::prefix('lecturers/')->group(function(){
     Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');
     Route::get('{id}','LecturerController@show')->name('lecturer.show');
     Route::post('group/assign','LecturerController@assignGroup')->name('lecturer.group.assign');
+    Route::post('log/accept','LecturerController@acceptLog')->name('lecturer.log.accept');
 });
 
 Route::prefix('groups/')->group(function(){

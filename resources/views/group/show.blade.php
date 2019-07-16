@@ -140,30 +140,43 @@ Detail Kelompok
                             @endif
                         </div>
                         <div class="col-md-12">
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th  style="vertical-align:middle; width:150px;">Tanggal Upload</th>
-                                        <th  style="vertical-align:middle;">Judul Log</th>
-                                        <th  style="vertical-align:middle;width:150px;"><center>File</center></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($group->reports as $report)
+                            <form action="{{route('lecturer.log.accept')}}" method="post">
+                                @csrf
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
                                         <tr>
-                                            <td style="vertical-align:middle;">{{$report->created_at}}</td>
-                                            <td style="vertical-align:middle;">{{$report->title}}</td>
-                                            <td>
-                                                <center>
-                                                    <span style="display:block; padding-block:5px; ">
-                                                        <a href="{{Storage::url($report->path)}}"><button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px;">Download</button></a>
-                                                    </span>
-                                                </center>
-                                            </td>
+                                            <th  style="vertical-align:middle;width:150px;">Status</th>
+                                            <th  style="vertical-align:middle;">Tanggal Upload</th>
+                                            <th  style="vertical-align:middle;">Judul Log</th>
+                                            <th  style="vertical-align:middle;width:150px;"><center>File</center></th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        
+                                            @foreach ($group->reports as $report)
+                                                <tr>
+                                                    <td style="vertical-align:middle;">
+                                                        @if (Auth::user()->role == 'dosen')
+                                                            <input type="checkbox" id="checkbox1" name="reports[{{$i++}}]" value="{{$report->id}}">
+                                                        @else
+                                                            {{$report->status['desc']}}
+                                                        @endif                                                
+                                                    </td>
+                                                    <td style="vertical-align:middle;">{{$report->created_at}}</td>
+                                                    <td style="vertical-align:middle;">{{$report->title}}</td>
+                                                    <td>
+                                                        <center>
+                                                            <span style="display:block; padding-block:5px; ">
+                                                                <a href="{{Storage::url($report->path)}}"><button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px;">Download</button></a>
+                                                            </span>
+                                                        </center>
+                                                    </td>
+                                                </tr>
+                                            @endforeach                                        
+                                    </tbody>
+                                </table>                                
+                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px;">Setujui Log</button>
+                            </form>                            
                         </div>
                         <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem;margin-bottom:1.5rem;"></div>
                         <div class="col-md-12">

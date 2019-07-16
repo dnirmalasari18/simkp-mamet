@@ -50,4 +50,14 @@ class LecturerController extends Controller
         Alert::success('Success', 'Data telah tersiman');
         return redirect()->back();
     }
+
+    public function acceptLog(Request $request){
+        foreach($request->reports as $reportid){
+            $report = Report::find($reportid);
+            $report->status = 1;
+            $report->save();
+        }
+        Alert::success('Success', 'Log telah disetujui');
+        return redirect()->back();
+    }
 }
