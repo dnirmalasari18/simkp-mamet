@@ -31,7 +31,7 @@ class NewsController extends Controller
         ]);
 
         if ($request->hasFile('attachments')){            
-            $allowedfileExtension=['pdf','jpg','png','docx'];
+            $allowedfileExtension=['pdf','jpg','png','docx', 'pptx', 'ppt'];
             $files = $request->file('attachments');
             foreach($files as $file){
                 $filename = $file->getClientOriginalName();
@@ -46,11 +46,14 @@ class NewsController extends Controller
                             'path' => $path,
                         ]);
                     }                    
+                } else {
+                    Alert::error('Error', 'Ekstensi tidak diterima');
+                    return redirect()->back();
                 }
             }
         }
         Alert::success('Success', 'Berita baru telah tersimpan');
-        return redirect()->route('news.index');
+        return redirect()->back();
     }    
 
     public function destroy(Request $request){

@@ -74,12 +74,14 @@ Berita
                             </ul>
     
                             <i><small><span class="fa fa-clock-o"></span> Created at: {{$news->created_at}}</small></i>
-                              &nbsp;                            
-                            <form action="{{route('news.delete')}}" method="post">
-                                @csrf
-                                <input type="hidden" name="id" value="{{$news->id}}">
-                                <button type="submit" class="btn btn-secondary btn-sm" style="float:right;">Hapus</button>
-                            </form>
+                            &nbsp;                            
+                            @if (Auth::user()->role == 'koordinator')
+                                <form action="{{route('news.delete')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$news->id}}">
+                                    <button type="submit" class="btn btn-secondary btn-sm" style="float:right;">Hapus</button>
+                                </form>
+                            @endif                              
                         </div>
                     </div>
                 @endforeach 

@@ -37,7 +37,9 @@ Detail Kelompok
                                     @if (Auth::user()->role != 'dosen')
                                         <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodalUploadBukti"style="line-height:1;border-radius:3px;">Upload</button>
                                     @endif
-                                    <button type="submit" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#scrollmodalLihatBukti"style="line-height:1;border-radius:3px;">Lihat</button>
+                                    @if($group->proof_path != null)
+                                        <button type="submit" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#scrollmodalLihatBukti"style="line-height:1;border-radius:3px;">Lihat</button>
+                                    @endif                                   
                                 </p>
                             </div>
                         </div>
