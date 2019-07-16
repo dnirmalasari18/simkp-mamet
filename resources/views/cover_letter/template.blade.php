@@ -27,12 +27,12 @@
             <div class="row form-group">
                 <div style="width:100px;">Nomor</div>
                 <div>:</div>
-                <div style="padding-left:5px;"> 045609/IT2.VI.2.5/HM.00.01/2019</div>
+                <div style="padding-left:5px;"></div>
             </div>
             <div class="row form-group">
                 <div style="width:100px;">Perihal</div>
                 <div>:</div>
-                <div style="padding-left:5px;"><b>Kerja Praktek</b></div>
+                <div style="padding-left:5px;"><b>{{$group->type['desc']}}</b></div>
             </div>
         </div>
         <div class="col-md-3" >
@@ -52,7 +52,13 @@
 
     <div class="row"style="margin-top:1.5cm; margin-left:2.5cm; margin-right:2.5cm;">
         <div style="padding-left:105px">
-            <div style="text-align:justify;text-indent:1.27cm;">Dalam rangka memenuhi persyaratan kurikulum, setiap mahasiswa Departemen Teknik Material FTI-ITS wajib melakukan Kerja Praktek. Sehubungan dengan hal tersebut kami mohon dengan hormat agar mahasiswa tersebut di bawah ini diijinkan untuk dapat melakukan Kerja Praktik yang dimulai tanggal 01 Juli - 01 Agustus 2019 di perusahaan yang Bapak/Ibu pimpun. Adapun mahasiswa yang dimaksud adalah sbb :</div>
+            <div style="text-align:justify;text-indent:1.27cm;">
+                Dalam rangka memenuhi persyaratan kurikulum, setiap mahasiswa Departemen Teknik Material FTI-ITS wajib melakukan 
+                {{$group->type['desc']}}. Sehubungan dengan hal tersebut kami mohon dengan hormat agar mahasiswa tersebut di bawah 
+                ini diijinkan untuk dapat melakukan Kerja Praktik yang dimulai tanggal {{date('d-M-y', strtotime($group->start_date))}} 
+                - {{date('d-M-y', strtotime($group->end_date))}} di perusahaan yang Bapak/Ibu pimpin. Adapun mahasiswa yang dimaksud adalah sbb 
+                :
+            </div>
             <div style="text-align:center;text-indent:1.27cm;">
                 <table class="table table-bordered" style="border-color:black;">
                     <thead>
@@ -77,7 +83,7 @@
                     </tbody>
                 </table>
             </div>
-            <div style="text-align:justify;text-indent:1.27cm;">Demikian surat permohonan ini, kami menunggu konfirmasi penerimaan kerja praktek dari perusahaan Bapak/Ibu dalam waktu yang tidak terlalu lama. Atas bantuan dan kerja sama yang baik, kami sampaikan terima kasih.</div>
+            <div style="text-align:justify;text-indent:1.27cm;">Demikian surat permohonan ini, kami menunggu konfirmasi penerimaan {{strtolower($group->type['desc'])}} dari perusahaan Bapak/Ibu dalam waktu yang tidak terlalu lama. Atas bantuan dan kerja sama yang baik, kami sampaikan terima kasih.</div>
         </div>
     </div>
     <div class="row" style="margin-top:2cm; margin-left:2.5cm; margin-right:2.5cm;">

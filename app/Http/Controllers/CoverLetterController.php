@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Group;
 use PDF;
 class CoverLetterController extends Controller
 {
   public function index(){
     $groups=Group::all();
-    return view('mockup.coba-surat')->with('groups',$groups);
+    return view('cover_letter.index')->with('groups',$groups);
   }
-<<<<<<< HEAD
+
   public function download($id){
     $group = Group::find($id);
-        $lecturers = User::where('role', 'dosen')->orderBy('username')->get();
-        return view('group.show')->with('group',$group)->with('lecturers', $lecturers);
-=======
-
-  public function downloadPDF($id){
-    $group = Group::find($id);
-    return view('surat')->with('group',$group);
->>>>>>> bdf0ce14efbf4f85ccdb07b0a2eefdc8bc7ebfe0
+    $pdf = PDF::loadView('cover_letter.template', compact('group'));
+    return $pdf->download('invoice.pdf');
+    
+    //return view('cover_letter.template')->with('group',$group)->with('number',$number)->with('date',$date)->with('to',$to);
+    //return "Hi $to";
+    
   }
 }

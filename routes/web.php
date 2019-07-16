@@ -36,7 +36,7 @@ Route::prefix('corps/')->group(function(){
 
 Route::prefix('cover_letter/')->group(function(){
     Route::get('','CoverLetterController@index')->name('cover_letter.index');
-    Route::get('{id}','CoverLetterController@downloadPDF')->name('cover_letter.download');
+    Route::get('{id}','CoverLetterController@download')->name('cover_letter.download');
 });
 
 Route::prefix('users/')->group(function(){
@@ -110,12 +110,6 @@ Route::post('valuation/group/store', 'ValuationController@store')->name('valuati
 
 Route::get('/', function () {
     return redirect('login');
-});
-
-
-Route::prefix('cover_letter/')->group(function(){
-    Route::get('','CoverLetterController@index')->name('cover_letter.index');
-    Route::get('{id}','CoverLetterController@download')->name('cover_letter.download');
 });
 
 
