@@ -62,5 +62,5 @@ class NewsController extends Controller
         $news->delete();
         Alert::success('Success', 'Berita telah dihapus');
         return redirect()->route('news.index');
-    }    
+    }
 }

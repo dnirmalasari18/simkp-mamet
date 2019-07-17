@@ -73,7 +73,7 @@ Berita
                                 @endforeach                                                                
                             </ul>
     
-                            <i><small><span class="fa fa-clock-o"></span> Created at: {{$news->created_at}}</small></i>
+                            <i><small><span class="fa fa-clock-o"></span> Created at: {{App\Utils::IndonesianDate($news->created_at)}}</small></i>
                             &nbsp;                            
                             @if (Auth::user()->role == 'koordinator')
                                 <form action="{{route('news.delete')}}" method="post">

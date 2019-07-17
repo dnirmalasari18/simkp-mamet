@@ -12,54 +12,62 @@
     <title>simKP</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @include('partials.css')
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
     <style>
         body {
             width:21cm;
             height:29.7cm;
+            line-height: 22pt;
+        }  
+        table {
+            border-collapse: collapse;
+            width: 100%;
         }
+
+        table, th, td {
+            border: 1px solid black;
+        }   
     </style>
 </head>
 <body>
-    <div class="row" style="margin-top:3cm; margin-left:2.5cm; margin-right:2.5cm;">
-        <div class="col-md-9">
-            <div class="row form-group">
-                <div style="width:100px;">Nomor</div>
-                <div>:</div>
-                <div style="padding-left:5px;">{{$number}}</div>
-            </div>
-            <div class="row form-group">
-                <div style="width:100px;">Perihal</div>
-                <div>:</div>
-                <div style="padding-left:5px;"><b>{{$group->type['desc']}}</b></div>
-            </div>
+    <div style="margin:0px auto;margin-top:2cm;margin-left: 1.5cm;margin-right: 3.5cm; ">
+        <div style="width:70%;vertical-align:top;display:inline-block">
+            <div style="display:inline-block;width:100px;vertical-align: top;">Nomor</div>
+            <div style="display:inline-block;vertical-align: top;">:</div>
+            <div style="display:inline-block;padding-left:10px;vertical-align:top;">{{$number}}</div>
         </div>
-        <div class="col-md-3" >
+        <div style="width:25%; vertical-align:top;padding:0;display:inline-block;">
             {{$date}}
         </div>
     </div>
-    <div class="row" style="margin-top:1.5cm; margin-left:2.5cm; margin-right:2.5cm;">
-        
-        <div div style="width:100px;">Kepada Yth</div>
-        <div>:</div>
-        <div style="padding-left:5px;">
-            <b>{{$to}}</b><br>
-            {{$group->corp->address}}<br>
-            {{$group->corp->city}}
+    <div style="margin:0px auto;margin-left: 1.5cm; margin-right: 3.5cm;">
+        <div style="display:inline-block; width:100px">Perihal</div>
+        <div style="display:inline-block;">:</div>
+        <div style="display:inline-block;padding-left:10px;"><b>{{$group->type['desc']}}</b></div>
+    </div>
+    
+    <div style="margin:0px auto;margin-left: 1.5cm; margin-right: 3.5cm;margin-top:1cm; vertical-align:top;">
+        <div style="display:inline-block;vertical-align:top;width:20%">
+            <div style="display:inline-block; width:100px;vertical-align:top;">Kepada Yth</div>
+            <div style="display:inline-block;vertical-align:top;">:</div>
+        </div>
+        <div style="display:inline-block;width:75%;vertical-align:top;">
+            <div style="display:inline;vertical-align:top;">{{$to}}</b><br></div>
+            <div style="display:inline;vertical-align:top;">{{$group->corp->address}}<br></div>
+            <div style="display:inline;vertical-align:top;">{{$group->corp->city}}</div>
         </div>
     </div>
-
-    <div class="row"style="margin-top:1.5cm; margin-left:2.5cm; margin-right:2.5cm;">
-        <div style="padding-left:105px">
-            <div style="text-align:justify;text-indent:1.27cm;">
+    
+    <div style="margin-top:1cm; display:inline-block;margin-right:3.5cm;">
+        <div style="padding-left:170px;">
+            <div style="text-align:justify;width:100%;text-indent:1.27cm;">
                 Dalam rangka memenuhi persyaratan kurikulum, setiap mahasiswa Departemen Teknik Material FTI-ITS wajib melakukan 
                 {{$group->type['desc']}}. Sehubungan dengan hal tersebut kami mohon dengan hormat agar mahasiswa tersebut di bawah 
-                ini diijinkan untuk dapat melakukan Kerja Praktik yang dimulai tanggal {{date('d-M-y', strtotime($group->start_date))}} 
-                - {{date('d-M-y', strtotime($group->end_date))}} di perusahaan yang Bapak/Ibu pimpin. Adapun mahasiswa yang dimaksud adalah sbb 
+                ini diijinkan untuk dapat melakukan Kerja Praktik selama {{$duration}} minggu yang dimulai tanggal {{$group->start_date}} 
+                - {{$group->end_date}} di perusahaan yang Bapak/Ibu pimpin. Adapun mahasiswa yang dimaksud adalah sbb 
                 :
             </div>
-            <div style="text-align:center;text-indent:1.27cm;">
+            <div style="text-align:center;text-indent:1.27cm;margin-top:5px">
                 <table class="table table-bordered" style="border-color:black;">
                     <thead>
                         <tr>
@@ -70,24 +78,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><b>1</b></td>
-                            <td><b>Dewi Ayu N</b></td>
-                            <td><center><b>051164000115</b></center></td>
-                        </tr>
-                        <tr>
-                            <td><b>2</b></td>
-                            <td><b>Frandita Adhitama</b></td>
-                            <td><center><b>051164000129</b></center></td>
-                        </tr>
+                        @php $number=1;@endphp
+                        @foreach ($group->students as $student)
+                            <tr>
+                                <td style="vertical-align:top;"><center><b>{{$number}}</b></center></td>
+                                <td style="text-align:left;vertical-align:top;"><b>{{$student->fullname}}</b></td>
+                                <td style="vertical-align:top;"><center><b>{{$student->username}}</b></center></td>
+                            </tr>
+                            @php $number+=1;@endphp
+                        @endforeach
                     </tbody>
                 </table>
             </div>
-            <div style="text-align:justify;text-indent:1.27cm;">Demikian surat permohonan ini, kami menunggu konfirmasi penerimaan {{strtolower($group->type['desc'])}} dari perusahaan Bapak/Ibu dalam waktu yang tidak terlalu lama. Atas bantuan dan kerja sama yang baik, kami sampaikan terima kasih.</div>
+            <div style="text-align:justify;text-indent:1.27cm;margin-top:5px;">Demikian surat permohonan ini, kami menunggu konfirmasi penerimaan {{strtolower($group->type['desc'])}} dari perusahaan Bapak/Ibu dalam waktu yang tidak terlalu lama. Atas bantuan dan kerja sama yang baik, kami sampaikan terima kasih.</div>
         </div>
     </div>
-    <div class="row" style="margin-top:2cm; margin-left:2.5cm; margin-right:2.5cm;">
-        <div style="padding-left:9cm;" >
+
+    <div style="margin-top:2cm">
+        <div style="padding-left:9.3cm;" >
             Ka.Dept.,<br><br><br>
             <b>Dr. Agung Purniawan, ST., M.Eng</b><br>
             <b>NIP. 197605282002121003</b>

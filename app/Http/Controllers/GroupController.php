@@ -12,7 +12,6 @@ use App\User;
 use App\GroupRequest;
 use App\Notification;
 use Alert;
-
 class GroupController extends Controller
 {
     //
@@ -34,6 +33,9 @@ class GroupController extends Controller
     public function show($id){
         $group = Group::find($id);
         $lecturers = User::where('role', 'dosen')->orderBy('username')->get();
+        
+        $group->start_date = GroupController::IndonesianDate($group->start_date);
+        $group->end_date = GroupController::IndonesianDate($group->end_date);
         return view('group.show')->with('group',$group)->with('lecturers', $lecturers);
     }
 
@@ -211,4 +213,14 @@ class GroupController extends Controller
         Alert::success('Success', 'Group berhasil dihapus');
         return redirect()->back();
     }
+
+    public function IndonesianDate($date){
+        $month = array (
+          1 =>   'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'
+        );
+        $split = explode('-', $date);
+       
+        return $split[2] . ' ' . $month[ (int)$split[1] ] . ' ' . $split[0];
+      }
+    
 }
