@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     //
+    protected $morphClass = "lecturer request";
+
     protected $fillable = [
          'start_date', 'end_date', 'type'
     ];
@@ -68,5 +70,9 @@ class Group extends Model
 
     public function lecturer(){
         return $this->belongsTo('App\User', 'lecturer_id');
+    }
+
+    public function lecturerNotifications(){
+        return $this->morphTo('App\Notification', 'notifiable');
     }
 }

@@ -18,6 +18,8 @@ class GroupController extends Controller
 {
     //
     public function index(){
+        // dd(Auth::user()->notifications);
+        
         if(Auth::check()){
             if(Auth::user()->role == 'mahasiswa'){
                 $groups = Auth::user()->groups;

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Group;
 use App\Report;
+use App\Notification;
 use Alert;
 
 class LecturerController extends Controller
@@ -24,9 +26,16 @@ class LecturerController extends Controller
             'lecturer_id' => 'required'
         ]);
 
-        $group = Group::find($request->group_id);
-        $group->lecturer_id = $request->lecturer_id;
-        $group->save();
+        // $group = Group::find($request->group_id);
+        // $group->lecturer_id = $request->lecturer_id;
+        // $group->save();
+
+        $notif = new Notification;
+        $notif->user_id = $request->lecturer_id;
+        $notif->notifiable_id = $request->group_id;
+        $notif->notifiable_type = 'lecturer request';
+        $notif->is_read = false;
+        $notif->save();
 
         Alert::success('Success', 'Data telah tersimpan');
         return redirect()->back();
@@ -49,6 +58,26 @@ class LecturerController extends Controller
             $group->save();
         }
         Alert::success('Success', 'Data telah tersiman');
+        return redirect()->back();
+    }
+
+    public function acceptGroup(Request $request){
+        $group = Group::find($request->group_id);
+        $group->lecturer_id = Auth::user()->id;
+        $group->save();
+
+        $notif = Notification::find($request->notif_id);        
+        $notif->delete();        
+
+        Alert::success('Success', 'Data telah tersimpan');
+        return redirect()->back();
+    }
+
+    public function declineGroup(Request $request){        
+        $notif = Notification::find($request->notif_id);        
+        $notif->delete();        
+
+        Alert::success('Success', 'Data telah tersimpan');
         return redirect()->back();
     }
 

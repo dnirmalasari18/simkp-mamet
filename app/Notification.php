@@ -8,11 +8,11 @@ class Notification extends Model
 {
     //
     public function notifiable() {
-		return $this->morphTo('notifiable');
+      	return $this->morphTo('notifiable');
     }
     
     public function getNotifiableTypeAttribute($type) {
-		$type = strtolower($type);
-		return 'App\\'. str_replace(' ', '', ucwords($type));
-	}
+      	$type = strtolower($type);
+     	return 'App\\'. str_replace(' ', '', ucwords($type));
+    }
 }

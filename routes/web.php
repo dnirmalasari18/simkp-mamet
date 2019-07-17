@@ -76,6 +76,8 @@ Route::prefix('lecturers/')->group(function(){
     Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');
     Route::get('{id}','LecturerController@show')->name('lecturer.show');
     Route::post('group/assign','LecturerController@assignGroup')->name('lecturer.group.assign');
+    Route::post('group/accept','LecturerController@acceptGroup')->name('lecturer.group.accept');
+    Route::post('group/decline','LecturerController@declineGroup')->name('lecturer.group.decline');
     Route::post('log/accept','LecturerController@acceptLog')->name('lecturer.log.accept');
 });
 
