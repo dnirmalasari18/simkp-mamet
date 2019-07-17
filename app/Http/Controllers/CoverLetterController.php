@@ -21,8 +21,8 @@ class CoverLetterController extends Controller
     ]);
     
     $group = Group::find($request->group_id);
-    $group->start_date = CoverLetterController::IndonesianDate($group->start_date);
-    $group->end_date = CoverLetterController::IndonesianDate($group->end_date);
+    $group->start_date = \App\Utils::IndonesianDate($group->start_date);
+    $group->end_date = \App\Utils::IndonesianDate($group->end_date);
     $duration=CoverLetterController::diffInWeeks($group->start_date, $group->end_date);
 
     $pdf= PDF::loadView('cover_letter.template',['group'=>$group,'number'=>$request->number,'date'=>$request->date, 'to'=>$request->to, 'duration'=>$duration])->setPaper('a4','potrait');
@@ -30,14 +30,6 @@ class CoverLetterController extends Controller
     //return view('cover_letter.template')->with('group',$group)->with('number',$request->number)->with('date',$request->date)->with('to',$request->to);    
   }
 
-  public function IndonesianDate($date){
-    $month = array (
-      1 =>   'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'
-    );
-    $split = explode('-', $date);
-   
-    return $split[2] . ' ' . $month[ (int)$split[1] ] . ' ' . $split[0];
-  }
 
   public function diffInWeeks($date1, $date2){
     return ceil(abs(strtotime($date2) - strtotime($date1)) / 60 / 60 / 24 / 7);

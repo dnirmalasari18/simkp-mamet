@@ -41,9 +41,9 @@ Periode
                                 @foreach ($periods as $period)
                                     <tr>
                                         <td style="vertical-align:middle">{{ucwords($period->name)}}</td>
-                                        <td style="vertical-align:middle"><center>{{$period->start_date}}</center></td>
-                                        <td style="vertical-align:middle"><center>{{$period->end_date}}</center></td>
-                                        <td style="vertical-align:middle"><center>{{$period->final_date}}</center></td>
+                                        <td style="vertical-align:middle"><center>{{App\Utils::IndonesianDate($period->start_date)}}</center></td>
+                                        <td style="vertical-align:middle"><center>{{App\Utils::IndonesianDate($period->end_date)}}</center></td>
+                                        <td style="vertical-align:middle"><center>{{App\Utils::IndonesianDate($period->final_date)}}</center></td>
                                         <td style="vertical-align:middle">
                                             @if ($period->active)
                                                 <center><span class="badge badge-success">Active</span></center>

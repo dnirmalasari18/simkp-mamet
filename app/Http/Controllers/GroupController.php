@@ -37,8 +37,8 @@ class GroupController extends Controller
         $group = Group::find($id);
         $lecturers = User::where('role', 'dosen')->orderBy('username')->get();
         
-        $group->start_date = GroupController::IndonesianDate($group->start_date);
-        $group->end_date = GroupController::IndonesianDate($group->end_date);
+        $group->start_date = \App\Utils::IndonesianDate($group->start_date);
+        $group->end_date = \App\Utils::IndonesianDate($group->end_date);
         return view('group.show')->with('group',$group)->with('lecturers', $lecturers);
     }
 
