@@ -39,23 +39,23 @@
                         @csrf
                         <div class="form-group">
                             <label>Nama</label>
-                            <input name="fullname" type="text" class="form-control">
+                            <input name="fullname" type="text" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>NRP</label>
-                            <input name="username" type="text" class="form-control">
+                            <input name="username" type="text" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>No HP</label>
-                            <input name="phone_number" type="text" class="form-control">
+                            <input name="phone_number" type="text" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input name="password" type="password" class="form-control">
+                            <input name="password" type="password" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Konfirmasi Password</label>
-                            <input name="password_confirmation" type="password" class="form-control">
+                            <input name="password_confirmation" type="password" class="form-control" autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
                         <div class="register-link m-t-15 text-center">

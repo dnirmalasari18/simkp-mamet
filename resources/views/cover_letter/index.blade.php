@@ -33,7 +33,7 @@ Surat
                                         <td style="vertical-align:middle">                                                
                                             {{ucwords($group->type['name'])}}
                                         </td>
-                                        <td style="vertical-align:middle"><center><button type="submit" class="btn btn-secondary btn-sm"data-toggle="modal" data-target="#scrollmodalSuratDetail" style="border-radius:3px;">Lihat Detail</button></center></td>
+                                        <td style="vertical-align:middle"><center><button type="submit" class="btn btn-secondary btn-sm"data-toggle="modal" data-target="#scrollmodalSuratDetailz" style="border-radius:3px;">Lihat Detail</button></center></td>
                                     </tr>
                                 @endforeach                                  
                             </tbody>

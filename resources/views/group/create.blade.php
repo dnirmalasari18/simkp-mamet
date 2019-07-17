@@ -53,25 +53,25 @@ Pengajuan
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Nama Perusahaan</strong></label>
-                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="">
+                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Alamat</strong></label>
-                                    <input id="corpaddress" type="text" class="form-control" id="corpaddress" name="corporation[address]" value="">
+                                    <input id="corpaddress" type="text" class="form-control" id="corpaddress" name="corporation[address]" value="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label><strong>Kota</strong></label>
-                                    <input id="corpcity" type="text" class="form-control" id="corpcity" name="corporation[city]" value="">
+                                    <input id="corpcity" type="text" class="form-control" id="corpcity" name="corporation[city]" value="" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Kode Pos</strong></label>
-                                    <input id="corppost_code" type="text" class="form-control" id="corppost_code" name="corporation[post]" value="">
+                                    <input id="corppost_code" type="text" class="form-control" id="corppost_code" name="corporation[post]" value="" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Telp Kantor</strong></label>
-                                    <input id="corptelp" type="text" class="form-control" id="corptelp" name="corporation[phone_number]" value="">
+                                    <input id="corptelp" type="text" class="form-control" id="corptelp" name="corporation[phone_number]" value="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-4">

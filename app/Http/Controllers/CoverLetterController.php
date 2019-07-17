@@ -9,7 +9,8 @@ use PDF;
 class CoverLetterController extends Controller
 {
   public function index(){
-    $groups=Group::all();
+    $groups=Group::where('status',Group::statusAll()[2])->get();
+    
     return view('cover_letter.index')->with('groups',$groups);
   }
 
