@@ -39,7 +39,7 @@ Detail Kelompok
                                     @endif
                                     @if($group->proof_path != null)
                                         <button type="submit" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#scrollmodalLihatBukti"style="line-height:1;border-radius:3px;">Lihat</button>
-                                    @endif                                   
+                                    @endif
                                 </p>
                             </div>
                         </div>
@@ -57,7 +57,7 @@ Detail Kelompok
                             <div class="row form-group">
                                 <div class="col col-md-4">
                                     <label class=" form-control-label">
-                                        <strong>Dosen Pembimbing</strong><br>
+                                        <strong>Pembimbing</strong><br>
                                         @if ($group->lecturer != null)
                                             <strong>NIP</strong><br>
                                             <strong>Nomor HP</strong>
@@ -75,12 +75,20 @@ Detail Kelompok
                                 @endif
                                     <span style="display:block;">
                                         @if (Auth::user()->role == 'koordinator')
-                                            <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDosbing"style="line-height:1;border-radius:3px;">Update</button>
+                                            <button type="submit" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#scrollmodalDosenPembimbing"style="line-height:1;border-radius:3px;">Update</button>
                                         @endif
                                     </span>
                                 </p>
                             </div>
                             @if (Auth::user()->role == 'koordinator')
+                                <div class="row form-group">
+                                    <div class="col col-md-4"><label class=" form-control-label"><strong>Nilai</strong></label></div>
+                                    <p style="color:#212529">
+                                        <button type="submit" class="btn btn-primary btn-sm"data-toggle="modal" data-target="#scrollmodalNilaiLihat" style="line-height:1;border-radius:3px;">Lihat</button>
+                                    </p>
+                                </div>
+                            @endif
+                            @if (Auth::user()->role == 'dosen' && $group->reports->count() == $group->reports->where('status', App\Report::statusAll()[1])->count())
                                 <div class="row form-group">
                                     <div class="col col-md-4"><label class=" form-control-label"><strong>Nilai</strong></label></div>
                                     <p style="color:#212529">
@@ -145,22 +153,22 @@ Detail Kelompok
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th  style="vertical-align:middle;width:150px;">Status</th>
-                                            <th  style="vertical-align:middle;">Tanggal Upload</th>
+                                            <th  style="vertical-align:middle;width:40px;">Status</th>
+                                            <th  style="vertical-align:middle;width:150px;">Tanggal Upload</th>
                                             <th  style="vertical-align:middle;">Judul Log</th>
                                             <th  style="vertical-align:middle;width:150px;"><center>File</center></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <?php $i = 0?>
                                             @foreach ($group->reports as $report)
                                                 <tr>
                                                     <td style="vertical-align:middle;">
-                                                        @if (Auth::user()->role == 'dosen')
-                                                            <input type="checkbox" id="checkbox1" name="reports[{{$i++}}]" value="{{$report->id}}">
+                                                        @if ($report->status['status'] == 0 && Auth::user()->role == 'dosen')
+                                                            <center><input type="checkbox" id="checkbox1" name="reports[{{$i++}}]" value="{{$report->id}}"></center>
                                                         @else
-                                                            {{$report->status['desc']}}
-                                                        @endif                                                
+                                                            {{$report->status['name']}}
+                                                        @endif
                                                     </td>
                                                     <td style="vertical-align:middle;">{{$report->created_at}}</td>
                                                     <td style="vertical-align:middle;">{{$report->title}}</td>
@@ -172,11 +180,11 @@ Detail Kelompok
                                                         </center>
                                                     </td>
                                                 </tr>
-                                            @endforeach                                        
+                                            @endforeach
                                     </tbody>
-                                </table>                                
+                                </table>
                                 <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px;">Setujui Log</button>
-                            </form>                            
+                            </form>
                         </div>
                         <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem;margin-bottom:1.5rem;"></div>
                         <div class="col-md-12">
@@ -300,14 +308,14 @@ Detail Kelompok
         </div>
     </div>
 </div>
-<div class="modal fade" id="scrollmodalDosbing" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+<div class="modal fade" id="scrollmodalDosenPembimbing" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form action="{{route('lecturer.group.assign')}}" method="post">
                 @csrf
                 <input type="hidden" name="group_id" value="{{$group->id}}">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosbing</h5>
+                    <h5 class="modal-title" id="scrollmodalLabel">Pilih Dosen Pembimbing</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -361,11 +369,15 @@ Detail Kelompok
                             <tr>
                                 <th  style="vertical-align:middle">NRP</th>
                                 <th  style="vertical-align:middle">Nama</th>
-                                <th style="vertical-align:middle"><center>Lapangan</center></th>
-                                <th style="vertical-align:middle"><center>Seminar</center></th>
-                                <th style="vertical-align:middle"><center>Koordinator</center></th>
-                                <th style="vertical-align:middle"><center>Kedisiplinan</center></th>
-                                <th style="vertical-align:middle"><center>NA</center></th>
+                                @if (Auth::user()->role == 'koordinator')
+                                    <th style="vertical-align:middle"><center>Lapangan</center></th>
+                                @endif
+                                <th style="vertical-align:middle"><center>Dosen Pembimbing</center></th>
+                                @if (Auth::user()->role == 'koordinator')
+                                    <th style="vertical-align:middle"><center>Koordinator</center></th>
+                                    <th style="vertical-align:middle"><center>Kedisiplinan</center></th>
+                                    <th style="vertical-align:middle"><center>NA</center></th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -375,24 +387,27 @@ Detail Kelompok
                                 <tr>
                                     <td style="vertical-align:middle">{{$student->user->username}}</td>
                                     <td style="vertical-align:middle">{{$student->user->fullname}}</td>
+                                    @if (Auth::user()->role == 'koordinator')
                                     <td style="vertical-align:middle">
                                         <center>
-                                            <input type="text" id="text-input" name="valuation_1[{{$i}}]" placeholder="N1" class="form-control" value="{{$student->valuation_1}}">
+                                            <input type="text" id="text-input" name="valuation_1[{{$i}}]" class="form-control" value="{{$student->valuation_1}}">
+                                        </center>
+                                    </td>
+                                    @endif
+                                    <td style="vertical-align:middle">
+                                        <center>
+                                            <input type="text" id="text-input" name="valuation_2[{{$i}}]" class="form-control" value="{{$student->valuation_2}}">
+                                        </center>
+                                    </td>
+                                    @if (Auth::user()->role == 'koordinator')
+                                    <td style="vertical-align:middle">
+                                        <center>
+                                            <input type="text" id="text-input" name="valuation_3[{{$i}}]" class="form-control" value="{{$student->valuation_3}}">
                                         </center>
                                     </td>
                                     <td style="vertical-align:middle">
                                         <center>
-                                            <input type="text" id="text-input" name="valuation_2[{{$i}}]" placeholder="N1" class="form-control" value="{{$student->valuation_2}}">
-                                        </center>
-                                    </td>
-                                    <td style="vertical-align:middle">
-                                        <center>
-                                            <input type="text" id="text-input" name="valuation_3[{{$i}}]" placeholder="N1" class="form-control" value="{{$student->valuation_3}}">
-                                        </center>
-                                    </td>
-                                    <td style="vertical-align:middle">
-                                        <center>
-                                            <input type="text" id="text-input" name="valuation_4[{{$i}}]" placeholder="N1" class="form-control" value="{{$student->valuation_4}}">
+                                            <input type="text" id="text-input" name="valuation_4[{{$i}}]" class="form-control" value="{{$student->valuation_4}}">
                                         </center>
                                     </td>
                                     <td style="vertical-align:middle">
@@ -404,6 +419,7 @@ Detail Kelompok
                                             @endif
                                         </center>
                                     </td>
+                                    @endif
                                 </tr>
                                 <?php $i++ ?>
                             @endforeach

@@ -10,12 +10,11 @@ class ValuationController extends Controller
 {
     //
     public function store(Request $request){
-        $request = $request->all();
-        $ids = $request['id'];
-        $valuation_1 = $request['valuation_1'];
-        $valuation_2 = $request['valuation_2'];
-        $valuation_3 = $request['valuation_3'];
-        $valuation_4 = $request['valuation_4'];
+        $ids = $request->id;
+        $valuation_1 = $request->valuation_1;
+        $valuation_2 = $request->valuation_2;
+        $valuation_3 = $request->valuation_3;
+        $valuation_4 = $request->valuation_4;
 
         for($i = 0;$i < sizeof($ids); $i++){
             $student = StudentDetail::find($ids[$i]);

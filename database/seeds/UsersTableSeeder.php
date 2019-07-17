@@ -21,34 +21,34 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'username' => '05111640000129',
-            'fullname' => 'Fran',
-            'phone_number' => '0812938483',
+            'username' => '5116100129',
+            'fullname' => 'Frandita Adhitama',
+            'phone_number' => '082159688234',
             'role' => 'mahasiswa',
-            'password' => bcrypt('fran'),
-        ]);        
-
-        DB::table('users')->insert([
-            'username' => '05111640000115',
-            'fullname' => 'Mala',
-            'phone_number' => '0812938483',
-            'role' => 'mahasiswa',
-            'password' => bcrypt('mala'),
+            'password' => bcrypt('lala'),
         ]);
 
         DB::table('users')->insert([
-            'username' => '05111640000096',
-            'fullname' => 'Jason',
+            'username' => '5116100115',
+            'fullname' => 'Dewi Ayu Nirmalasari',
             'phone_number' => '0812938483',
             'role' => 'mahasiswa',
-            'password' => bcrypt('jason'),
+            'password' => bcrypt('lala'),
         ]);
-        
+
+        DB::table('users')->insert([
+            'username' => '5116100096',
+            'fullname' => 'Jason Wilyandi',
+            'phone_number' => '0812938483',
+            'role' => 'mahasiswa',
+            'password' => bcrypt('lala'),
+        ]);
+
         DB::table('users')->insert([
             'username' => 'ramialeon',
-            'fullname' => 'Ramialeon',
+            'fullname' => 'Ramialeon Swindarno',
             'phone_number' => '0812938483',
-            'role' => 'pembimbing',
+            'role' => 'dosen',
             'password' => bcrypt('ramialeon'),
         ]);
     }

@@ -8,6 +8,7 @@ use App\Group;
 use App\Corp;
 use App\Period;
 use App\StudentDetail;
+use APp\Report;
 use App\User;
 use App\GroupRequest;
 use App\Notification;
@@ -16,6 +17,8 @@ class GroupController extends Controller
 {
     //
     public function index(){
+        // dd(Auth::user()->notifications);
+        
         if(Auth::check()){
             if(Auth::user()->role == 'mahasiswa'){
                 $groups = Auth::user()->groups;
