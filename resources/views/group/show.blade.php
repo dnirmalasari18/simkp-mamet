@@ -450,8 +450,15 @@ Detail Kelompok
                     <div class="form-group">
                         <div class="col col-md-5"><label for="postal-code" class=" form-control-label"><strong>Judul Log</strong></label></div>
                     </div>
-                    <div class="form-group">
-                        <textarea name="title" id="textarea-input" rows="2" class="form-control"></textarea>
+                    <div class="form-group">                        
+                        <div class="col-12 col-md-9">
+                            <select name="status" id="select" class="form-control">
+                                <option value=""></option>
+                                @foreach (App\Group::statusAll() as $status)
+                                    <option value="{{$status['status']}}">{{ucwords($status['desc'])}}</option>
+                                @endforeach
+                            </select>
+                        </div>                        
                     </div>
                     <div class="form-group">
                         <div class="col col-md-5"><label for="postal-code" class=" form-control-label"><strong>Dokumen</strong></label></div>

@@ -106,6 +106,13 @@ Route::prefix('groups/')->group(function(){
     Route::post('abstract/update','GroupController@abstractUpdate')->name('abstract.update');
 });
 
+Route::prefix('ajax/')->group(function(){
+    Route::prefix('get/')->group(function(){
+        Route::post('corp','AjaxController@getCorp')->name('ajax.corp');
+        Route::post('student','AjaxController@getStudent')->name('ajax.student');
+    });
+});
+
 Route::get('statistics','StatisticController@show')->name('statistic.show');
 
 Route::get('valuation/periods/{id}','ValuationController@editCommunal')->name('valuation.edit');

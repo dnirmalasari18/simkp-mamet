@@ -34,6 +34,5 @@ class CoverLetterController extends Controller
 
   public function diffInWeeks($date1, $date2){
     return ceil(abs(strtotime($date2) - strtotime($date1)) / 60 / 60 / 24 / 7);
-
   }
 }
