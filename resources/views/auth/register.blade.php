@@ -40,18 +40,30 @@
                         <div class="form-group">
                             <label>Nama</label>
                             <input name="fullname" type="text" class="form-control" autocomplete="off">
+                            @error('fullname')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>NRP</label>
                             <input name="username" type="text" class="form-control" autocomplete="off">
+                            @error('username')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>No HP</label>
                             <input name="phone_number" type="text" class="form-control" autocomplete="off">
+                            @error('phone_number')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Password</label>
                             <input name="password" type="password" class="form-control" autocomplete="off">
+                            @error('password')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Konfirmasi Password</label>

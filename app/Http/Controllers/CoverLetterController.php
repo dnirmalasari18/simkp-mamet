@@ -27,13 +27,13 @@ class CoverLetterController extends Controller
     $duration=CoverLetterController::diffInWeeks($group->start_date, $group->end_date);
 
     $pdf= PDF::loadView('cover_letter.template',['group'=>$group,'number'=>$request->number,'date'=>$request->date, 'to'=>$request->to, 'duration'=>$duration])->setPaper('a4','potrait');
-    return $pdf->download($request->number.".pdf");
-    //return view('cover_letter.template')->with('group',$group)->with('number',$request->number)->with('date',$request->date)->with('to',$request->to);    
+    //return $pdf->download($request->number.".pdf");
+    return view('cover_letter.template')->with('group',$group)->with('number',$request->number)->with('date',$request->date)->with('to',$request->to)->with('duration',$duration);    
   }
 
 
   public function diffInWeeks($date1, $date2){
-    return ceil(abs(strtotime($date2) - strtotime($date1)) / 60 / 60 / 24 / 7);
+    return ceil(abs(strtotime($date2) - strtotime($date1)) / 60 / 60/24/7);
 
   }
 }
