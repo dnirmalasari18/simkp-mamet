@@ -13,8 +13,7 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="{!!asset('template/material.png')!!}">
 
 
     <link rel="stylesheet" href="{!! asset('template/vendors/bootstrap/dist/css/bootstrap.min.css')!!}">
@@ -33,25 +32,38 @@
             <div class="login-content">
                 <div class="login-form">
                     <div class="login-logo">
-                        <img class="align-content" src="images/logo.png" alt="simKP">
+                        <img class="align-content" src="{!!asset('template/material.png')!!}" width=100>
+                        <h3>SIMKP</h3>
                     </div>
                     <form action="{{route('register')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Nama</label>
                             <input name="fullname" type="text" class="form-control" autocomplete="off">
+                            @error('fullname')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>NRP</label>
                             <input name="username" type="text" class="form-control" autocomplete="off">
+                            @error('username')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>No HP</label>
                             <input name="phone_number" type="text" class="form-control" autocomplete="off">
+                            @error('phone_number')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Password</label>
                             <input name="password" type="password" class="form-control" autocomplete="off">
+                            @error('password')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Konfirmasi Password</label>

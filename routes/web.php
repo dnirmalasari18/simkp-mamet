@@ -115,13 +115,20 @@ Route::prefix('ajax/')->group(function(){
 
 Route::get('statistics','StatisticController@show')->name('statistic.show');
 
-Route::get('valuation/periods/{id}','ValuationController@editCommunal')->name('valuation.edit');
+Route::get('valuation/communals','ValuationController@editCommunal')->name('valuation.edit');
 Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');
 
 Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('/nilai',function(){
+    return view('mockup.coba-nilai-integra');
+});
+
+Route::get('/nilai/edit',function(){
+    return view('mockup.coba-nilai-integra-edit');
+})->name('nilai.edit');
 
 
 Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)

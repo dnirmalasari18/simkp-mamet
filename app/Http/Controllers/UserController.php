@@ -124,12 +124,17 @@ class UserController extends Controller
 	 *
 	 * @return Response
 	 */
-    public function register(Request $request){        
+    public function register(Request $request){      
+          
         $this->validate($request, [
             'username' => 'required',
             'fullname' => 'required',
             'phone_number' => 'required',
             'password' => 'required|min:6|confirmed',
+        ],$messages=[
+            'required' => 'Atribut di atas perlu diisi',
+            'min' => 'Atribut perlu diisi minimal :min karakter',
+            'confirmed' => 'Atribut pada password dan konfirmasi password tidak boleh berbeda'
         ]);
 
         User::create([
