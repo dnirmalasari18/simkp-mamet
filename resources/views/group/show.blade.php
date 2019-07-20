@@ -450,21 +450,23 @@ Detail Kelompok
                     <div class="form-group">
                         <div class="col col-md-5"><label for="postal-code" class=" form-control-label"><strong>Judul Log</strong></label></div>
                     </div>
-                    <div class="form-group">                        
-                        <div class="col-12 col-md-9">
-                            <select name="status" id="select" class="form-control">
-                                <option value=""></option>
-                                @foreach (App\Group::statusAll() as $status)
-                                    <option value="{{$status['status']}}">{{ucwords($status['desc'])}}</option>
-                                @endforeach
+                    <div class="form-group">                                            
+                        <div class="col-12 col-md-12">
+                            <select name="title" id="select" class="form-control">                                
+                                <option value="Bimbingan">Bimbingan</option>
+                                <option value="Mingguan">Mingguan</option>
                             </select>
                         </div>                        
-                    </div>
+                    </div>                    
+                    <div class="col col-md-12"><br></div>
                     <div class="form-group">
-                        <div class="col col-md-5"><label for="postal-code" class=" form-control-label"><strong>Dokumen</strong></label></div>
-                        <input name="file" type="file" id="fileAdd"/>
-                        <small class="form-text text-muted">Format .doc</small>
+                        <div class="col col-md-8"><label for="postal-code" class=" form-control-label"><strong>Dokumen</strong></label></div>
+                        <div class="col col-md-4">
+                            <input name="file" type="file" id="fileAdd"/>
+                            <small class="form-text text-muted">Format .doc</small>
+                        </div>
                     </div>
+                    <div class="col col-md-12"><br></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
