@@ -111,6 +111,7 @@ Route::prefix('ajax/')->group(function(){
         Route::post('corp','AjaxController@getCorp')->name('ajax.corp');
         Route::post('student','AjaxController@getStudent')->name('ajax.student');
         Route::post('statistic', 'AjaxController@getStatistic')->name('ajax.statistic');
+        Route::get('statistic/', 'AjaxController@getStatisticC')->name('ajax.statistic');
     });
 });
 
