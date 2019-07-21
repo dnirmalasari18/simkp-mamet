@@ -29,12 +29,12 @@ Statistik
                                     <div class="tab-pane fade show active" id="nav-grafik" role="tabpanel" aria-labelledby="nav-grafik-tab">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <select id="periodIDs" data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
-                                                    <option value="1">Periode Ini</option>
-                                                    <option value="2">1 Tahun Terakhir</option>
-                                                    <option value="3">3 Tahun Terakhir</option>
-                                                    <option value="4">5 Tahun Terakhir</option>
-                                                    <option value="5">2015/2016 Gasal</option>
+                                                <select id="periodIDs" name="" data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
+                                                    <option value="{&quot;IDs&quot; : [1,2]}">Periode Ini</option>
+                                                    <option value="{[2]}">1 Tahun Terakhir</option>
+                                                    <option value="{[3]}">3 Tahun Terakhir</option>
+                                                    <option value="{[4]}">5 Tahun Terakhir</option>
+                                                    <option value="{[5]}">2015/2016 Gasal</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-8">
@@ -268,14 +268,16 @@ Statistik
         });
         
         var x = {}
-        x['periodIDs'] = jQuery('#periodIDs').val()
+        x['period'] = JSON.parse(jQuery('#periodIDs').val())
+        // x['period'] = jQuery('#periodIDs').val()
 
         jQuery.ajax({
             type:'POST',
             url:"{{route('ajax.statistic')}}",
             data: x,
             success:function(res) {                                                        
-                console.log(res[0])
+                console.log(res)
+                // console.log(res[0])
                 // console.log(JSON.parse(res[0]))
                 new Morris.Donut({
                     element: 'grafik-perusahaan',                    

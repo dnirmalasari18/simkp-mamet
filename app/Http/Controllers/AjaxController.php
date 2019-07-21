@@ -24,7 +24,10 @@ class AjaxController extends Controller
         return response()->json(['students' => $students], 200);
     }
 
-    public function getStatistic(Request $request){
+    public function getStatistic(Request $request){        
+        foreach($request->period['IDs'] as $periodID){
+            
+        }                
         $periodIDs = $request->periodIDs;
         // $periodIDs = 1;
         $period = Period::find($periodIDs);
