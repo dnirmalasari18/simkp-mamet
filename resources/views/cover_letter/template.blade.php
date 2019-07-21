@@ -14,9 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
+        @page{width:21cm;
+            height:29.7cm;}
         body {
-            width:21cm;
-            height:29.7cm;
             line-height: 22pt;
         }  
         table {
@@ -30,7 +30,7 @@
     </style>
 </head>
 <body>
-    <div style="margin:0px auto;margin-top:2cm;margin-left: 1.5cm;margin-right: 3.5cm; ">
+    <div style="margin:0px auto;margin-top:5cm;margin-left: 1.5cm;margin-right: 1.5cm; ">
         <div style="width:70%;vertical-align:top;display:inline-block">
             <div style="display:inline-block;width:100px;vertical-align: top;">Nomor</div>
             <div style="display:inline-block;vertical-align: top;">:</div>
@@ -40,13 +40,13 @@
             {{$date}}
         </div>
     </div>
-    <div style="margin:0px auto;margin-left: 1.5cm; margin-right: 3.5cm;">
+    <div style="margin:0px auto;margin-left: 1.5cm; margin-right: 1.5cm;">
         <div style="display:inline-block; width:100px">Perihal</div>
         <div style="display:inline-block;">:</div>
         <div style="display:inline-block;padding-left:10px;"><b>{{$group->type['desc']}}</b></div>
     </div>
     
-    <div style="margin:0px auto;margin-left: 1.5cm; margin-right: 3.5cm;margin-top:1cm; vertical-align:top;">
+    <div style="margin:0px auto;margin-left: 1.5cm; margin-right: 1.5cm;margin-top:1cm; vertical-align:top;">
         <div style="display:inline-block;vertical-align:top;width:20%">
             <div style="display:inline-block; width:100px;vertical-align:top;">Kepada Yth</div>
             <div style="display:inline-block;vertical-align:top;">:</div>
@@ -58,8 +58,8 @@
         </div>
     </div>
     
-    <div style="margin-top:1cm; display:inline-block;margin-right:3.5cm;">
-        <div style="padding-left:170px;">
+    <div style="margin-top:1cm; display:inline-block;margin-right:1.5cm;">
+        <div style="padding-left:190px;">
             <div style="text-align:justify;width:100%;text-indent:1.27cm;">
                 Dalam rangka memenuhi persyaratan kurikulum, setiap mahasiswa Departemen Teknik Material FTI-ITS wajib melakukan 
                 {{$group->type['desc']}}. Sehubungan dengan hal tersebut kami mohon dengan hormat agar mahasiswa tersebut di bawah 
@@ -67,7 +67,7 @@
                 - {{$group->end_date}} di perusahaan yang Bapak/Ibu pimpin. Adapun mahasiswa yang dimaksud adalah sbb 
                 :
             </div>
-            <div style="text-align:center;text-indent:1.27cm;margin-top:5px">
+            <div style="text-align:center;text-indent:1.24cm;margin-top:5px">
                 <table class="table table-bordered" style="border-color:black;">
                     <thead>
                         <tr>
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-    <div style="margin-top:2cm">
+    <div style="margin-top:1cm">
         <div style="padding-left:9.3cm;" >
             Ka.Dept.,<br><br><br>
             <b>Dr. Agung Purniawan, ST., M.Eng</b><br>

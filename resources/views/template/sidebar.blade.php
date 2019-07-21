@@ -37,9 +37,13 @@
                         <a href="{{route('group.create')}}"> <i class="menu-icon fa fa-folder"></i>Pengajuan</a>
                     </li>
                 @endif
-                <li>
-                    <a href="{{route('group.index')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
-                </li>
+                @if (Auth::check())
+                    @if (Auth::user()->role != 'tendik')
+                        <li>
+                            <a href="{{route('group.index')}}"> <i class="menu-icon fa fa-briefcase"></i>Kelompok</a>
+                        </li>
+                    @endif
+                @endif
                 @if (Auth::check())
                     @if (Auth::user()->role == 'koordinator')
                         <li>
@@ -59,6 +63,13 @@
                     <li>
                         <a href="{{url('statistik')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                     </li>
+                @endif
+                @if (Auth::check())
+                    @if (Auth::user()->role == 'tendik')
+                        <li>
+                            <a href="{{url('cover_letter')}}"> <i class="menu-icon fa fa-envelope"></i>Cover Letter</a>
+                        </li>
+                    @endif
                 @endif
             </ul>
         </div><!-- /.navbar-collapse -->

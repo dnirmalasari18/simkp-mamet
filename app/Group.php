@@ -16,11 +16,12 @@ class Group extends Model
     protected static $status_collection = [
 		['status' =>  0, 'name' => 'created', 'desc' => 'Pengajuan kelompok KP baru', 'changeto' => [1, -1]],
 		['status' => -1, 'name' => 'denied', 'desc' => 'Pengajuan kelompok KP ditolak Koordinator KP', 'changeto' => []],
-        ['status' =>  1, 'name' => 'confirmed', 'desc' => 'Pengajuan kelompok KP diterima Koordinator KP', 'changeto' => [2, -2]],        
-		['status' => -2, 'name' => 'rejected', 'desc' => 'Pengajuan kelompok KP ditolak perusahaan', 'changeto' => []],
-        ['status' =>  2, 'name' => 'verified', 'desc' => 'Pengajuan kelompok KP diterima perusahaan', 'changeto' => [3]],
-        ['status' =>  3, 'name' => 'progress', 'desc' => 'Pengajuan kelompok KP diterima Dosen Pembimbing', 'changeto' => [4]],
-		['status' =>  4, 'name' => 'finished', 'desc' => 'Proses KP telah selesai', 'changeto' => []],
+        ['status' =>  1, 'name' => 'confirmed', 'desc' => 'Pengajuan kelompok KP diterima Koordinator KP', 'changeto' => [2]],
+        ['status' =>  2, 'name' => 'printed', 'desc' => 'Surat Pengantar sudah tercetak','changeto'=>[3,-3]],        
+		['status' => -3, 'name' => 'rejected', 'desc' => 'Pengajuan kelompok KP ditolak perusahaan', 'changeto' => []],
+        ['status' =>  3, 'name' => 'verified', 'desc' => 'Pengajuan kelompok KP diterima perusahaan', 'changeto' => [4]],
+        ['status' =>  4, 'name' => 'progress', 'desc' => 'Pengajuan kelompok KP diterima Dosen Pembimbing', 'changeto' => [5]],
+		['status' =>  5, 'name' => 'finished', 'desc' => 'Proses KP telah selesai', 'changeto' => []],
 	];
 
     protected static $type_collection = [
