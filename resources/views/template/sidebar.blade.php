@@ -53,7 +53,7 @@
                             <a href="{{route('statistic.show')}}"> <i class="menu-icon fa fa-bar-chart-o"></i>Statistik</a>
                         </li>
                         <li>
-                            <a href="{{url('nilai')}}"> <i class="menu-icon fa fa-table"></i>Nilai Integra</a>
+                            <a href="{{route('valuation.communal')}}"> <i class="menu-icon fa fa-table"></i>Nilai Integra</a>
                         </li>
                     @endif
                 @else

@@ -29,12 +29,12 @@ Statistik
                                     <div class="tab-pane fade show active" id="nav-grafik" role="tabpanel" aria-labelledby="nav-grafik-tab">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <select data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
-                                                    <option value="">Semua Periode</option>
-                                                    <option value="1">1 Tahun Terakhir</option>
-                                                    <option value="2">3 Tahun Terakhir</option>
-                                                    <option value="3">5 Tahun Terakhir</option>
-                                                    <option value="4">2015/2016 Gasal</option>
+                                                <select id="periodIDs" data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
+                                                    <option value="1">Periode Ini</option>
+                                                    <option value="2">1 Tahun Terakhir</option>
+                                                    <option value="3">3 Tahun Terakhir</option>
+                                                    <option value="4">5 Tahun Terakhir</option>
+                                                    <option value="5">2015/2016 Gasal</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-8">
@@ -244,18 +244,45 @@ Statistik
     });
 </script>
 <script>
-    new Morris.Donut({
-        element: 'grafik-perusahaan',
-        data: [
-            { label: 'Pertamina', value: 10 },
-            { label: 'Pertamax', value: 5 },
-            { label: 'Jastip', value: 3 },
-            { label: 'Starbux', value: 3 },
-            { label: 'Aksamedia', value: 4 },
-            { label: '9gag', value: 13 },
-            { label: 'Dosilasol ', value: 3 },
-        ]
+    jQuery(document).ready(function(){
+        var data = [
+                    { label: 'Pertamina', value: 10 },
+                    { label: 'Pertamax', value: 5 },
+                    { label: 'Jastip', value: 3 },
+                    { label: 'Starbux', value: 3 },
+                    { label: 'Aksamedia', value: 4 },
+                    { label: '9gag', value: 13 },
+                    { label: 'Dosilasol ', value: 3 },
+                ]
 
-    });
+        console.log(data)
+        
+        getStatistic()
+    })
+    
+    function getStatistic(){        
+        jQuery.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
+            }
+        });
+        
+        var x = {}
+        x['periodIDs'] = jQuery('#periodIDs').val()
+
+        jQuery.ajax({
+            type:'POST',
+            url:"{{route('ajax.statistic')}}",
+            data: x,
+            success:function(res) {                                                        
+                console.log(res[0])
+                // console.log(JSON.parse(res[0]))
+                new Morris.Donut({
+                    element: 'grafik-perusahaan',                    
+                    data: res[0]
+                });
+            }
+        })
+    }    
 </script>
 @endsection

@@ -110,12 +110,14 @@ Route::prefix('ajax/')->group(function(){
     Route::prefix('get/')->group(function(){
         Route::post('corp','AjaxController@getCorp')->name('ajax.corp');
         Route::post('student','AjaxController@getStudent')->name('ajax.student');
+        Route::post('statistic', 'AjaxController@getStatistic')->name('ajax.statistic');
     });
 });
 
 Route::get('statistics','StatisticController@show')->name('statistic.show');
 
-Route::get('valuation/communals','ValuationController@editCommunal')->name('valuation.edit');
+Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal');
+Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit');
 Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');
 
 Route::get('/', function () {

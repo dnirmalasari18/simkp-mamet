@@ -37,4 +37,12 @@ class Period extends Model
 			. ($this->year + 1) . ' '
 			. ($this->odd == 1 ? 'Gasal' : 'Genap');
 	}
+
+	public function groups(){
+		return $this->hasMany('App\Group');
+	}
+
+	public function corps(){
+		return $this->belongsToMany('App\Corp','groups', 'period_id', 'corp_id');
+	}
 }
