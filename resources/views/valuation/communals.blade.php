@@ -29,10 +29,7 @@ Nilai Integra
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <a id="edit" href="{{route('valuation.communal.edit')}}"><button type="submit" class="btn btn-primary" style="float:right;border-radius:3px; width:200px; margin-left:10px;">Ubah Nilai</button></a>
                                 </div>
                             </div>

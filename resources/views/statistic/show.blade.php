@@ -41,9 +41,6 @@ Statistik
                                                     <option value="{&quot;IDs&quot; : [{{$currentPeriodID}}, {{$currentPeriodID-1}}, {{$currentPeriodID-2}}, {{$currentPeriodID-3}}, {{$currentPeriodID-4}}, {{$currentPeriodID-5}}, {{$currentPeriodID-6}}, {{$currentPeriodID-7}}, {{$currentPeriodID-8}}, {{$currentPeriodID-9}}]}">5 Tahun Terakhir</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-8">
-                                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
-                                            </div>
                                         </div>
                                         <div class="row" style="margin-top:3rem;">
                                             <div class="col-lg-12">
