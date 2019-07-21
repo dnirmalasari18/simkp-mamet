@@ -18,7 +18,8 @@ class UserController extends Controller
         $users = User::all();
         $dosen = User::where('role','!=','mahasiswa')->orderBy('fullname')->get();
         $mahasiswa = User::where('role','mahasiswa')->orderBy('username')->get();
-        return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa)->with('users', $users);
+        $tendik = User::where('role','tendik')->orderBy('username')->get();
+        return view('user.index')->with('dosen',$dosen)->with('mahasiswa',$mahasiswa)->with('tendik', $tendik)->with('users', $users);
     }    
 
     /**
@@ -42,6 +43,9 @@ class UserController extends Controller
             'phone_number' => 'required',
             'password' => 'required|confirmed',
             'role' => 'required',
+        ],$message=[
+            'required'=>'Atribut di atas perlu diisi',
+            'confirmed'=>'Atribbt pada password dan konfirmasi password tidak boleh berbeda'
         ]);
 
         User::create([

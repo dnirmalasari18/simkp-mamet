@@ -51,35 +51,6 @@ Periode
                                                 <center><span class="badge badge-secondary">Inactive</span></center>
                                             @endif
                                         </td>
-                                        {{-- <td style="vertical-align:middle">
-                                            <center>
-                                                <span style="display:block;margin-bottom:5px;">
-                                                    @if ($period->active)
-                                                        <form action="{{route('period.deactivate')}}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="id" value="{{$period->id}}">
-                                                            <button type="submit" class="btn btn-danger btn-sm" style="border-radius:3px; width:100px; ">Nonaktifkan</button>
-                                                        </form>
-                                                    @else
-                                                        <form action="{{route('period.activate')}}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="id" value="{{$period->id}}">
-                                                            <button type="submit" class="btn btn-success btn-sm" style="border-radius:3px; width:100px; ">Aktifkan</button>
-                                                        </form>
-                                                    @endif
-                                                </span>
-                                                <span style="display:block;">
-                                                    <button id="{{$period->id}}" type="button" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalEdit"style="border-radius:3px; width:100px;">Edit</button>
-                                                </span>
-                                                <form action="{{route('period.delete')}}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{$period->id}}">
-                                                    <span style="display:block; padding-block:5px; ">
-                                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:100px;">Hapus</button>
-                                                    </span>
-                                                </form>
-                                            </center>
-                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -104,57 +75,31 @@ Periode
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tahun Ajaran</strong></label>
-                        <input name="name" type="text" id="postal-code" placeholder="Tahun Ajaran" class="form-control">
+                        <input name="name" type="text" id="postal-code" class="form-control">
+                        @error('name')
+                            <small class="help-block form-text" style="color:red">{{$message}}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tanggal Mulai Semester</strong></label>
                         <input name="start_date" type="date" id="postal-code" placeholder="Tanggal Mulai Semester" class="form-control">
+                        @error('start_date')
+                            <small class="help-block form-text" style="color:red">{{$message}}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tanggal Akhir Semester</strong></label>
                         <input name="end_date" type="date" id="postal-code" placeholder="Tanggal Akhir Semester" class="form-control">
+                        @error('end_date')
+                            <small class="help-block form-text" style="color:red">{{$message}}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Batas Akhir Pengajuan</strong></label>
                         <input name="final_date" type="date" id="postal-code" placeholder="Batas Akhir Pengajuan" class="form-control">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="scrollmodalEdit" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <form action="{{route('period.edit')}}" method="post">
-                @csrf
-                <input class="edit-period-id" type="hidden" name="id">
-                <div class="modal-header">
-                    <h5 class="modal-title edit-period" id="scrollmodalLabel">((Periode berapa))</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="postal-code" class=" form-control-label"><strong>Tahun Ajaran</strong></label>
-                        <input name="name" type="text" id="postal-code" placeholder="Tahun Ajaran" class="form-control edit-period-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="postal-code" class=" form-control-label"><strong>Tanggal Mulai Semester</strong></label>
-                        <input name="start_date" type="date" id="postal-code" placeholder="Tanggal Mulai Semester" class="form-control edit-period-start">
-                    </div>
-                    <div class="form-group">
-                        <label for="postal-code" class=" form-control-label"><strong>Tanggal Akhir Semester</strong></label>
-                        <input name="end_date" type="date" id="postal-code" placeholder="Tanggal Akhir Semester" class="form-control edit-period-end">
-                    </div>
-                    <div class="form-group">
-                        <label for="postal-code" class=" form-control-label"><strong>Batas Akhir Pengajuan</strong></label>
-                        <input name="final_date" type="date" id="postal-code" placeholder="Batas Akhir Pengajuan" class="form-control edit-period-final">
+                        @error('final_date')
+                            <small class="help-block form-text" style="color:red">{{$message}}</small>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -176,7 +121,13 @@ Periode
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
-
+@if ($errors->any())
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#scrollmodalTambah').modal('show');
+    })
+</script>    
+@endif
 <script>
     var periods = {!!$periods!!}
     jQuery(document).ready(function(){

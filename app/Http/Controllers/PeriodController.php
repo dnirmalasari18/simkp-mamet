@@ -21,6 +21,8 @@ class PeriodController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'final_date' => 'required',            
+        ],$message=[
+            'required' =>'Atribut di atas perlu diisi',
         ]);
 
         $activePeriod = Period::where('active',1);

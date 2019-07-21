@@ -24,7 +24,8 @@ Daftar Akun
                                 <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                         <a class="nav-item nav-link active" id="nav-dosen-tab" data-toggle="tab" href="#nav-dosen" role="tab" aria-controls="nav-dosen" aria-selected="true">Dosen</a>
-                                        <a class="nav-item nav-link" id="nav-mahasiswa-tab" data-toggle="tab" href="#nav-mahasiswa" role="tab" aria-controls="nav-mahasiswa" aria-selected="false">Mahasiswa</a>
+                                        <a class="nav-item nav-link" id="nav-mahasiswa-tab" data-toggle="tab" href="#nav-mahasiswa" role="tab" aria-controls="nav-mahasiswa" aria-selected="false">Mahasiswa</a>    
+                                        <a class="nav-item nav-link" id="nav-tendik-tab" data-toggle="tab" href="#nav-tendik" role="tab" aria-controls="nav-tendik" aria-selected="false">Tenaga Pendidik</a>
                                     </div>
                                 </nav>
                                 <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -104,6 +105,41 @@ Daftar Akun
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="tab-pane fade" id="nav-tendik" role="tabpanel" aria-labelledby="nav-tendik-tab">
+                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered display">
+                                            <thead>
+                                                <tr>
+                                                    <th style="vertical-align:middle">NRP</th>
+                                                    <th style="vertical-align:middle;">Nama Lengkap</th>
+                                                    <th style="vertical-align:middle;">No HP</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($tendik as $user)
+                                                    <tr>
+                                                        <td style="vertical-align:middle">{{$user->username}}</td>
+                                                        <td style="vertical-align:middle">{{$user->fullname}}</td>
+                                                        <td style="vertical-align:middle">{{$user->phone_number}}</td>
+                                                        <td style="vertical-align:middle; width:10%;">
+                                                            <center>
+                                                                <span style="display:block;">
+                                                                    <button id="{{$user->id}}" type="submit" class="btn btn-primary btn-sm btn-edit"  data-toggle="modal" data-target="#scrollmodalAkunEdit"style="border-radius:3px; width:70px;">Edit</button>
+                                                                </span>
+                                                                <span style="display:block; padding-block:5px; ">
+                                                                    <form action="{{route('user.delete')}}" method="post">
+                                                                        @csrf
+                                                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                                                        <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px;">Hapus</button>
+                                                                    </form>
+                                                                </span>
+                                                            </center>
+                                                        </td>
+                                                    </tr>                                          
+                                                @endforeach                                                        
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
 
                             </div>
@@ -131,23 +167,39 @@ Daftar Akun
                         <option value=""></option>
                         <option value="dosen">Dosen</option>
                         <option value="mahasiswa">Mahasiswa</option>
+                        <option value="tendik">Tenaga Pendidik</option>
                     </select>
+                    @error('role')
+                        <small class="help-block form-text" style="color:red">Harap memilih salah satu opsi</small>
+                    @enderror    
                 </div>
                 <div class="form-group">
                     <label for="postal-code" class=" form-control-label"><strong>NIP/NRP</strong></label>
                     <input name="username" type="text" id="postal-code" class="form-control">
+                    @error('username')
+                        <small class="help-block form-text" style="color:red">{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="postal-code" class=" form-control-label"><strong>Nama</strong></label>
                     <input name="fullname" type="text" id="postal-code" class="form-control">
+                    @error('fullname')
+                        <small class="help-block form-text" style="color:red">{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="postal-code" class=" form-control-label"><strong>No HP</strong></label>
                     <input name="phone_number" type="test" id="postal-code" class="form-control">
+                    @error('phone_number')
+                        <small class="help-block form-text" style="color:red">{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="postal-code" class=" form-control-label"><strong>Password</strong></label>
                     <input name="password" type="password" id="postal-code" class="form-control">
+                    @error('password')
+                        <small class="help-block form-text" style="color:red">{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="postal-code" class=" form-control-label"><strong>Konfirmasi Password</strong></label>
@@ -223,6 +275,13 @@ Daftar Akun
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
 <script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
 <script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+@if ($errors->any())
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#scrollmodalAkunTambah').modal('show');
+    })
+</script>    
+@endif
 <script>
     jQuery(document).ready(function() {
         var user = {!!$users!!}
