@@ -100,8 +100,14 @@ Berita
 @endsection
 
 @section('additional-js')
+@if ($errors->any())
 <script>
-    
+    jQuery(document).ready(function(){
+        jQuery('#scrollmodalTambah').modal('show');
+    })
+</script>    
+@endif
+<script>        
 	var selDiv = "";
     document.addEventListener("DOMContentLoaded", init, false);
     function init() {
