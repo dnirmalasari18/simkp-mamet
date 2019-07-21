@@ -23,12 +23,15 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+        ], $message=[
+            'required' => 'Atribut di atas perlu diisi',
         ]);
 
         $news = News::create([
             'title' => request('title'),
             'description' => request('description'),
         ]);
+        
 
         if ($request->hasFile('attachments')){            
             $allowedfileExtension=['pdf','jpg','png','docx', 'pptx', 'ppt'];

@@ -118,8 +118,8 @@ class UserController extends Controller
             }
             else return redirect()->route('group.index');
         } else {
-            Alert::error('Error', 'Username atau password salah');
-            return redirect()->back();
+            return redirect()->back()->withErrors([
+                'approve' => 'Username atau password yang anda masukkan salah',]);
         }
     }
 
@@ -169,7 +169,11 @@ class UserController extends Controller
     public function doReset(Request $request){
         $this->validate($request, [
             'password_old' => 'required',
-            'password' => 'required|confirmed',            
+            'password' => 'required|min:6|confirmed',            
+        ],$messages = [
+            'required' => 'Atribut di atas perlu diisi',
+            'min' => 'Atribut perlu diisi minimal :min karakter',
+            'confirmed' => 'Atribut pada password dan konfirmasi password tidak boleh berbeda'
         ]);
         $user = Auth::user();
 

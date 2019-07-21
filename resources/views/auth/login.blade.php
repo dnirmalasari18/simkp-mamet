@@ -37,6 +37,14 @@
                     </div>
                     <form action="{{route('login')}}" method="POST">
                         @csrf
+                        @if ($errors->any())
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                Username atau password yang anda masukkan salah
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        @endif
                         <div class="form-group">
                             <input name="username" type="text" class="form-control" placeholder="NRP">
                         </div>

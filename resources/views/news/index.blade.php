@@ -35,14 +35,21 @@ Berita
                         <div class="form-group">
                             <label for="postal-code" class=" form-control-label"><strong>Judul</strong></label>
                             <input name="title" type="text" id="postal-code" class="form-control">
+                            @error('title')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="postal-code" class=" form-control-label"><strong>Isi</strong></label>
                             <textarea name="description" id="textarea-input" rows="3"  class="form-control"></textarea>
+                            @error('description')
+                                <small class="help-block form-text" style="color:red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="postal-code" class=" form-control-label"><strong>Attachment: </strong></label>
                             <input name="attachments[]" type="file" id="fileAdd" multiple />
+                            <small class="help-block form-text" style="color:blue">Ekstensi yang diterima: .jpg, .png, .pdf, .docx, .ppt, .pptx </small>
                             <div id="selectedFiles" style="color:#428bca"></div>
                         </div>                    
                     </div>
@@ -76,10 +83,10 @@ Berita
                             <i><small><span class="fa fa-clock-o"></span> Created at: {{App\Utils::IndonesianDate($news->created_at)}}</small></i>
                             &nbsp;                            
                             @if (Auth::user()->role == 'koordinator')
-                                <form action="{{route('news.delete')}}" method="post">
+                                <form action="{{route('news.delete')}}" method="post" class="delete-news">
                                     @csrf
                                     <input type="hidden" name="id" value="{{$news->id}}">
-                                    <button type="submit" class="btn btn-secondary btn-sm" style="float:right;">Hapus</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm delete"  style="float:right;">Hapus</button>
                                 </form>
                             @endif                              
                         </div>
@@ -94,6 +101,7 @@ Berita
 
 @section('additional-js')
 <script>
+    
 	var selDiv = "";
     document.addEventListener("DOMContentLoaded", init, false);
     function init() {
