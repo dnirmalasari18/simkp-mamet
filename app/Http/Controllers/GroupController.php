@@ -191,10 +191,10 @@ class GroupController extends Controller
         ]);
 
         $group = Group::find($request->id);
-        if ($group->title != null){
-            Alert::error('Error', 'Judul dan Abstrak tidak dapat diubah');
-            return redirect()->back();
-        }
+        // if ($group->title != null){
+        //     Alert::error('Error', 'Judul dan Abstrak tidak dapat diubah');
+        //     return redirect()->back();
+        // }
 
         $group->title = $request->title;
         $group->abstract = $request->abstract;
