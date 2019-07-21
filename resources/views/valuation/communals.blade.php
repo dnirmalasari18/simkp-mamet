@@ -18,20 +18,22 @@ Nilai Integra
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Periode xxxx</strong>
+                            <strong id="period-name" class="card-title">Periode xxxx</strong>
                         </div>
                         <div class="card-body">
                             <div class="row" style="margin-bottom:1rem;">
                                 <div class="col-md-4">
-                                    <select data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
-                                        <option value="4">2015/2016 Gasal</option>
+                                    <select id="periodID" data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
+                                        @foreach (App\Period::orderBy('id', 'asc')->get() as $period)
+                                            <option value="{{$period->id}}" @if ($period->id == App\Period::current()->id) {{'selected'}} @endif>{{$period->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px; width:70px; margin-left:10px;height:1.54rem;padding:.1rem.5rem;margin-left:0;">Submit</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{route('valuation.communal.edit')}}"><button type="submit" class="btn btn-primary" style="float:right;border-radius:3px; width:200px; margin-left:10px;">Ubah Nilai</button></a>
+                                    <a id="edit" href="{{route('valuation.communal.edit')}}"><button type="submit" class="btn btn-primary" style="float:right;border-radius:3px; width:200px; margin-left:10px;">Ubah Nilai</button></a>
                                 </div>
                             </div>
                             <table id="bootstrap-data-table-export" class="table table-bordered">
@@ -45,7 +47,7 @@ Nilai Integra
                                     <th style="vertical-align:middle;width:100px;"><center>N4</center></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="students">
                                 @foreach ($students as $student)
                                 <tr>
                                     <td style="vertical-align:middle">{{$student->user->username}}</td>
@@ -80,7 +82,9 @@ Nilai Integra
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
 <script src="{!!asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
 <script>
+    var periods = {!!App\Period::all()!!}
     jQuery(document).ready(function() {
+        getStudents()
         jQuery(".standardSelect").chosen({
             no_results_text: "Oops, Periode tidak ditemukan",
             width: "100%"
@@ -100,6 +104,54 @@ Nilai Integra
                 },
             ]
         });
+
+        jQuery('#periodID').change(function(){                        
+            if (jQuery(this).val()== {{App\Period::current()->id}}){
+                jQuery('#edit').show()
+            } else {
+                jQuery('#edit').hide()
+            }
+            getStudents()
+        })
     });
+
+    function getStudents(){                
+        for (var i=0;i<periods.length;i++){
+            if (periods[i].id == jQuery('#periodID').val()){
+                jQuery('#period-name').text(periods[i].name)
+                break
+            }
+        }
+        
+        jQuery.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
+            }
+        });
+        
+        var x = {}
+        x['id'] = JSON.parse(jQuery('#periodID').val())
+
+        jQuery.ajax({
+            type:'POST',
+            url:"{{route('ajax.period.student')}}",
+            data: x,
+            success:function(res) {                                                        
+                console.log(res)                
+                jQuery('#students').text('')
+                res.forEach(student => {
+                    jQuery('#students').append(""+
+                    "<tr>"+
+                        "<td style=\"vertical-align:middle\">"+student.user.username+"</td>"+
+                        "<td style=\"vertical-align:middle\">"+student.user.fullname+"</td>"+
+                        "<td style=\"vertical-align:middle\"><center>"+student.valuation_1+"</center></td>"+
+                        "<td style=\"vertical-align:middle\"><center>"+student.valuation_2+"</center></td>"+
+                        "<td style=\"vertical-align:middle\"><center>"+student.valuation_3+"</center></td>"+
+                        "<td style=\"vertical-align:middle\"><center>"+student.valuation_4+"</center></td>"+
+                    "</tr>")
+                });                                
+            }
+        })
+    }
 </script>
 @endsection

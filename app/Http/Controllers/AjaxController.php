@@ -113,4 +113,36 @@ class AjaxController extends Controller
 
         return response()->json([$res], 200);
     }
+
+    public function getPeriodStudent(Request $request){
+        $periodID = $request->id;
+        $groups = Group::where('period_id','=',$periodID)->get();
+
+        $students = [];
+        foreach($groups as $group){
+            foreach ($group->studentsdetails as $student) {
+                $student->user;                
+                array_push($students, $student);
+            }
+        }
+
+        return response()->json($students,200);
+    }
+
+    public function getPeriodStudentC(){
+        $periodID = 1;
+        $groups = Group::where('period_id','=',$periodID)->get();
+
+        $students = [];
+        foreach($groups as $group){
+            foreach ($group->studentsdetails as $student) {
+                $student->user;
+                // $student->username = $student->user->username;
+                // $student->fullname = $student->user->fullname;
+                array_push($students, $student);
+            }
+        }
+
+        return response()->json($students,200);
+    }
 }

@@ -249,19 +249,7 @@ Statistik
 </script>
 <script>
     var donut
-    jQuery(document).ready(function(){
-        donut = new Morris.Donut({
-                    element: 'grafik-perusahaan',                    
-                    data: [
-                            { label: 'Pertamina', value: 10 },
-                            { label: 'Pertamax', value: 5 },
-                            { label: 'Jastip', value: 3 },
-                            { label: 'Starbux', value: 3 },
-                            { label: 'Aksamedia', value: 4 },
-                            { label: '9gag', value: 13 },
-                            { label: 'Dosilasol ', value: 3 },
-                        ]
-                });                                         
+    jQuery(document).ready(function(){                                           
         jQuery('#periodIDs').change(function (){
             jQuery('#grafik-perusahaan').text('')
             getStatistic()
@@ -276,8 +264,7 @@ Statistik
         });
         
         var x = {}
-        x['period'] = JSON.parse(jQuery('#periodIDs').val())
-        // x['period'] = jQuery('#periodIDs').val()
+        x['period'] = JSON.parse(jQuery('#periodIDs').val())        
 
         jQuery.ajax({
             type:'POST',
@@ -293,6 +280,6 @@ Statistik
                 });
             }
         })
-    }    
+    }
 </script>
 @endsection

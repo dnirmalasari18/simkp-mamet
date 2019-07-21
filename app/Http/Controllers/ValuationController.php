@@ -23,14 +23,13 @@ class ValuationController extends Controller
     }
 
     public function editCommunal(){
-        $groups = Period::find(1)->groups;        
+        $groups = Period::current()->groups;
         $students = [];
         foreach($groups as $group){
             foreach($group->studentsdetails as $student){
                 $students[] = $student;
             }
         }
-
         return view('valuation.edit')->with('students', $students);
     }
     
