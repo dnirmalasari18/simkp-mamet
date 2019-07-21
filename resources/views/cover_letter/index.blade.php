@@ -17,9 +17,10 @@ Surat
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="vertical-align:middle">Kelompok</th>
-                                    <th style="vertical-align:middle">Jenis Pengajuan</th>
-                                    <th></th>
+                                    <th style="vertical-align:middle;width:500px;">Kelompok</th>
+                                    <th style="vertical-align:middle;widh:200px;">Jenis Pengajuan</th>
+                                    <th style="vertical-align:middle;width:150px;">Status</th>
+                                    <th style="width:150px;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,9 @@ Surat
                                         </td>
                                         <td style="vertical-align:middle">                                                
                                             {{ucwords($group->type['name'])}}
+                                        </td>
+                                        <td style="vertical-align:midle">
+                                            {{strtoupper($group->status['name'])}}
                                         </td>
                                         <td style="vertical-align:middle"><center><button type="button" class="btn btn-secondary btn-sm detail" value="{{$group->id}}" data-toggle="modal" data-target="#scrollmodalSuratDetail" style="border-radius:3px;">Lihat Detail</button></center></td>
                                     </tr>
@@ -117,15 +121,15 @@ Surat
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Tanggal Surat</strong></label>
-                        <input name="date" type="text" name="date" class="form-control">
+                        <input name="date" type="text" name="date" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Nomor Surat</strong></label>
-                        <input name="number" type="text" name="number" class="form-control">
+                        <input name="number" type="text" name="number" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="postal-code" class=" form-control-label"><strong>Kepada Surat</strong></label>
-                        <input name="to" type="text" name="to" id="to"class="form-control">
+                        <input name="to" type="text" name="to" id="to"class="form-control" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -140,6 +144,14 @@ Surat
 
 @section('additional-js')
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{!!asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
+<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
+<script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
 <script>
     var groups = {!!$groups!!}    
     jQuery(document).ready(function(){
@@ -160,6 +172,12 @@ Surat
             getStudents(group.id)
             getCorp(group.id)            
         })
+        jQuery("#bootstrap-data-table-export").dataTable({
+            aaSorting: [[2, 'asc']],
+            paging:false,
+            searching:false,
+            "bDestroy":true,
+        });
     })
 
     function getStudents(id){        
@@ -207,6 +225,7 @@ Surat
                     jQuery("#corp-city").text(data.corp.city);
                 }
             })
+    
     }
 </script>
 @endsection

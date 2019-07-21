@@ -9,8 +9,9 @@ use PDF;
 class CoverLetterController extends Controller
 {
   public function index(){
-    $groups=Group::where('status',Group::statusAll()[2])->get();
-    
+    //$groups=Group::where('status',Group::statusAll()[2])->get();
+    $groups=Group::select('*')->where('status','1')->orWhere('status','2')
+                  ->get();
     return view('cover_letter.index')->with('groups',$groups);
   }
 
@@ -22,13 +23,16 @@ class CoverLetterController extends Controller
     ]);
     
     $group = Group::find($request->group_id);
+    $group->status = 2;
+    $group->save();
     $group->start_date = \App\Utils::IndonesianDate($group->start_date);
     $group->end_date = \App\Utils::IndonesianDate($group->end_date);
     $duration=CoverLetterController::diffInWeeks($group->start_date, $group->end_date);
-
+    
+    
     $pdf= PDF::loadView('cover_letter.template',['group'=>$group,'number'=>$request->number,'date'=>$request->date, 'to'=>$request->to, 'duration'=>$duration])->setPaper('a4','potrait');
-    //return $pdf->download($request->number.".pdf");
-    return view('cover_letter.template')->with('group',$group)->with('number',$request->number)->with('date',$request->date)->with('to',$request->to)->with('duration',$duration);    
+    return $pdf->download($request->number.".pdf");
+    //return view('cover_letter.template')->with('group',$group)->with('number',$request->number)->with('date',$request->date)->with('to',$request->to)->with('duration',$duration);    
   }
 
 

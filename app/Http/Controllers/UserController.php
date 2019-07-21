@@ -112,7 +112,11 @@ class UserController extends Controller
         
         if(Auth::attempt(['username' => request('username'), 'password' => request('password')])){            
             Alert::success('Success', 'Berhasil login');
-            return redirect()->route('group.index');
+            $user = Auth::user();
+            if($user->role == 'tendik'){
+                return redirect()->route('cover_letter.index');
+            }
+            else return redirect()->route('group.index');
         } else {
             Alert::error('Error', 'Username atau password salah');
             return redirect()->back();
