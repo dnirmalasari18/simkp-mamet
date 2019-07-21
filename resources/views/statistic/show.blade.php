@@ -29,12 +29,16 @@ Statistik
                                     <div class="tab-pane fade show active" id="nav-grafik" role="tabpanel" aria-labelledby="nav-grafik-tab">
                                         <div class="row">
                                             <div class="col-md-4">
+                                                <?php $currentPeriodID = App\Period::current()->id?>
                                                 <select id="periodIDs" name="" data-placeholder="Pilih Periode" class="standardSelect" tabindex="1">
-                                                    <option value="{&quot;IDs&quot; : [1,2]}">Periode Ini</option>
-                                                    <option value="{[2]}">1 Tahun Terakhir</option>
-                                                    <option value="{[3]}">3 Tahun Terakhir</option>
-                                                    <option value="{[4]}">5 Tahun Terakhir</option>
-                                                    <option value="{[5]}">2015/2016 Gasal</option>
+                                                    @foreach (App\Period::orderBy('id', 'asc')->get() as $period)
+                                                        <option value="{&quot;IDs&quot; : [{{$period->id}}]}">{{$period->name}}</option>
+                                                    @endforeach
+                                                    <option value="{&quot;IDs&quot; : [{{$currentPeriodID}}, {{$currentPeriodID-1}}]}">1 Tahun Terakhir</option>
+                                                    <option value="{&quot;IDs&quot; : [{{$currentPeriodID}}, {{$currentPeriodID-1}}, {{$currentPeriodID-2}}, {{$currentPeriodID-3}}]}">2 Tahun Terakhir</option>
+                                                    <option value="{&quot;IDs&quot; : [{{$currentPeriodID}}, {{$currentPeriodID-1}}, {{$currentPeriodID-2}}, {{$currentPeriodID-3}}, {{$currentPeriodID-4}}, {{$currentPeriodID-5}}]}">3 Tahun Terakhir</option>
+                                                    <option value="{&quot;IDs&quot; : [{{$currentPeriodID}}, {{$currentPeriodID-1}}, {{$currentPeriodID-2}}, {{$currentPeriodID-3}}, {{$currentPeriodID-4}}, {{$currentPeriodID-5}}, {{$currentPeriodID-6}}, {{$currentPeriodID-7}}]}">4 Tahun Terakhir</option>
+                                                    <option value="{&quot;IDs&quot; : [{{$currentPeriodID}}, {{$currentPeriodID-1}}, {{$currentPeriodID-2}}, {{$currentPeriodID-3}}, {{$currentPeriodID-4}}, {{$currentPeriodID-5}}, {{$currentPeriodID-6}}, {{$currentPeriodID-7}}, {{$currentPeriodID-8}}, {{$currentPeriodID-9}}]}">5 Tahun Terakhir</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-8">
@@ -244,20 +248,24 @@ Statistik
     });
 </script>
 <script>
+    var donut
     jQuery(document).ready(function(){
-        var data = [
-                    { label: 'Pertamina', value: 10 },
-                    { label: 'Pertamax', value: 5 },
-                    { label: 'Jastip', value: 3 },
-                    { label: 'Starbux', value: 3 },
-                    { label: 'Aksamedia', value: 4 },
-                    { label: '9gag', value: 13 },
-                    { label: 'Dosilasol ', value: 3 },
-                ]
-
-        console.log(data)
-        
-        getStatistic()
+        donut = new Morris.Donut({
+                    element: 'grafik-perusahaan',                    
+                    data: [
+                            { label: 'Pertamina', value: 10 },
+                            { label: 'Pertamax', value: 5 },
+                            { label: 'Jastip', value: 3 },
+                            { label: 'Starbux', value: 3 },
+                            { label: 'Aksamedia', value: 4 },
+                            { label: '9gag', value: 13 },
+                            { label: 'Dosilasol ', value: 3 },
+                        ]
+                });                                         
+        jQuery('#periodIDs').change(function (){
+            jQuery('#grafik-perusahaan').text('')
+            getStatistic()
+        })
     })
     
     function getStatistic(){        
@@ -279,7 +287,7 @@ Statistik
                 console.log(res)
                 // console.log(res[0])
                 // console.log(JSON.parse(res[0]))
-                new Morris.Donut({
+                donut = new Morris.Donut({
                     element: 'grafik-perusahaan',                    
                     data: res[0]
                 });
