@@ -40,15 +40,13 @@ class NewsController extends Controller
                 $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
                 $check=in_array($extension,$allowedfileExtension);                
-                if($check){                    
-                    foreach ($request->attachments as $attachment) {
-                        $path = $attachment->store('attachments');
-                        NewsAttachment::create([
-                            'news_id' => $news->id,                            
-                            'filename' => $filename,
-                            'path' => $path,
-                        ]);
-                    }                    
+                if($check){                                        
+                    $path = $file->store('attachments');
+                    NewsAttachment::create([
+                        'news_id' => $news->id,                            
+                        'filename' => $filename,
+                        'path' => $path,
+                    ]);                    
                 } else {
                     Alert::error('Error', 'Ekstensi tidak diterima');
                     return redirect()->back();
