@@ -44,12 +44,12 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('lala'),
         ]);
 
-        DB::table('users')->insert([
-            'username' => 'ramialeon',
-            'fullname' => 'Ramialeon Swindarno',
-            'phone_number' => '0812938483',
-            'role' => 'dosen',
-            'password' => bcrypt('ramialeon'),
-        ]);
+        // DB::table('users')->insert([
+        //     'username' => 'ramialeon',
+        //     'fullname' => 'Ramialeon Swindarno',
+        //     'phone_number' => '0812938483',
+        //     'role' => 'dosen',
+        //     'password' => bcrypt('ramialeon'),
+        // ]);
     }
 }
