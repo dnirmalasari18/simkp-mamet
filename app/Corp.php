@@ -8,7 +8,7 @@ class Corp extends Model
 {
     //
     protected $fillable = [
-        'name', 'city', 'address', 'type', 'profile','phone_number',
+        'name', 'city', 'address', 'post', 'type', 'profile','phone_number',
     ];
 
     public function groups(){
