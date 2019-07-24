@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{!! asset('template/vendors/flag-icon-css/css/flag-icon.min.css')!!}">
     <link rel="stylesheet" href="{!! asset('template/vendors/selectFX/css/cs-skin-elastic.css')!!}">
 
-    <link rel="stylesheet" href="{!!asset('template/assets/css/style.css')!!}">
+    <link rel="stylesheet" href="{!!secure_asset('template/assets/css/style.css')!!}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
@@ -53,10 +53,10 @@
     </div>
 
 
-    <script src="{!!asset('template/vendors/jquery/dist/jquery.min.js')!!}"></script>
-    <script src="{!!asset('template/vendors/popper.js/dist/umd/popper.min.js')!!}"></script>
-    <script src="{!!asset('template/vendors/bootstrap/dist/js/bootstrap.min.js')!!}"></script>
-    <script src="{!!asset('template/assets/js/main.js')!!}"></script>
+    <script src="{!!secure_asset('template/vendors/jquery/dist/jquery.min.js')!!}"></script>
+    <script src="{!!secure_asset('template/vendors/popper.js/dist/umd/popper.min.js')!!}"></script>
+    <script src="{!!secure_asset('template/vendors/bootstrap/dist/js/bootstrap.min.js')!!}"></script>
+    <script src="{!!secure_asset('template/assets/js/main.js')!!}"></script>
 
 
 </body>

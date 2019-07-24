@@ -5,8 +5,8 @@ Pengajuan
 @endsection
 
 @section('additional-css')
-<link rel="stylesheet" href="{!!asset('template/vendors/chosen/chosen.min.css')!!}">
-<link rel="stylesheet" href="{!!asset('template/vendors/bootstrap-datepicker.css')!!}">
+<link rel="stylesheet" href="{!!secure_asset('template/vendors/chosen/chosen.min.css')!!}">
+<link rel="stylesheet" href="{!!secure_asset('template/vendors/bootstrap-datepicker.css')!!}">
 @endsection
 
 @section('content')
@@ -131,8 +131,8 @@ Pengajuan
 @endsection
 
 @section('additional-js')
-<script src="{!!asset('template/vendors/bootstrap-datepicker.js')!!}"></script>
-<script src="{!!asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/bootstrap-datepicker.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
 <script>
     jQuery(document).ready(function() {
         jQuery(".standardSelect").chosen({

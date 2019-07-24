@@ -5,10 +5,10 @@ Nilai Integra
 @endsection
 @section('additional-css')
 
-<link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
-<link rel="stylesheet" href="{!!asset('template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')!!}">
-<link rel="stylesheet" href="{!!asset('template/vendors/chosen/chosen.min.css')!!}">
-<link rel="stylesheet" href="{!!asset('template/vendors/bootstrap-datepicker.css')!!}">
+<link rel="stylesheet" href="{!!secure_asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="{!!secure_asset('template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="{!!secure_asset('template/vendors/chosen/chosen.min.css')!!}">
+<link rel="stylesheet" href="{!!secure_asset('template/vendors/bootstrap-datepicker.css')!!}">
 <link href="{!! asset('template/vendors/morrisjs/morris.css') !!}" rel="stylesheet">
 @endsection
 @section('content')
@@ -112,16 +112,16 @@ Nilai Integra
 @endsection
 
 @section('additional-js')
-<script src="{!!asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
-<script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
+<script src="{!!secure_asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
-<script src="{!!asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
 <script>
     jQuery(document).ready(function() {
         jQuery("#bootstrap-data-table-export").dataTable({
