@@ -12,8 +12,6 @@
 
 */
 
-URL::forceRootUrl('https://www.its.ac.id/tmaterial/simkp/public');
-
 Route::get('login', function(){
     return view('auth.login');
 })->name('login');
@@ -140,7 +138,7 @@ Route::get('/nilai/edit',function(){
 
 
 Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
-{
+{        
     $path = storage_path('app/'.$foldername.'/'.$filename);
 
     if (!File::exists($path)) {
@@ -151,7 +149,7 @@ Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
     $type = File::mimeType($path);
 
     $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
+    $response->header("Content-Type", $type)->header('Content-disposition','attachment; filename="test"');
 
     return $response;
 });
