@@ -144,14 +144,14 @@ Surat
 
 @section('additional-js')
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="{!!asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
-<script src="{!!asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
-<script src="{!!asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js')!!}"></script>
+<script src="{!!secure_asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js')!!}"></script>
+<script src="{!!secure_asset('template/assets/js/init-scripts/data-table/datatables-init.js')!!}"></script>
 <script>
     var groups = {!!$groups!!}    
     jQuery(document).ready(function(){
