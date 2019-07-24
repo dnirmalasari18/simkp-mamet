@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="{!!asset('template/material.png')!!}">
 
     @include('partials.css')
-    <link rel="stylesheet" href="{!!asset('template/assets/css/style.css')!!}">
+    <link rel="stylesheet" href="/assets/template/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
