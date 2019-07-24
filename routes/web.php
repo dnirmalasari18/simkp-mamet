@@ -12,9 +12,7 @@
 
 */
 
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
+URL::forceRootUrl('https://www.its.ac.id/tmaterial/simkp/public');
 
 Route::get('login', function(){
     return view('auth.login');
