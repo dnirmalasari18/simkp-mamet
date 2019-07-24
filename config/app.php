@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://www.its.ac.id'),
+    'url' => env('APP_URL', 'https://www.its.ac.id/tmaterial/simkp'),
 
     'asset_url' => env('ASSET_URL', null),
 

@@ -149,6 +149,8 @@ Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
     $type = File::mimeType($path);
 
     $response = Response::make($file, 200);
+
+
     $response->header("Content-Type", $type)->header('Content-disposition','attachment; filename="test"');
 
     return $response;
