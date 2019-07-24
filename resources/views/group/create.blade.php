@@ -5,8 +5,8 @@ Pengajuan
 @endsection
 
 @section('additional-css')
-<link rel="stylesheet" href="{!!secure_asset('template/vendors/chosen/chosen.min.css')!!}">
-<link rel="stylesheet" href="{!!secure_asset('template/vendors/bootstrap-datepicker.css')!!}">
+<link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/chosen/chosen.min.css">
+<link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/bootstrap-datepicker.css">
 @endsection
 
 @section('content')
@@ -120,8 +120,8 @@ Pengajuan
 @endsection
 
 @section('additional-js')
-<script src="{!!secure_asset('template/vendors/bootstrap-datepicker.js')!!}"></script>
-<script src="{!!secure_asset('template/vendors/chosen/chosen.jquery.min.js')!!}"></script>
+<script src="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/bootstrap-datepicker.js"></script>
+<script src="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/chosen/chosen.jquery.min.js"></script>
 <script>
     // global.JQuery = require('jquery')
     var corps = {!!$corps!!};

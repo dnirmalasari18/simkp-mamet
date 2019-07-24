@@ -13,10 +13,11 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="{!!secure_asset('template/material.png')!!}">
+    <link rel="icon" type="image/png" href="https://www.its.ac.id/tmaterial/simkp/public/'template/material.png">
     @include('partials.css')
     @yield('additional-css')
-    <link rel="stylesheet" href="{!!secure_asset('template/assets/css/style.css')!!}">
+    <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/'template/assets/css/style.css">
+    <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>

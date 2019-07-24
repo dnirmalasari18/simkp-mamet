@@ -4,8 +4,8 @@
 Detail Perusahaan
 @endsection
 @section('additional-css')
-<link rel="stylesheet" href="{!!secure_asset('template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')!!}">
-<link rel="stylesheet" href="{!!secure_asset('template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')!!}">
+<link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 @endsection
 @section('content')
 <div class="content mt-3">
