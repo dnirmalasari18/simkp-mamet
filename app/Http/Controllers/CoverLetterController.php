@@ -25,9 +25,10 @@ class CoverLetterController extends Controller
     $group = Group::find($request->group_id);
     $group->status = 2;
     $group->save();
+    
+    $duration=CoverLetterController::diffInWeeks($group->start_date, $group->end_date);
     $group->start_date = \App\Utils::IndonesianDate($group->start_date);
     $group->end_date = \App\Utils::IndonesianDate($group->end_date);
-    $duration=CoverLetterController::diffInWeeks($group->start_date, $group->end_date);
     
     
     $pdf= PDF::loadView('cover_letter.template',['group'=>$group,'number'=>$request->number,'date'=>$request->date, 'to'=>$request->to, 'duration'=>$duration])->setPaper('a4','potrait');
