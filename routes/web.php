@@ -137,21 +137,22 @@ Route::get('/nilai/edit',function(){
 })->name('nilai.edit');
 
 
-Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
-{        
-    $path = storage_path('app/'.$foldername.'/'.$filename);
+Route::get('storage/{foldername}/{filename}', 'StorageController@getFile');
+// Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
+// {        
+//     $path = storage_path('app/'.$foldername.'/'.$filename);
 
-    if (!File::exists($path)) {
-        abort(404);
-    }
+//     if (!File::exists($path)) {
+//         abort(404);
+//     }
 
-    $file = File::get($path);
-    $type = File::mimeType($path);
+//     $file = File::get($path);
+//     $type = File::mimeType($path);
 
-    $response = Response::make($file, 200);
+//     $response = Response::make($file, 200);
 
 
-    $response->header("Content-Type", $type)->header('Content-disposition','attachment; filename="test"');
+//     $response->header("Content-Type", $type)->header('Content-disposition','attachment; filename="test"');
 
-    return $response;
-});
+//     return $response;
+// });
