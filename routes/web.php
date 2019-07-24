@@ -12,10 +12,6 @@
 
 */
 
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
-
 Route::get('login', function(){
     return view('auth.login');
 })->name('login');
@@ -153,7 +149,10 @@ Route::get('storage/{foldername}/{filename}', function ($foldername, $filename)
     $type = File::mimeType($path);
 
     $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
+
+
+    $response->header("Content-Type", $type)
+	->header('Content-disposition','attachment; filename'=$filename);
 
     return $response;
 });
