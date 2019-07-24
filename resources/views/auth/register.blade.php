@@ -13,15 +13,10 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="{!!asset('template/material.png')!!}">
+    <link rel="icon" type="image/png" href="{!!secure_asset('template/material.png')!!}">
 
 
-    <link rel="stylesheet" href="{!! asset('template/vendors/bootstrap/dist/css/bootstrap.min.css')!!}">
-    <link rel="stylesheet" href="{!! asset('template/vendors/font-awesome/css/font-awesome.min.css')!!}">
-    <link rel="stylesheet" href="{!! asset('template/vendors/flag-icon-css/css/flag-icon.min.css')!!}">
-    <link rel="stylesheet" href="{!! asset('template/vendors/selectFX/css/cs-skin-elastic.css')!!}">
-
-    <link rel="stylesheet" href="{!!asset('template/assets/css/style.css')!!}">
+    @include('partials.css')
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
@@ -32,7 +27,7 @@
             <div class="login-content">
                 <div class="login-form">
                     <div class="login-logo">
-                        <img class="align-content" src="{!!asset('template/material.png')!!}" width=100>
+                        <img class="align-content" src="{!!secure_asset('template/material.png')!!}" width=100>
                         <h3>SIMKP</h3>
                     </div>
                     <form action="{{route('register')}}" method="POST">
