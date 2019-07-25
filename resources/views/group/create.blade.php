@@ -53,11 +53,11 @@ Pengajuan
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Nama Perusahaan</strong></label>
-                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="" autocomplete="off">
+                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="{{old('corporation[name]')}}" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Alamat</strong></label>
-                                    <input id="corpaddress" type="text" class="form-control" id="corpaddress" name="corporation[address]" value="" autocomplete="off">
+                                    <input id="corpaddress" type="text" class="form-control" id="corpaddress" name="corporation[address]" value="{{old('corporation.address')}}" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-4">

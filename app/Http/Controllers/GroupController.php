@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Group;
 use App\Corp;
@@ -63,7 +64,7 @@ class GroupController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->withInput();
+            return redirect()->withInput(Input::all());
         }
         
         $this->validate($request, [
