@@ -175,7 +175,7 @@ Detail Kelompok
                                                     <td>
                                                         <center>
                                                             <span style="display:block; padding-block:5px; ">
-                                                                <a href="{{Storage::url($report->path)}}"><button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px;">Download</button></a>
+                                                                <a href="{{Storage::url($report->path)}}"><button type="button" class="btn btn-secondary btn-sm" style="border-radius:3px;">Download</button></a>
                                                             </span>
                                                         </center>
                                                     </td>

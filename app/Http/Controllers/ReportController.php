@@ -17,7 +17,7 @@ class ReportController extends Controller
         ]);
 
         if ($request->hasFile('file')){            
-            $allowedfileExtension=['jpg','png'];
+            $allowedfileExtension=['jpg','png', 'doc', 'docx'];
             $file = $request->file('file');
             $filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
