@@ -53,7 +53,7 @@ Pengajuan
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Nama Perusahaan</strong></label>
-                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="{{old('corporation[name]')}}" autocomplete="off">
+                                    <input id="corpname" type="text" class="form-control" id="corpname" name="corporation[name]" value="{{old('corporation.name')}}" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Alamat</strong></label>
@@ -63,38 +63,38 @@ Pengajuan
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label><strong>Kota</strong></label>
-                                    <input id="corpcity" type="text" class="form-control" id="corpcity" name="corporation[city]" value="" autocomplete="off">
+                                    <input id="corpcity" type="text" class="form-control" id="corpcity" name="corporation[city]" value="{{old('corporation.city')}}" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Kode Pos</strong></label>
-                                    <input id="corppost_code" type="text" class="form-control" id="corppost_code" name="corporation[post]" value="" autocomplete="off">
+                                    <input id="corppost_code" type="text" class="form-control" id="corppost_code" name="corporation[post]" value="{{old('corporation.post')}}" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Telp Kantor</strong></label>
-                                    <input id="corptelp" type="text" class="form-control" id="corptelp" name="corporation[phone_number]" value="" autocomplete="off">
+                                    <input id="corptelp" type="text" class="form-control" id="corptelp" name="corporation[phone_number]" value="{{old('corporation.phone_number')}}" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label><strong>Jenis Bisnis</strong></label>
-                                    <input id="corpbusiness_type" type="text" class="form-control" id="corpbusiness_type" name="corporation[type]" value="">
+                                    <input id="corpbusiness_type" type="text" class="form-control" id="corpbusiness_type" name="corporation[type]" value="{{old('corporation.type')}}">
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Profil</strong></label>
-                                    <textarea id="corpdescription" class="form-control" rows="4" id="corpdescription" name="corporation[profile]"></textarea>
+                                    <textarea id="corpdescription" class="form-control" rows="4" id="corpdescription" name="corporation[profile]">{{old('corporation.profile')}}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-12" style="background-color:#212529; height:2px; margin-top:2rem;"></div>    
                             <div class="col-md-4" style="margin-top:2rem;">
                                 <div class="form-group">
                                     <label><strong>Tanggal Mulai</strong></label>
-                                    <input type="date" class="form-control" name="group[start_date]" value="" required="">
+                                    <input type="date" class="form-control" name="group[start_date]" value="{{old('group.start_date')}}" required="">
                                 </div>
                             </div>
                             <div class="col-md-4" style="margin-top:2rem;">
                                 <div class="form-group">
                                     <label><strong>Tanggal Selesai</strong></label>
-                                    <input type="date" class="form-control" name="group[end_date]" value="" required="">
+                                    <input type="date" class="form-control" name="group[end_date]" value="{{old('group.end_date')}}" required="">
                                 </div>
                             </div>                    
                             <div class="col-md-4" style="margin-top:2rem;">
