@@ -64,7 +64,7 @@ class GroupController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->withInput(Input::all());
+            return redirect()->back()->withInput(Input::all())->withErrors($validator);
         }
         
         $this->validate($request, [
