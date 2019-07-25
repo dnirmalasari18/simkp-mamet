@@ -44,7 +44,7 @@ class GroupController extends Controller
 
     public function create(){
         $corps = Corp::all();
-        $users = User::where('role','mahasiswa')->orderBy('fullname','asc')->get();
+        $users = User::where('role','mahasiswa')->where('id','!=', Auth::user()->id)->orderBy('fullname','asc')->get();
         return view('group.create')->with('corps',$corps)->with('users',$users);
     }
 
