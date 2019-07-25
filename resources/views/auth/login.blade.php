@@ -13,10 +13,10 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="{!!asset('template/material.png')!!}">
+    <link rel="icon" type="image/png" href="https://www.its.ac.id/tmaterial/simkp/public/template/material.png">
 
     @include('partials.css')
-    <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public//template/assets/css/style.css">
+    <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
@@ -27,7 +27,7 @@
             <div class="login-content">
                 <div class="login-form">
                     <div class="login-logo">
-                        <img class="align-content" src="{!!asset('template/material.png')!!}" width=100>
+                        <img class="align-content" src="https://www.its.ac.id/tmaterial/simkp/public/template/material.png" width=100>
                         <h3>simKP</h3>
                     </div>
                     <form action="{{route('login')}}" method="POST">
@@ -57,10 +57,10 @@
     </div>
 
 
-    <script src="{!!asset('template/vendors/jquery/dist/jquery.min.js')!!}"></script>
-    <script src="{!!asset('template/vendors/popper.js/dist/umd/popper.min.js')!!}"></script>
-    <script src="{!!asset('template/vendors/bootstrap/dist/js/bootstrap.min.js')!!}"></script>
-    <script src="{!!asset('template/assets/js/main.js')!!}"></script>
+    <script src="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/jquery/dist/jquery.min.js')!!}"></script>
+    <script src="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/popper.js/dist/umd/popper.min.js')!!}"></script>
+    <script src="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/bootstrap/dist/js/bootstrap.min.js')!!}"></script>
+    <script src="https://www.its.ac.id/tmaterial/simkp/public/template/assets/js/main.js')!!}"></script>
 
 
 </body>
