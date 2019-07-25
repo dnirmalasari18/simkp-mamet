@@ -52,6 +52,10 @@ class ValuationController extends Controller
         }
 
         Alert::success('Success', 'Nilai berhasil disimpan');
-        return redirect()->route('valuation.communal');
+        if ($request->mode != null){
+            return redirect()->back();
+        } else {
+            return redirect()->route('valuation.communal');
+        }                
     }
 }

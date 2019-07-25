@@ -20,7 +20,7 @@ class CreateCorpsTable extends Migration
             $table->string('city',20);
             $table->string('post',20);
             $table->string('phone_number',20);
-            $table->string('type',20);
+            $table->string('type',50);
             $table->text('profile');
             $table->timestamps();
         });

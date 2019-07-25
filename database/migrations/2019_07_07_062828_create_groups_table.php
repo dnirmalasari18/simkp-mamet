@@ -20,8 +20,10 @@ class CreateGroupsTable extends Migration
             $table->bigInteger('lecturer_id')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->text('title')->nullable();
-            $table->text('abstract')->nullable();
+            $table->text('title_1')->nullable();
+            $table->text('abstract_1')->nullable();
+            $table->text('title_2')->nullable();
+            $table->text('abstract_2')->nullable();
             $table->integer('status')->default(0);
             $table->integer('type');
             $table->text('proof_path')->nullable();            

@@ -17,7 +17,7 @@ class ReportController extends Controller
         ]);
 
         if ($request->hasFile('file')){            
-            $allowedfileExtension=['jpg','png', 'doc', 'docx'];
+            $allowedfileExtension=['jpg','png', 'doc', 'docx', 'pdf'];
             $file = $request->file('file');
             $filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
@@ -30,7 +30,7 @@ class ReportController extends Controller
                     'path' => $path,
                 ]);
                 Alert::success('Succees', 'Log berhasil diupload');
-            } else Alert::error('Error', 'Pastikan extensi file berupa .jpg atau .png');            
+            } else Alert::error('Error', 'Pastikan extensi file berupa .jpg / .png / .doc / .docx / .pdf');
         } else Alert::error('Error', 'Log gagal diupload');
 
         return redirect()->route('group.show',$request->id);

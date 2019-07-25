@@ -33,21 +33,28 @@ class LecturerController extends Controller
         $notif = new Notification;
         $notif->user_id = $request->lecturer_id;
         $notif->notifiable_id = $request->group_id;
-        $notif->notifiable_type = 'lecturer request';
+        $notif->notifiable_type = 'group';
         $notif->is_read = false;
-        $notif->save();
+        $notif->save(); 
 
-        Alert::success('Success', 'Data telah tersimpan');
+        Alert::success('Success', 'Permintaan telah terkirim ke dosen');
         return redirect()->back();
     }
 
     public function assign(Request $request){
         foreach($request->groups as $groupid){
-            $group = Group::find($groupid);
-            $group->lecturer_id = $request->id;
-            $group->save();
+            // $group = Group::find($groupid);
+            // $group->lecturer_id = $request->id;
+            // $group->save();
+
+            $notif = new Notification;
+            $notif->user_id = $request->lecturer_id;
+            $notif->notifiable_id = $groupid;
+            $notif->notifiable_type = 'group';
+            $notif->is_read = false;
+            $notif->save(); 
         }
-        Alert::success('Success', 'Data telah tersiman');
+        Alert::success('Success', 'Permintaan telah terkirim ke dosen');
         return redirect()->back();
     }
 

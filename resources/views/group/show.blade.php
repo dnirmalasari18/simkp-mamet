@@ -183,7 +183,9 @@ Detail Kelompok
                                             @endforeach
                                     </tbody>
                                 </table>
-                                <button type="submit" class="btn btn-secondary btn-sm" style="border-radius:3px;">Setujui Log</button>
+                                @if (Auth::user()->role == 'dosen')
+                                    <button type="submit" class="btn btn-primary btn-sm" style="border-radius:3px;">Setujui Log</button>
+                                @endif                                
                             </form>
                         </div>
                         <div class="col-md-12" style="background-color:#212529; height:1px; margin-top:1.5rem;margin-bottom:1.5rem;"></div>
@@ -357,6 +359,7 @@ Detail Kelompok
         <div class="modal-content">
             <form action="{{route('valuation.store')}}" method="post">
                 @csrf
+                <input type="hidden" name="mode" value="groupval">
                 <div class="modal-header">
                     <h5 class="modal-title" id="scrollmodalLabel">Nilai KP</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -463,7 +466,8 @@ Detail Kelompok
                         <div class="col col-md-8"><label for="postal-code" class=" form-control-label"><strong>Dokumen</strong></label></div>
                         <div class="col col-md-4">
                             <input name="file" type="file" id="fileAdd"/>
-                            <small class="form-text text-muted">Format .doc</small>
+                            <small class="form-text text-muted">Format yang dapat diupload berupa .jpg, .png, .doc, .docx atau .pdf</small>
+                            <small class="form-text text-muted">Maks 2MB</small>
                         </div>
                     </div>
                     <div class="col col-md-12"><br></div>
