@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Group;
 use App\Corp;
 use App\Period;
@@ -49,6 +50,22 @@ class GroupController extends Controller
     }
 
     public function store(Request $request){
+        $validator = Validator::make($request->all(), [
+            'corporation.name' => 'required',
+			'corporation.city' => 'required',
+			'corporation.address' => 'required',
+			'corporation.type' => 'required',
+            'corporation.profile' => 'required',
+            'corporation.post' => 'required',
+			'group.start_date' => 'required|date|before:'.$request['group']['end_date'],
+            'group.end_date' => 'required|date',
+            'group.type' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->withInput();
+        }
+        
         $this->validate($request, [
             'corporation.name' => 'required',
 			'corporation.city' => 'required',
