@@ -17,7 +17,8 @@ Surat
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="vertical-align:middle;width:500px;">Kelompok</th>
+                                    <th style="vertical-align:middle;width:300px;">Kelompok</th>
+                                    <th style="vertical-align:middle;">Perusahaan</th>
                                     <th style="vertical-align:middle;widh:200px;">Jenis Pengajuan</th>
                                     <th style="vertical-align:middle;width:150px;">Status</th>
                                     <th style="width:150px;"></th>
@@ -31,13 +32,14 @@ Surat
                                                 {{$student->username}} - {{$student->fullname}} <br>
                                             @endforeach
                                         </td>
+                                        <td>{{$group->corp->name}}</td>
                                         <td style="vertical-align:middle">                                                
                                             {{ucwords($group->type['name'])}}
                                         </td>
                                         <td style="vertical-align:midle">
                                             {{strtoupper($group->status['name'])}}
                                         </td>
-                                        <td style="vertical-align:middle"><center><button type="button" class="btn btn-secondary btn-sm detail" value="{{$group->id}}" data-toggle="modal" data-target="#scrollmodalSuratDetail" style="border-radius:3px;">Lihat Detail</button></center></td>
+                                        <td style="vertical-align:middle"><center><button type="button" class="btn btn-secondary btn-sm detail" value="{{$group->id}}" data-toggle="modal" data-target="#scrollmodalSuratBuat" style="border-radius:3px;">Buat Surat</button></center></td>
                                     </tr>
                                 @endforeach                                  
                             </tbody>
@@ -48,67 +50,6 @@ Surat
         </div>        
     </div><!-- .animated -->
 </div><!-- .content -->
-<div class="modal fade" id="scrollmodalSuratDetail" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="scrollmodalLabel">Detail Surat</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-12">
-                    <div class="row form-group">
-                        <div class="col col-md-4"><label class=" form-control-label"><strong>Jenis Pengajuan</strong></label></div>
-                        <p id="group-type" style="color:#212529"></p>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-4"><label class=" form-control-label"><strong>Peserta</strong></label></div>
-                            <p style="color:#212529">
-                                <div class="col col-md-8" id="student-1"></div>
-                                <div class="col col-md-4"></div><div class="col col-md-8" id="student-2"></div>
-                                {{-- @foreach ($group->students as $student)
-                                    {{$student->username}} - {{$student->fullname}} <br>
-                                @endforeach --}}
-                            </p>                            
-                    </div>                        
-                </div>
-                <div class="col-md-12" style="background-color:#212529; height:1px; margin-bottom:1.5rem"></div>                       
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label><strong>Perusahaan</strong></label>
-                        <p id="corp-name" style="color:#212529"></p>
-                    </div>
-                    <div class="form-group">
-                        <label><strong>Alamat</strong></label>
-                        <p id="corp-address" style="color:#212529"></p>
-                    </div>
-                    <div class="form-group">
-                        <label><strong>Kota</strong></label>
-                        <p id="corp-city"style="color:#212529"></p>
-                    </div>        
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label><strong>Tanggal Mulai</strong></label>
-                        <p id="group-start-date" style="color:#212529"></p>
-                    </div>
-                    <div class="form-group">
-                        <label><strong>Tanggal Berakhir</strong></label>
-                        <p id="group-end-date" style="color:#212529"></p>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-info btn-sm"data-toggle="modal" data-target="#scrollmodalSuratBuat" style="border-radius:3px;float:right;">Buat Surat</button>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="scrollmodalSuratBuat" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
