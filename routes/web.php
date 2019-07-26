@@ -33,12 +33,12 @@ Route::prefix('corps/')->group(function(){
     Route::get('{id}','CorpController@show')->name('corp.show');
     Route::post('note/create','CorpController@noteStore')->name('corp.note.create');
     Route::post('note/delete','CorpController@noteDelete')->name('corp.note.delete');
-});
+})->middleware('koordinator');
 
 Route::prefix('cover_letter/')->group(function(){
     Route::get('','CoverLetterController@index')->name('cover_letter.index');
     Route::post('','CoverLetterController@download')->name('cover_letter.download');
-});
+})->middleware('tu');
 
 Route::prefix('users/')->group(function(){
     Route::get('','UserController@index')->name('user.index');
@@ -48,16 +48,19 @@ Route::prefix('users/')->group(function(){
     Route::get('{id}','UserController@show')->name('user.show');
     Route::get('{id}/edit','UserController@edit')->name('user.edit');
     Route::post('edit','UserController@update')->name('user.edit');
-});
+})->middleware('koordinator');
 
 Route::prefix('news/')->group(function(){
     Route::get('','NewsController@index')->name('news.index');
-    Route::get('create','NewsController@create')->name('news.create');
-    Route::post('create','NewsController@store')->name('news.create');
-    Route::post('delete','NewsController@destroy')->name('news.delete');
-    Route::get('{id}','NewsController@show')->name('news.show');
-    Route::get('{id}/edit','NewsController@edit')->name('news.edit');
-    Route::post('{id}/edit','NewsController@update')->name('news.edit');
+    
+    Route::group(function(){
+        Route::get('create','NewsController@create')->name('news.create');
+        Route::post('create','NewsController@store')->name('news.create');
+        Route::post('delete','NewsController@destroy')->name('news.delete');
+        Route::get('{id}','NewsController@show')->name('news.show');
+        Route::get('{id}/edit','NewsController@edit')->name('news.edit');
+        Route::post('{id}/edit','NewsController@update')->name('news.edit');
+    })->middleware('koordinator');
 });
 
 Route::prefix('periods/')->group(function(){
@@ -69,7 +72,7 @@ Route::prefix('periods/')->group(function(){
     Route::post('deactivate','PeriodController@deactivate')->name('period.deactivate');
     Route::get('{id}','PeriodController@show')->name('period.show');
     Route::post('edit','PeriodController@update')->name('period.edit');
-});
+})->middleware('koordinator');
 
 Route::prefix('lecturers/')->group(function(){
     Route::get('','LecturerController@index')->name('lecturer.index');
@@ -80,7 +83,7 @@ Route::prefix('lecturers/')->group(function(){
     Route::post('group/accept','LecturerController@acceptGroup')->name('lecturer.group.accept');
     Route::post('group/decline','LecturerController@declineGroup')->name('lecturer.group.decline');
     Route::post('log/accept','LecturerController@acceptLog')->name('lecturer.log.accept');
-});
+})->middleware('dosen');
 
 Route::prefix('groups/')->group(function(){
     Route::get('','GroupController@index')->name('group.index');
@@ -118,11 +121,13 @@ Route::prefix('ajax/')->group(function(){
     });
 });
 
-Route::get('statistics','StatisticController@show')->name('statistic.show');
+Route::get('statistics','StatisticController@show')->name('statistic.show')->middleware('koordinator');
 
-Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal');
-Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit');
-Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');
+Route::group(function(){
+    Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal');
+    Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit');
+    Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');    
+})->middleware('dosen');
 
 Route::get('/', function () {
     return redirect('login');
