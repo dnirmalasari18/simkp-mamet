@@ -15,10 +15,13 @@ class Lecturer
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        if (Auth::check() && (Auth::user()->role == 'koordinator' || Auth::user()->role == 'dosen')){
-            return $next($request);
-        }        
-        return abort(404);
+    {        
+        if (Auth::check()){            
+            if (Auth::user()->role == 'koordinator' || Auth::user()->role == 'dosen'){
+                return $next($request);
+            }
+            return abort(404);
+        } 
+        return redirect()->route('login');        
     }
 }
