@@ -26,16 +26,17 @@ class LecturerController extends Controller
             'lecturer_id' => 'required'
         ]);
 
-        // $group = Group::find($request->group_id);
-        // $group->lecturer_id = $request->lecturer_id;
-        // $group->save();
+        $group = Group::find($request->group_id);
+        $group->lecturer_id = $request->lecturer_id;
+        $group->status = 4;
+        $group->save();
 
-        $notif = new Notification;
-        $notif->user_id = $request->lecturer_id;
-        $notif->notifiable_id = $request->group_id;
-        $notif->notifiable_type = 'group';
-        $notif->is_read = false;
-        $notif->save(); 
+        // $notif = new Notification;
+        // $notif->user_id = $request->lecturer_id;
+        // $notif->notifiable_id = $request->group_id;
+        // $notif->notifiable_type = 'group';
+        // $notif->is_read = false;
+        // $notif->save(); 
 
         Alert::success('Success', 'Permintaan telah terkirim ke dosen');
         return redirect()->back();
@@ -43,16 +44,17 @@ class LecturerController extends Controller
 
     public function assign(Request $request){
         foreach($request->groups as $groupid){
-            // $group = Group::find($groupid);
-            // $group->lecturer_id = $request->id;
-            // $group->save();
+            $group = Group::find($groupid);
+            $group->lecturer_id = $request->id;
+            $group->status = 4;
+            $group->save();
 
-            $notif = new Notification;
-            $notif->user_id = $request->lecturer_id;
-            $notif->notifiable_id = $groupid;
-            $notif->notifiable_type = 'group';
-            $notif->is_read = false;
-            $notif->save(); 
+            // $notif = new Notification;
+            // $notif->user_id = $request->lecturer_id;
+            // $notif->notifiable_id = $groupid;
+            // $notif->notifiable_type = 'group';
+            // $notif->is_read = false;
+            // $notif->save(); 
         }
         Alert::success('Success', 'Permintaan telah terkirim ke dosen');
         return redirect()->back();

@@ -192,10 +192,12 @@ Detail Kelompok
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <h3><strong>Maju Seminar</strong></h3>
-                                <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:115%">
-                                    Kelompok terkait belum mensubmit <strong>judul</strong> dan <strong>abstraksi</strong> pada website!
-                                </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalJuduldanAbstrak" style="float:right;margin-bottom:20px;" >
+                                @if ($group->title_1 == null || $group->title_2 == null)
+                                    <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:115%">
+                                        Kelompok terkait belum mensubmit <strong>judul</strong> dan <strong>abstraksi</strong> pada website!
+                                    </div>
+                                @endif                                
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalJuduldanAbstrak1" style="float:right;margin-bottom:20px;" >
                                     Submit Judul dan Abstraksi
                                 </button>
                             </div>
@@ -203,13 +205,35 @@ Detail Kelompok
                                 <div class="form-group">
                                     <label><strong>Judul</strong></label>
                                     <div style="height:3em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
-                                        {{$group->title}}
+                                        {{$group->title_1}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label><strong>Abstraksi</strong></label>
                                     <div style="height:15em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
-                                        {{$group->abstract}}
+                                        {{$group->abstract_1}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12"><br><br></div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">                                
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalJuduldanAbstrak2" style="float:right;margin-bottom:20px;" >
+                                    Submit Judul dan Abstraksi
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label><strong>Judul</strong></label>
+                                    <div style="height:3em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
+                                        {{$group->title_2}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong>Abstraksi</strong></label>
+                                    <div style="height:15em;width:100%;padding:0.5em;margin:0.5em;border:1px solid black;overflow:auto;">
+                                        {{$group->abstract_2}}
                                     </div>
                                 </div>
                             </div>
@@ -480,42 +504,72 @@ Detail Kelompok
         </div>
     </div>
 </div>
-<div class="modal fade" id="scrollmodalJuduldanAbstrak" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <form action="{{route('abstract.update')}}" method="post">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$group->id}}">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="scrollmodalLabel">Judul dan Abstraksi</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-danger" role="alert" style="font-size:115%">
-                            <strong>Judul</strong> dan <strong>Abstraksi</strong> setelah disimpan tidak akan bisa diubah kembali.<br>
-                                Harap menghubungi <strong>Ka Sie KP</strong> jika ada kesulitan.
+<div class="modal fade" id="scrollmodalJuduldanAbstrak1" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form action="{{route('abstract.update')}}" method="post">
+                @csrf
+                <input type="hidden" name="mode" value="1">
+                <input type="hidden" name="id" value="{{$group->id}}">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollmodalLabel">Judul dan Abstraksi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><strong>Judul</strong></label>
+                            <textarea name="title" id="textarea-input" rows="1" class="form-control"></textarea>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label><strong>Judul</strong></label>
-                                <textarea name="title" id="textarea-input" rows="1" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label><strong>Abstraksi</strong></label>
-                                <textarea name="abstract" id="textarea-input" rows="9" class="form-control"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label><strong>Abstraksi</strong></label>
+                            <textarea name="abstract" id="textarea-input" rows="9" class="form-control"></textarea>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+<div class="modal fade" id="scrollmodalJuduldanAbstrak2" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form action="{{route('abstract.update')}}" method="post">
+                @csrf
+                <input type="hidden" name="mode" value="2">
+                <input type="hidden" name="id" value="{{$group->id}}">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollmodalLabel">Judul dan Abstraksi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><strong>Judul</strong></label>
+                            <textarea name="title" id="textarea-input" rows="1" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Abstraksi</strong></label>
+                            <textarea name="abstract" id="textarea-input" rows="9" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 
