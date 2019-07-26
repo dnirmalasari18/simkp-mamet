@@ -120,11 +120,9 @@ Route::prefix('ajax/')->group(function(){
 
 Route::get('statistics','StatisticController@show')->name('statistic.show')->middleware('koordinator');
 
-Route::group(function(){
-    Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal')->middleware('dosen');
-    Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit')->middleware('dosen');
-    Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store')->middleware('dosen');    
-});
+Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal')->middleware('dosen');
+Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit')->middleware('dosen');
+Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store')->middleware('dosen');    
 
 Route::get('/', function () {
     return redirect('login');
