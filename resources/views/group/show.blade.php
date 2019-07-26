@@ -292,7 +292,7 @@ Detail Kelompok
             </div>
             <div class="modal-body">
                 <center>
-                    <img src="{{Storage::url($group->proof_path)}}" alt="">
+                    <img src="https://www.its.ac.id/tmaterial/simkp/public/storage/{{$group->proof_path}}" alt="">
                 </center>
             </div>
             <div class="modal-footer">
