@@ -83,28 +83,28 @@ Route::prefix('lecturers/')->group(function(){
 });
 
 Route::prefix('groups/')->group(function(){
-    Route::get('','GroupController@index')->name('group.index');
-    Route::get('create','GroupController@create')->name('group.create');
-    Route::post('create','GroupController@store')->name('group.create');
-    Route::post('delete','GroupController@destroy')->name('group.delete');
-    Route::get('{id}','GroupController@show')->name('group.show');
-    Route::get('{id}/edit','GroupController@edit')->name('group.edit');
-    Route::post('{id}/edit','GroupController@update')->name('group.edit');
+    Route::get('','GroupController@index')->name('group.index')->middleware('auth');
+    Route::get('create','GroupController@create')->name('group.create')->middleware('auth');
+    Route::post('create','GroupController@store')->name('group.create')->middleware('auth');
+    Route::post('delete','GroupController@destroy')->name('group.delete')->middleware('auth');
+    Route::get('{id}','GroupController@show')->name('group.show')->middleware('auth');
+    Route::get('{id}/edit','GroupController@edit')->name('group.edit')->middleware('auth');
+    Route::post('{id}/edit','GroupController@update')->name('group.edit')->middleware('auth');
 
-    Route::get('{id}/proof','ProofController@show')->name('proof.show');
-    Route::post('proof/create','ProofController@store')->name('proof.create');
-    Route::post('proof/delete','ProofController@delete')->name('proof.delete');
+    Route::get('{id}/proof','ProofController@show')->name('proof.show')->middleware('auth');
+    Route::post('proof/create','ProofController@store')->name('proof.create')->middleware('auth');
+    Route::post('proof/delete','ProofController@delete')->name('proof.delete')->middleware('auth');
 
-    Route::post('accept','GroupController@accept')->name('group.accept');
-    Route::post('decline','GroupController@decline')->name('group.decline');
+    Route::post('accept','GroupController@accept')->name('group.accept')->middleware('auth');
+    Route::post('decline','GroupController@decline')->name('group.decline')->middleware('auth');
 
-    Route::get('reports/create','ReportController@create')->name('report.create');
-    Route::post('reports/create','ReportController@store')->name('report.create');
-    Route::post('reports/delete','ReportController@delete')->name('report.delete');
+    Route::get('reports/create','ReportController@create')->name('report.create')->middleware('auth');
+    Route::post('reports/create','ReportController@store')->name('report.create')->middleware('auth');
+    Route::post('reports/delete','ReportController@delete')->name('report.delete')->middleware('auth');
 
-    Route::post('status/update','GroupController@statusUpdate')->name('status.update');
+    Route::post('status/update','GroupController@statusUpdate')->name('status.update')->middleware('auth');
 
-    Route::post('abstract/update','GroupController@abstractUpdate')->name('abstract.update');
+    Route::post('abstract/update','GroupController@abstractUpdate')->name('abstract.update')->middleware('auth');
 });
 
 Route::prefix('ajax/')->group(function(){

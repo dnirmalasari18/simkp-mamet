@@ -16,9 +16,12 @@ class Coordinator
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role == 'koordinator'){            
-            return $next($request);
-        }        
-        return abort(404);
+        if (Auth::check()){            
+            if (Auth::user()->role == 'koordinator'){
+                return $next($request);
+            }
+            return abort(404);
+        } 
+        return redirect()->route('login');        
     }
 }
