@@ -72,8 +72,13 @@ class GroupController extends Controller
         $creq = $request['corporation'];
         $greq = $request['group'];
 
-        # check if student 1 has created group in the same semester
-		$now = Period::current();
+        $now = Period::current();
+        if ($now == null){
+            Alert::error('Error', 'Tidak ada periode yang aktif. Silahkan hubungi koordinator');
+            return redirect()->back();
+        }
+        
+        # check if student 1 has created group in the same semester		
 		$student_groups = Auth::user()->groups->where('period_id', $now->id);
 		foreach ($student_groups as $group) {
 			if ($group->status['status'] >= 0) {
