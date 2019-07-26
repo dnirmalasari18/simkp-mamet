@@ -29,7 +29,7 @@ Route::get('logout', function(){
 Route::get('reset','UserController@reset')->name('reset');
 Route::post('reset','UserController@doReset')->name('password.update');
 
-Route::prefix('corps/')->group(['middleware' => 'koordinator'],function(){
+Route::prefix('corps/')->group(['middleware' => ['koordinator']], function(){
     Route::get('{id}','CorpController@show')->name('corp.show');
     Route::post('note/create','CorpController@noteStore')->name('corp.note.create');
     Route::post('note/delete','CorpController@noteDelete')->name('corp.note.delete');
