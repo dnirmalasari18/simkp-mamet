@@ -41,7 +41,7 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input name="username" type="text" class="form-control" placeholder="NRP">
+                            <input name="username" type="text" class="form-control" placeholder="NRP/NIP">
                         </div>
                         <div class="form-group">
                             <input name="password" type="password" class="form-control" placeholder="Password">
