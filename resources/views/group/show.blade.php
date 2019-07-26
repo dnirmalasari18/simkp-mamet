@@ -192,7 +192,7 @@ Detail Kelompok
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <h3><strong>Maju Seminar</strong></h3>
-                                @if ($group->abstract_1 == null)
+                                @if ($group->title_1 == null || $group->title_2 == null)
                                     <div class="alert alert-warning" role="alert" style="margin-top:1rem; font-size:115%">
                                         Kelompok terkait belum mensubmit <strong>judul</strong> dan <strong>abstraksi</strong> pada website!
                                     </div>
@@ -216,6 +216,7 @@ Detail Kelompok
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12"><br><br></div>
                         <div class="col-md-12">
                             <div class="col-md-12">                                
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollmodalJuduldanAbstrak2" style="float:right;margin-bottom:20px;" >
@@ -516,11 +517,7 @@ Detail Kelompok
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger" role="alert" style="font-size:115%">
-                        <strong>Judul</strong> dan <strong>Abstraksi</strong> setelah disimpan tidak akan bisa diubah kembali.<br>
-                            Harap menghubungi <strong>Ka Sie KP</strong> jika ada kesulitan.
-                    </div>
+                <div class="modal-body">                    
                     <div class="col-md-12">
                         <div class="form-group">
                             <label><strong>Judul</strong></label>
@@ -553,11 +550,7 @@ Detail Kelompok
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger" role="alert" style="font-size:115%">
-                        <strong>Judul</strong> dan <strong>Abstraksi</strong> setelah disimpan tidak akan bisa diubah kembali.<br>
-                            Harap menghubungi <strong>Ka Sie KP</strong> jika ada kesulitan.
-                    </div>
+                <div class="modal-body">                    
                     <div class="col-md-12">
                         <div class="form-group">
                             <label><strong>Judul</strong></label>
