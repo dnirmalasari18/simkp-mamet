@@ -31,59 +31,56 @@ Route::post('reset','UserController@doReset')->name('password.update');
 
 Route::prefix('corps/')->group(function(){
     Route::get('{id}','CorpController@show')->name('corp.show')->middleware('koordinator');
-    Route::post('note/create','CorpController@noteStore')->name('corp.note.create');
-    Route::post('note/delete','CorpController@noteDelete')->name('corp.note.delete');
+    Route::post('note/create','CorpController@noteStore')->name('corp.note.create')->middleware('koordinator');
+    Route::post('note/delete','CorpController@noteDelete')->name('corp.note.delete')->middleware('koordinator');
 });
 
 Route::prefix('cover_letter/')->group(function(){
-    Route::get('','CoverLetterController@index')->name('cover_letter.index');
-    Route::post('','CoverLetterController@download')->name('cover_letter.download');
-})->middleware('tu');
+    Route::get('','CoverLetterController@index')->name('cover_letter.index')->middleware('tu');
+    Route::post('','CoverLetterController@download')->name('cover_letter.download')->middleware('tu');
+});
 
 Route::prefix('users/')->group(function(){
-    Route::get('','UserController@index')->name('user.index');
-    Route::get('create','UserController@create')->name('user.create');
-    Route::post('create','UserController@store')->name('user.create');
-    Route::post('delete','UserController@destroy')->name('user.delete');
-    Route::get('{id}','UserController@show')->name('user.show');
-    Route::get('{id}/edit','UserController@edit')->name('user.edit');
-    Route::post('edit','UserController@update')->name('user.edit');
-})->middleware('koordinator');
+    Route::get('','UserController@index')->name('user.index')->middleware('koordinator');
+    Route::get('create','UserController@create')->name('user.create')->middleware('koordinator');
+    Route::post('create','UserController@store')->name('user.create')->middleware('koordinator');
+    Route::post('delete','UserController@destroy')->name('user.delete')->middleware('koordinator');
+    Route::get('{id}','UserController@show')->name('user.show')->middleware('koordinator');
+    Route::get('{id}/edit','UserController@edit')->name('user.edit')->middleware('koordinator');
+    Route::post('edit','UserController@update')->name('user.edit')->middleware('koordinator');
+});
 
 Route::prefix('news/')->group(function(){
-    Route::get('','NewsController@index')->name('news.index');
-    
-    Route::group(function(){
-        Route::get('create','NewsController@create')->name('news.create');
-        Route::post('create','NewsController@store')->name('news.create');
-        Route::post('delete','NewsController@destroy')->name('news.delete');
-        Route::get('{id}','NewsController@show')->name('news.show');
-        Route::get('{id}/edit','NewsController@edit')->name('news.edit');
-        Route::post('{id}/edit','NewsController@update')->name('news.edit');
-    })->middleware('koordinator');
+    Route::get('','NewsController@index')->name('news.index');        
+    Route::get('create','NewsController@create')->name('news.create')->middleware('koordinator');
+    Route::post('create','NewsController@store')->name('news.create')->middleware('koordinator');
+    Route::post('delete','NewsController@destroy')->name('news.delete')->middleware('koordinator');
+    Route::get('{id}','NewsController@show')->name('news.show')->middleware('koordinator');
+    Route::get('{id}/edit','NewsController@edit')->name('news.edit')->middleware('koordinator');
+    Route::post('{id}/edit','NewsController@update')->name('news.edit')->middleware('koordinator');    
 });
 
 Route::prefix('periods/')->group(function(){
-    Route::get('','PeriodController@index')->name('period.index');
-    Route::get('create','PeriodController@create')->name('period.create');
-    Route::post('create','PeriodController@store')->name('period.create');
-    Route::post('delete','PeriodController@destroy')->name('period.delete');
-    Route::post('activate','PeriodController@activate')->name('period.activate');
-    Route::post('deactivate','PeriodController@deactivate')->name('period.deactivate');
-    Route::get('{id}','PeriodController@show')->name('period.show');
-    Route::post('edit','PeriodController@update')->name('period.edit');
-})->middleware('koordinator');
+    Route::get('','PeriodController@index')->name('period.index')->middleware('koordinator');
+    Route::get('create','PeriodController@create')->name('period.create')->middleware('koordinator');
+    Route::post('create','PeriodController@store')->name('period.create')->middleware('koordinator');
+    Route::post('delete','PeriodController@destroy')->name('period.delete')->middleware('koordinator');
+    Route::post('activate','PeriodController@activate')->name('period.activate')->middleware('koordinator');
+    Route::post('deactivate','PeriodController@deactivate')->name('period.deactivate')->middleware('koordinator');
+    Route::get('{id}','PeriodController@show')->name('period.show')->middleware('koordinator');
+    Route::post('edit','PeriodController@update')->name('period.edit')->middleware('koordinator');
+});
 
 Route::prefix('lecturers/')->group(function(){
-    Route::get('','LecturerController@index')->name('lecturer.index');
-    Route::post('assign','LecturerController@assign')->name('lecturer.assign');
-    Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign');
-    Route::get('{id}','LecturerController@show')->name('lecturer.show');
-    Route::post('group/assign','LecturerController@assignGroup')->name('lecturer.group.assign');
-    Route::post('group/accept','LecturerController@acceptGroup')->name('lecturer.group.accept');
-    Route::post('group/decline','LecturerController@declineGroup')->name('lecturer.group.decline');
-    Route::post('log/accept','LecturerController@acceptLog')->name('lecturer.log.accept');
-})->middleware('dosen');
+    Route::get('','LecturerController@index')->name('lecturer.index')->middleware('dosen');
+    Route::post('assign','LecturerController@assign')->name('lecturer.assign')->middleware('dosen');
+    Route::post('unassign','LecturerController@unassign')->name('lecturer.unassign')->middleware('dosen');
+    Route::get('{id}','LecturerController@show')->name('lecturer.show')->middleware('dosen');
+    Route::post('group/assign','LecturerController@assignGroup')->name('lecturer.group.assign')->middleware('dosen');
+    Route::post('group/accept','LecturerController@acceptGroup')->name('lecturer.group.accept')->middleware('dosen');
+    Route::post('group/decline','LecturerController@declineGroup')->name('lecturer.group.decline')->middleware('dosen');
+    Route::post('log/accept','LecturerController@acceptLog')->name('lecturer.log.accept')->middleware('dosen');
+});
 
 Route::prefix('groups/')->group(function(){
     Route::get('','GroupController@index')->name('group.index');
@@ -124,10 +121,10 @@ Route::prefix('ajax/')->group(function(){
 Route::get('statistics','StatisticController@show')->name('statistic.show')->middleware('koordinator');
 
 Route::group(function(){
-    Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal');
-    Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit');
-    Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store');    
-})->middleware('dosen');
+    Route::get('valuation/communals', 'ValuationController@communal')->name('valuation.communal')->middleware('dosen');
+    Route::get('valuation/communals/edit','ValuationController@editCommunal')->name('valuation.communal.edit')->middleware('dosen');
+    Route::post('valuation/group/store', 'ValuationController@store')->name('valuation.store')->middleware('dosen');    
+});
 
 Route::get('/', function () {
     return redirect('login');
