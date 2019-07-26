@@ -7,7 +7,7 @@ Statistik
 
 <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/datatables.net-bs4/css/dataTables.bootstrap.css')!!}">
 <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap.css')!!}">
-<link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/chosen/chose.css')!!}">
+<link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/chosen/chosen.css')!!}">
 <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/bootstrap-datep.css')!!}">
 <link rel="stylesheet" href="https://www.its.ac.id/tmaterial/simkp/public/template/vendors/morrisjs/morris.css">
 @endsection
