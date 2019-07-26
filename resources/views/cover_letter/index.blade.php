@@ -17,7 +17,7 @@ Surat
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="vertical-align:middle;width:300px;">Kelompok</th>
+                                    <th style="vertical-align:middle;">Kelompok</th>
                                     <th style="vertical-align:middle;">Perusahaan</th>
                                     <th style="vertical-align:middle;widh:200px;">Jenis Pengajuan</th>
                                     <th style="vertical-align:middle;width:150px;">Status</th>
@@ -32,7 +32,7 @@ Surat
                                                 {{$student->username}} - {{$student->fullname}} <br>
                                             @endforeach
                                         </td>
-                                        <td>{{$group->corp->name}}</td>
+                                        <td>{{$group->corp->name}} - {{$group->corp->city}}</td>
                                         <td style="vertical-align:middle">                                                
                                             {{ucwords($group->type['name'])}}
                                         </td>
