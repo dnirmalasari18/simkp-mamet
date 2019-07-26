@@ -52,12 +52,12 @@ class GroupController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'corporation.name' => 'required',
-			'corporation.city' => 'required',
+            'corporation.name' => 'required|max:40',
+			'corporation.city' => 'required|max:20',
 			'corporation.address' => 'required',
-			'corporation.type' => 'required',
+			'corporation.type' => 'required|max:40',
             'corporation.profile' => 'required',
-            'corporation.post' => 'required',
+            'corporation.post' => 'required|max:10',
 			'group.start_date' => 'required|date|before:'.$request['group']['end_date'],
             'group.end_date' => 'required|date',
             'group.type' => 'required',
@@ -66,18 +66,7 @@ class GroupController extends Controller
         if($validator->fails()){
             return redirect()->back()->withInput(Input::all())->withErrors($validator);
         }
-        
-        $this->validate($request, [
-            'corporation.name' => 'required',
-			'corporation.city' => 'required',
-			'corporation.address' => 'required',
-			'corporation.type' => 'required',
-            'corporation.profile' => 'required',
-            'corporation.post' => 'required',
-			'group.start_date' => 'required|date|before:'.$request['group']['end_date'],
-            'group.end_date' => 'required|date',
-            'group.type' => 'required',
-        ]);
+                
         $friend = $request->friend;
         $request = $request->all();
         $creq = $request['corporation'];
@@ -215,8 +204,13 @@ class GroupController extends Controller
         //     return redirect()->back();
         // }
 
-        $group->title = $request->title;
-        $group->abstract = $request->abstract;
+        if ($request->mode == 1){
+            $group->title_1 = $request->title;
+            $group->abstract_1 = $request->abstract;
+        } else if($request->mode == 2){
+            $group->title_2 = $request->title;
+            $group->abstract_2 = $request->abstract;
+        }        
         $group->save();
 
         Alert::success('Success', 'Judul dan Abstrak berhasil disimpan');
