@@ -96,7 +96,7 @@
 
     <div style="margin-top:1cm">
         <div style="padding-left:9.3cm;" >
-            Ka.Dept.,<br><br><br>
+            Kepala Departemen Teknik Material,<br><br><br>
             <b>Dr. Agung Purniawan, ST., M.Eng</b><br>
             <b>NIP. 197605282002121003</b>
         </div>
